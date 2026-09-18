@@ -52,7 +52,7 @@ The recipe store also contains indexes for modification date, tags, dish types, 
 
 Settings prepares a `.pantrybook` ZIP archive containing a JSON manifest and binary JPEG files, then enables a second explicit save action. That fresh click downloads `recipes-backup-YYYY-MM-DD.pantrybook` on desktop and opens the system share sheet on supported mobile devices.
 
-Import validates the archive directory, manifest, recipes, expected image entries, and CRCs before replacing both stores in one read/write transaction. A failed transaction is rolled back by IndexedDB. Old JSON backups are intentionally unsupported. The format is documented in [BACKUP_FORMAT.md](./BACKUP_FORMAT.md).
+Import validates the archive directory, manifest, recipes, expected image entries, and CRCs while writing into a separate staging database in small transactions. The staged library becomes active only after its recipe and photo counts are verified, so an interrupted restore leaves the current library untouched. Old JSON backups are intentionally unsupported. The format is documented in [BACKUP_FORMAT.md](./BACKUP_FORMAT.md).
 
 ## Local recipe webpage importer
 

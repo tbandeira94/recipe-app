@@ -22,4 +22,4 @@ Every archive contains `manifest.json`:
 
 `recipes` contains the photo-free records stored in IndexedDB. A recipe with `hasPhoto: true` must have exactly one corresponding item in `photos`; recipes without photos must not have one. Each photo mapping points to a 1200px JPEG and a 256px thumbnail.
 
-Restore accepts only format version 1. It rejects duplicate IDs, unexpected or missing entries, non-canonical image paths, unsupported ZIP features, and CRC failures before replacing the local collection in one IndexedDB transaction.
+Restore accepts only format version 1. It rejects duplicate IDs, unexpected or missing entries, non-canonical image paths, unsupported ZIP features, and CRC failures. A restore is written into a separate database in bounded transactions and activated only after the complete staged library has been verified.

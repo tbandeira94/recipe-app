@@ -1,11 +1,22 @@
 import type { RecipeArchiveManifest } from '../types'
-import { getRecipePhoto, getRecipes, replaceLibrary, type RecipePhotoRecord } from './database'
+import {
+  activateStagingLibrary,
+  createStagingLibrary,
+  discardStagingLibrary,
+  getRecipePhoto,
+  getRecipes,
+  stagePhotoBatch,
+  stageRecipeBatch,
+  verifyStagingLibrary,
+  type RecipePhotoRecord,
+  type StagingLibrary,
+} from './database'
 import { ARCHIVE_FORMAT, ARCHIVE_VERSION, parseArchiveManifest } from './backupFormat'
 import { assertStorageCapacity } from './storage'
 import { createStoredZip, readStoredZipDirectory, readStoredZipEntry, type ZipDirectoryEntry, type ZipSourceEntry } from './zip'
 
 export interface BackupProgress {
-  phase: 'export' | 'validate' | 'restore'
+  phase: 'export' | 'inspect' | 'recipes' | 'photos' | 'activate'
   completed: number
   total: number
 }
@@ -100,30 +111,62 @@ export async function deliverBackup(file: File): Promise<'shared' | 'downloaded'
 }
 
 export async function importBackup(file: File, onProgress?: ProgressHandler): Promise<number> {
-  await assertStorageCapacity(file.size)
+  await assertStorageCapacity(Math.ceil(file.size * 1.25))
+  onProgress?.({ phase: 'inspect', completed: 0, total: 1 })
   const entries = await readStoredZipDirectory(file)
   const manifest = await readManifest(file, entries)
   validateDirectory(manifest, entries)
-  const records: RecipePhotoRecord[] = []
-  const total = manifest.photos.length * 2
-  let completed = 0
-  for (const photo of manifest.photos) {
-    for (const variant of ['full', 'thumbnail'] as const) {
-      const path = photo[variant]
-      const entry = entries.get(path)
-      if (!entry) throw new Error(`The backup is missing “${path}”.`)
-      const sizeLimit = variant === 'full' ? 25 * 1024 * 1024 : 2 * 1024 * 1024
-      if (entry.size < 3 || entry.size > sizeLimit) throw new Error(`The photo “${path}” has an invalid size.`)
-      const data = await readStoredZipEntry(file, entry)
-      const signature = new Uint8Array(await data.slice(0, 3).arrayBuffer())
-      if (signature[0] !== 0xff || signature[1] !== 0xd8 || signature[2] !== 0xff) throw new Error(`The photo “${path}” is not a JPEG.`)
-      records.push({ recipeId: photo.recipeId, variant, blob: new Blob([data], { type: 'image/jpeg' }) })
-      completed += 1
-      onProgress?.({ phase: 'validate', completed, total })
+  onProgress?.({ phase: 'inspect', completed: 1, total: 1 })
+
+  let staging: StagingLibrary | undefined
+  let activated = false
+  try {
+    staging = await createStagingLibrary()
+    for (let offset = 0; offset < manifest.recipes.length; offset += 100) {
+      const batch = manifest.recipes.slice(offset, offset + 100)
+      await stageRecipeBatch(staging, batch)
+      onProgress?.({ phase: 'recipes', completed: offset + batch.length, total: manifest.recipes.length })
     }
+
+    const photoTotal = manifest.photos.length * 2
+    let photoCompleted = 0
+    let batchBytes = 0
+    let batch: RecipePhotoRecord[] = []
+    const flushPhotos = async () => {
+      if (!batch.length || !staging) return
+      const count = batch.length
+      await stagePhotoBatch(staging, batch)
+      photoCompleted += count
+      onProgress?.({ phase: 'photos', completed: photoCompleted, total: photoTotal })
+      batch = []
+      batchBytes = 0
+    }
+
+    for (const photo of manifest.photos) {
+      for (const variant of ['full', 'thumbnail'] as const) {
+        const path = photo[variant]
+        const entry = entries.get(path)
+        if (!entry) throw new Error(`The backup is missing “${path}”.`)
+        const sizeLimit = variant === 'full' ? 25 * 1024 * 1024 : 2 * 1024 * 1024
+        if (entry.size < 3 || entry.size > sizeLimit) throw new Error(`The photo “${path}” has an invalid size.`)
+        const data = await readStoredZipEntry(file, entry)
+        const signature = new Uint8Array(await data.slice(0, 3).arrayBuffer())
+        if (signature[0] !== 0xff || signature[1] !== 0xd8 || signature[2] !== 0xff) throw new Error(`The photo “${path}” is not a JPEG.`)
+        if (batch.length && (batch.length >= 20 || batchBytes + data.size > 8 * 1024 * 1024)) await flushPhotos()
+        batch.push({ recipeId: photo.recipeId, variant, blob: new Blob([data], { type: 'image/jpeg' }) })
+        batchBytes += data.size
+      }
+    }
+    await flushPhotos()
+
+    onProgress?.({ phase: 'activate', completed: 0, total: 1 })
+    await verifyStagingLibrary(staging, manifest.recipes.length, photoTotal)
+    await activateStagingLibrary(staging, manifest.recipes.length)
+    activated = true
+    onProgress?.({ phase: 'activate', completed: 1, total: 1 })
+    return manifest.recipes.length
+  } catch (error) {
+    if (staging && !activated) await discardStagingLibrary(staging)
+    throw error
   }
-  onProgress?.({ phase: 'restore', completed: 0, total: 1 })
-  await replaceLibrary(manifest.recipes, records)
-  onProgress?.({ phase: 'restore', completed: 1, total: 1 })
-  return manifest.recipes.length
 }

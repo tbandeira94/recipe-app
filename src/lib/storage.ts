@@ -5,7 +5,7 @@ export interface StorageStatus {
 }
 
 export async function getStorageStatus(): Promise<StorageStatus> {
-  if (!navigator.storage) return {}
+  if (typeof navigator === 'undefined' || !navigator.storage) return {}
   const [estimate, persistent] = await Promise.all([
     navigator.storage.estimate?.().catch(() => ({} as StorageEstimate)) ?? ({} as StorageEstimate),
     navigator.storage.persisted?.().catch(() => false),
@@ -14,7 +14,7 @@ export async function getStorageStatus(): Promise<StorageStatus> {
 }
 
 export async function requestPersistentStorage(): Promise<boolean> {
-  if (!navigator.storage?.persist) return false
+  if (typeof navigator === 'undefined' || !navigator.storage?.persist) return false
   try { return await navigator.storage.persist() }
   catch { return false }
 }

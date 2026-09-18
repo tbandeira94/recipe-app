@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ImportWarning, PhotoUpdate, Recipe, RecipeDraft } from './types'
-import { deleteRecipe, getRecipes, saveRecipe, setRecipeFavorite } from './lib/database'
+import { cleanupInactiveDatabases, deleteRecipe, getRecipes, saveRecipe, setRecipeFavorite } from './lib/database'
 import { Layout, type Tab } from './components/Layout'
 import { RecipesPage, type LibraryState } from './pages/RecipesPage'
 import { SearchPage } from './pages/SearchPage'
@@ -53,7 +53,12 @@ export default function App() {
     getRecipes()
       .then(setRecipes)
       .catch((error) => setFatalError(error instanceof Error ? error.message : 'Local storage is unavailable.'))
-      .finally(() => setLoading(false))
+      .finally(() => { setLoading(false); void cleanupInactiveDatabases() })
+  }, [])
+  useEffect(() => {
+    const handler = () => setFatalError('The recipe library changed in another window. Reload Pantry Book to continue safely.')
+    window.addEventListener('pantry-book-library-changed', handler)
+    return () => window.removeEventListener('pantry-book-library-changed', handler)
   }, [])
   useEffect(() => {
     const handler = (event: Event) => setWaitingWorker((event as CustomEvent<ServiceWorker>).detail)
@@ -71,7 +76,7 @@ export default function App() {
   const dishTypeSuggestions = [...new Set(recipes.flatMap((recipe) => recipe.dishTypes))].sort((a, b) => a.localeCompare(b))
   const tagSuggestions = [...new Set(recipes.flatMap((recipe) => recipe.tags))].sort((a, b) => a.localeCompare(b))
   const content = (() => {
-    if (fatalError) return <div className="page"><div className="error-message"><strong>Pantry Book couldn’t open.</strong><br />{fatalError}</div></div>
+    if (fatalError) return <div className="page"><div className="error-message"><strong>Pantry Book couldn’t open.</strong><br />{fatalError}<br /><button className="secondary-button" onClick={() => window.location.reload()}>Reload Pantry Book</button></div></div>
     if (view.kind === 'details' && selected) return <RecipeDetailsPage recipe={selected} onBack={() => setView({ kind: 'tab', tab: view.from })} onEdit={() => setView({ kind: 'form', id: selected.id, from: view.from })} onToggleFavorite={() => void toggleFavorite(selected)} onDelete={async () => { if (confirm(`Delete “${selected.name}”?`)) { await deleteRecipe(selected.id); await refresh(); setView({ kind: 'tab', tab: 'recipes' }) } }} />
     if (view.kind === 'import') return <RecipeImportPage value={importInput} error={importError} onChange={(input) => { setImportInput(input); setImportError('') }} onCancel={() => setView({ kind: 'tab', tab: view.from })} onReview={() => {
       try {

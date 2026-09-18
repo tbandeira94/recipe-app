@@ -2,6 +2,16 @@ import 'fake-indexeddb/auto'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { RecipeDraft } from '../types'
 
+class MemoryStorage implements Storage {
+  private readonly values = new Map<string, string>()
+  get length() { return this.values.size }
+  clear() { this.values.clear() }
+  getItem(key: string) { return this.values.get(key) ?? null }
+  key(index: number) { return [...this.values.keys()][index] ?? null }
+  removeItem(key: string) { this.values.delete(key) }
+  setItem(key: string, value: string) { this.values.set(key, String(value)) }
+}
+
 const draft = (name = 'Soup'): RecipeDraft => ({
   name, description: '', ingredients: [{ id: 'ingredient-1', name: 'Water', normalizedName: 'water', quantity: '1', unit: 'cup' }],
   instructions: ['Heat.'], prepMinutes: null, cookMinutes: 10, servings: 2, dishTypes: ['Soup'], mealTypes: ['dinner'], tags: [],
@@ -18,6 +28,7 @@ function deleteDatabase(): Promise<void> {
 
 beforeEach(async () => {
   vi.resetModules()
+  vi.stubGlobal('localStorage', new MemoryStorage())
   await deleteDatabase()
 })
 
@@ -40,7 +51,7 @@ describe('recipe and photo storage', () => {
     expect(await database.getRecipePhoto(saved.id, 'full')).toBeUndefined()
   })
 
-  it('deletes image records with their recipe and atomically replaces a library', async () => {
+  it('deletes image records with their recipe and atomically activates a staged library', async () => {
     const database = await import('./database')
     const saved = await database.saveRecipe(draft(), { kind: 'replace', photo: { full: new Blob(['a']), thumbnail: new Blob(['b']) } })
     await database.deleteRecipe(saved.id)
@@ -48,20 +59,35 @@ describe('recipe and photo storage', () => {
     expect(await database.getRecipePhoto(saved.id, 'thumbnail')).toBeUndefined()
 
     const replacement = { ...saved, id: 'replacement', name: 'Replacement' }
-    await database.replaceLibrary([replacement], [
+    const staging = await database.createStagingLibrary()
+    await database.stageRecipeBatch(staging, [replacement])
+    await database.stagePhotoBatch(staging, [
       { recipeId: replacement.id, variant: 'full', blob: new Blob(['new-full']) },
       { recipeId: replacement.id, variant: 'thumbnail', blob: new Blob(['new-thumb']) },
     ])
+    await database.verifyStagingLibrary(staging, 1, 2)
+    await database.activateStagingLibrary(staging, 1)
     expect((await database.getRecipes()).map((item) => item.id)).toEqual(['replacement'])
     expect(await (await database.getRecipePhoto('replacement', 'full'))?.text()).toBe('new-full')
   })
 
-  it('keeps the current library when replacement cannot be queued', async () => {
+  it('keeps the current library when a staging batch cannot be queued', async () => {
     const database = await import('./database')
     const saved = await database.saveRecipe(draft('Keep me'), { kind: 'keep' })
     const invalid = { ...saved, id: 'invalid', notes: Symbol('not cloneable') as unknown as string }
-    await expect(database.replaceLibrary([invalid], [])).rejects.toThrow()
+    const staging = await database.createStagingLibrary()
+    await expect(database.stageRecipeBatch(staging, [invalid])).rejects.toThrow()
     expect((await database.getRecipes()).map((item) => item.name)).toEqual(['Keep me'])
+    await database.discardStagingLibrary(staging)
+  })
+
+  it('prevents concurrent restores and releases the lock after discard', async () => {
+    const database = await import('./database')
+    const first = await database.createStagingLibrary()
+    await expect(database.createStagingLibrary()).rejects.toThrow('already running')
+    await database.discardStagingLibrary(first)
+    const second = await database.createStagingLibrary()
+    await database.discardStagingLibrary(second)
   })
 
   it('recreates the unreleased version-2 schema instead of migrating base64 records', async () => {

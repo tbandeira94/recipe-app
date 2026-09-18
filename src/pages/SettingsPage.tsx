@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { DownloadIcon, UploadIcon } from '../components/Icons'
 import { deliverBackup, importBackup, inspectBackup, prepareBackup, type BackupProgress } from '../lib/backup'
 import { APP_BUILD_ID } from '../buildInfo'
+import { cleanupInactiveDatabases } from '../lib/database'
 import { getStorageStatus, requestPersistentStorage, type StorageStatus } from '../lib/storage'
 
 interface Props { recipeCount: number; onImported: () => Promise<void> }
@@ -14,7 +15,11 @@ export function SettingsPage({ recipeCount, onImported }: Props) {
   const [preparedBackup, setPreparedBackup] = useState<File | null>(null)
   useEffect(() => { void getStorageStatus().then(setStorage) }, [recipeCount])
   const showProgress = ({ phase, completed, total }: BackupProgress) => {
-    const action = phase === 'export' ? 'Preparing photos' : phase === 'validate' ? 'Checking photos' : 'Saving recipes'
+    const action = phase === 'export' ? 'Preparing photos'
+      : phase === 'inspect' ? 'Checking archive'
+        : phase === 'recipes' ? 'Importing recipes'
+          : phase === 'photos' ? 'Importing photos'
+            : 'Finishing restore'
     setStatus(`${action}… ${completed}/${total}`)
   }
   const handleExport = async () => {
@@ -44,9 +49,13 @@ export function SettingsPage({ recipeCount, onImported }: Props) {
       if (!window.confirm(message)) return
       const count = await importBackup(file, showProgress)
       await onImported()
+      void cleanupInactiveDatabases()
       setStorage(await getStorageStatus())
       setStatus(`Restored ${count} ${count === 1 ? 'recipe' : 'recipes'}.`)
-    } catch (error) { setStatus(error instanceof Error ? error.message : 'Could not import the backup.') }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Could not import the backup.'
+      setStatus(`${message} Your current library was not changed.`)
+    }
     finally { setBusy(false); if (fileInput.current) fileInput.current.value = '' }
   }
   return <div className="page">
@@ -56,7 +65,7 @@ export function SettingsPage({ recipeCount, onImported }: Props) {
       <button className="settings-action" onClick={handleExport} disabled={busy}><span className="action-icon"><DownloadIcon /></span><span><strong>Export backup</strong><small>Save or share recipes and photos as one archive</small></span><span aria-hidden="true">›</span></button>
       {preparedBackup && <button className="settings-action" onClick={() => void savePreparedBackup()} disabled={busy}><span className="action-icon"><DownloadIcon /></span><span><strong>Save backup</strong><small>{preparedBackup.name}</small></span><span aria-hidden="true">›</span></button>}
       <button className="settings-action" onClick={() => fileInput.current?.click()} disabled={busy}><span className="action-icon"><UploadIcon /></span><span><strong>Restore from backup</strong><small>Replace recipes after validation</small></span><span aria-hidden="true">›</span></button>
-      <input ref={fileInput} className="visually-hidden" type="file" accept=".pantrybook,application/zip" onChange={(event) => void handleFile(event.target.files?.[0])} />
+      <input ref={fileInput} className="visually-hidden" type="file" onChange={(event) => void handleFile(event.target.files?.[0])} />
       {status && <p className="settings-status" role="status">{status}</p>}
     </section>
     <section className="info-card"><h2>Private by design</h2><p>Everything is stored in this browser using IndexedDB. Nothing is uploaded. Clearing Safari website data or deleting the app can remove it, so keep a backup elsewhere.</p>{storage.usage !== undefined && storage.quota !== undefined && <p className="storage-usage">Using {formatBytes(storage.usage)} of approximately {formatBytes(storage.quota)} available · {storage.persistent ? 'Protected storage' : 'Best-effort storage'}</p>}</section>
