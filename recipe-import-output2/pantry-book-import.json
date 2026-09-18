@@ -1,0 +1,2980 @@
+{
+  "format": "pantry-book-backup",
+  "version": 3,
+  "exportedAt": "2026-09-18T16:39:41.275Z",
+  "recipes": [
+    {
+      "id": "demo-recipe-01",
+      "name": "Herby Lemon Chicken",
+      "description": "A simple mediterranean recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-1-ingredient-1",
+          "name": "chicken thighs",
+          "normalizedName": "chicken thighs",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-1-ingredient-2",
+          "name": "lemon",
+          "normalizedName": "lemon",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-1-ingredient-3",
+          "name": "garlic",
+          "normalizedName": "garlic",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "chicken thighs",
+        "lemon",
+        "garlic"
+      ],
+      "instructions": [
+        "Prepare the chicken thighs.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 10,
+      "servings": 4,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "Mediterranean",
+        "weeknight"
+      ],
+      "favorite": true,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "modifiedAt": "2026-01-01T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-02",
+      "name": "Creamy Mushroom Pasta",
+      "description": "A simple italian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-2-ingredient-1",
+          "name": "pasta",
+          "normalizedName": "pasta",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-2-ingredient-2",
+          "name": "mushrooms",
+          "normalizedName": "mushrooms",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-2-ingredient-3",
+          "name": "cream",
+          "normalizedName": "cream",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "pasta",
+        "mushrooms",
+        "cream"
+      ],
+      "instructions": [
+        "Prepare the pasta.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "Italian",
+        "comfort food"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-02T00:00:00.000Z",
+      "modifiedAt": "2026-01-02T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-03",
+      "name": "Black Bean Tacos",
+      "description": "A simple mexican recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-3-ingredient-1",
+          "name": "black beans",
+          "normalizedName": "black beans",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-3-ingredient-2",
+          "name": "tortillas",
+          "normalizedName": "tortillas",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-3-ingredient-3",
+          "name": "avocado",
+          "normalizedName": "avocado",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "black beans",
+        "tortillas",
+        "avocado"
+      ],
+      "instructions": [
+        "Prepare the black beans.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 20,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Mexican",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-03T00:00:00.000Z",
+      "modifiedAt": "2026-01-03T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-04",
+      "name": "Vegetable Fried Rice",
+      "description": "A simple asian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-4-ingredient-1",
+          "name": "rice",
+          "normalizedName": "rice",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-4-ingredient-2",
+          "name": "eggs",
+          "normalizedName": "eggs",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-4-ingredient-3",
+          "name": "mixed vegetables",
+          "normalizedName": "mixed vegetables",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "rice",
+        "eggs",
+        "mixed vegetables"
+      ],
+      "instructions": [
+        "Prepare the rice.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 25,
+      "servings": 4,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Asian",
+        "quick"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-04T00:00:00.000Z",
+      "modifiedAt": "2026-01-04T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-05",
+      "name": "Chickpea Coconut Curry",
+      "description": "A simple indian-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-5-ingredient-1",
+          "name": "chickpeas",
+          "normalizedName": "chickpeas",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-5-ingredient-2",
+          "name": "coconut milk",
+          "normalizedName": "coconut milk",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-5-ingredient-3",
+          "name": "spinach",
+          "normalizedName": "spinach",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "chickpeas",
+        "coconut milk",
+        "spinach"
+      ],
+      "instructions": [
+        "Prepare the chickpeas.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 30,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "Indian-inspired",
+        "vegan"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-05T00:00:00.000Z",
+      "modifiedAt": "2026-01-05T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-06",
+      "name": "Sheet Pan Sausage and Peppers",
+      "description": "A simple one pan recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-6-ingredient-1",
+          "name": "sausage",
+          "normalizedName": "sausage",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-6-ingredient-2",
+          "name": "bell peppers",
+          "normalizedName": "bell peppers",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-6-ingredient-3",
+          "name": "onion",
+          "normalizedName": "onion",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "sausage",
+        "bell peppers",
+        "onion"
+      ],
+      "instructions": [
+        "Prepare the sausage.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 10,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "one pan",
+        "weeknight"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-06T00:00:00.000Z",
+      "modifiedAt": "2026-01-06T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-07",
+      "name": "Turkey Avocado Wrap",
+      "description": "A simple quick recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-7-ingredient-1",
+          "name": "turkey",
+          "normalizedName": "turkey",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-7-ingredient-2",
+          "name": "avocado",
+          "normalizedName": "avocado",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-7-ingredient-3",
+          "name": "tortilla",
+          "normalizedName": "tortilla",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "turkey",
+        "avocado",
+        "tortilla"
+      ],
+      "instructions": [
+        "Prepare the turkey.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 4,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "lunch"
+      ],
+      "tags": [
+        "quick",
+        "no-cook"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-07T00:00:00.000Z",
+      "modifiedAt": "2026-01-07T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-08",
+      "name": "Baked Salmon with Dill",
+      "description": "A simple seafood recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-8-ingredient-1",
+          "name": "salmon",
+          "normalizedName": "salmon",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-8-ingredient-2",
+          "name": "dill",
+          "normalizedName": "dill",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-8-ingredient-3",
+          "name": "lemon",
+          "normalizedName": "lemon",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "salmon",
+        "dill",
+        "lemon"
+      ],
+      "instructions": [
+        "Prepare the salmon.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 20,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "seafood",
+        "healthy"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-08T00:00:00.000Z",
+      "modifiedAt": "2026-01-08T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-09",
+      "name": "Margherita Flatbread",
+      "description": "A simple italian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-9-ingredient-1",
+          "name": "flatbread",
+          "normalizedName": "flatbread",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-9-ingredient-2",
+          "name": "mozzarella",
+          "normalizedName": "mozzarella",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-9-ingredient-3",
+          "name": "tomatoes",
+          "normalizedName": "tomatoes",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "flatbread",
+        "mozzarella",
+        "tomatoes"
+      ],
+      "instructions": [
+        "Prepare the flatbread.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 25,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Italian",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-09T00:00:00.000Z",
+      "modifiedAt": "2026-01-09T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-10",
+      "name": "Pulled Jackfruit Sandwiches",
+      "description": "A simple vegan recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-10-ingredient-1",
+          "name": "jackfruit",
+          "normalizedName": "jackfruit",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-10-ingredient-2",
+          "name": "barbecue sauce",
+          "normalizedName": "barbecue sauce",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-10-ingredient-3",
+          "name": "buns",
+          "normalizedName": "buns",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "jackfruit",
+        "barbecue sauce",
+        "buns"
+      ],
+      "instructions": [
+        "Prepare the jackfruit.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 30,
+      "servings": 4,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "vegan",
+        "sandwich"
+      ],
+      "favorite": true,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-10T00:00:00.000Z",
+      "modifiedAt": "2026-01-10T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-11",
+      "name": "Overnight Berry Oats",
+      "description": "A simple make-ahead recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-11-ingredient-1",
+          "name": "oats",
+          "normalizedName": "oats",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-11-ingredient-2",
+          "name": "milk",
+          "normalizedName": "milk",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-11-ingredient-3",
+          "name": "berries",
+          "normalizedName": "berries",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "oats",
+        "milk",
+        "berries"
+      ],
+      "instructions": [
+        "Prepare the oats.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 10,
+      "servings": 2,
+      "dishTypes": [
+        "Breakfast"
+      ],
+      "mealTypes": [
+        "breakfast"
+      ],
+      "tags": [
+        "make-ahead",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-11T00:00:00.000Z",
+      "modifiedAt": "2026-01-11T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-12",
+      "name": "Spinach Feta Egg Bites",
+      "description": "A simple high-protein recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-12-ingredient-1",
+          "name": "eggs",
+          "normalizedName": "eggs",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-12-ingredient-2",
+          "name": "spinach",
+          "normalizedName": "spinach",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-12-ingredient-3",
+          "name": "feta",
+          "normalizedName": "feta",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "eggs",
+        "spinach",
+        "feta"
+      ],
+      "instructions": [
+        "Prepare the eggs.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Breakfast"
+      ],
+      "mealTypes": [
+        "breakfast"
+      ],
+      "tags": [
+        "high-protein",
+        "meal prep"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-12T00:00:00.000Z",
+      "modifiedAt": "2026-01-12T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-13",
+      "name": "Banana Pancakes",
+      "description": "A simple sweet recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-13-ingredient-1",
+          "name": "banana",
+          "normalizedName": "banana",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-13-ingredient-2",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-13-ingredient-3",
+          "name": "eggs",
+          "normalizedName": "eggs",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "banana",
+        "flour",
+        "eggs"
+      ],
+      "instructions": [
+        "Prepare the banana.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 20,
+      "servings": 4,
+      "dishTypes": [
+        "Breakfast"
+      ],
+      "mealTypes": [
+        "breakfast",
+        "brunch"
+      ],
+      "tags": [
+        "sweet",
+        "weekend"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-13T00:00:00.000Z",
+      "modifiedAt": "2026-01-13T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-14",
+      "name": "Savory Breakfast Burrito",
+      "description": "A simple mexican-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-14-ingredient-1",
+          "name": "eggs",
+          "normalizedName": "eggs",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-14-ingredient-2",
+          "name": "potatoes",
+          "normalizedName": "potatoes",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-14-ingredient-3",
+          "name": "tortilla",
+          "normalizedName": "tortilla",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "eggs",
+        "potatoes",
+        "tortilla"
+      ],
+      "instructions": [
+        "Prepare the eggs.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 25,
+      "servings": 2,
+      "dishTypes": [
+        "Breakfast"
+      ],
+      "mealTypes": [
+        "breakfast",
+        "brunch"
+      ],
+      "tags": [
+        "Mexican-inspired",
+        "freezer-friendly"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-14T00:00:00.000Z",
+      "modifiedAt": "2026-01-14T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-15",
+      "name": "Yogurt Parfait",
+      "description": "A simple quick recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-15-ingredient-1",
+          "name": "yogurt",
+          "normalizedName": "yogurt",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-15-ingredient-2",
+          "name": "granola",
+          "normalizedName": "granola",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-15-ingredient-3",
+          "name": "berries",
+          "normalizedName": "berries",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "yogurt",
+        "granola",
+        "berries"
+      ],
+      "instructions": [
+        "Prepare the yogurt.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 2,
+      "dishTypes": [
+        "Breakfast"
+      ],
+      "mealTypes": [
+        "breakfast"
+      ],
+      "tags": [
+        "quick",
+        "no-cook"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-15T00:00:00.000Z",
+      "modifiedAt": "2026-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-16",
+      "name": "Roasted Tomato Soup",
+      "description": "A simple vegetarian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-16-ingredient-1",
+          "name": "tomatoes",
+          "normalizedName": "tomatoes",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-16-ingredient-2",
+          "name": "onion",
+          "normalizedName": "onion",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-16-ingredient-3",
+          "name": "vegetable broth",
+          "normalizedName": "vegetable broth",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "tomatoes",
+        "onion",
+        "vegetable broth"
+      ],
+      "instructions": [
+        "Prepare the tomatoes.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 10,
+      "servings": 4,
+      "dishTypes": [
+        "Soup"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "vegetarian",
+        "comfort food"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-16T00:00:00.000Z",
+      "modifiedAt": "2026-01-16T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-17",
+      "name": "Ginger Carrot Soup",
+      "description": "A simple vegan recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-17-ingredient-1",
+          "name": "carrots",
+          "normalizedName": "carrots",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-17-ingredient-2",
+          "name": "ginger",
+          "normalizedName": "ginger",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-17-ingredient-3",
+          "name": "coconut milk",
+          "normalizedName": "coconut milk",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "carrots",
+        "ginger",
+        "coconut milk"
+      ],
+      "instructions": [
+        "Prepare the carrots.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Soup"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "vegan",
+        "freezer-friendly"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-17T00:00:00.000Z",
+      "modifiedAt": "2026-01-17T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-18",
+      "name": "Chicken Tortilla Soup",
+      "description": "A simple mexican-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-18-ingredient-1",
+          "name": "chicken",
+          "normalizedName": "chicken",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-18-ingredient-2",
+          "name": "black beans",
+          "normalizedName": "black beans",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-18-ingredient-3",
+          "name": "corn",
+          "normalizedName": "corn",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "chicken",
+        "black beans",
+        "corn"
+      ],
+      "instructions": [
+        "Prepare the chicken.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 20,
+      "servings": 2,
+      "dishTypes": [
+        "Soup"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Mexican-inspired",
+        "one pot"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-18T00:00:00.000Z",
+      "modifiedAt": "2026-01-18T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-19",
+      "name": "Miso Noodle Soup",
+      "description": "A simple japanese-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-19-ingredient-1",
+          "name": "miso",
+          "normalizedName": "miso",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-19-ingredient-2",
+          "name": "noodles",
+          "normalizedName": "noodles",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-19-ingredient-3",
+          "name": "tofu",
+          "normalizedName": "tofu",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "miso",
+        "noodles",
+        "tofu"
+      ],
+      "instructions": [
+        "Prepare the miso.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 25,
+      "servings": 4,
+      "dishTypes": [
+        "Soup"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Japanese-inspired",
+        "vegetarian"
+      ],
+      "favorite": true,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-19T00:00:00.000Z",
+      "modifiedAt": "2026-01-19T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-20",
+      "name": "Greek Chickpea Salad",
+      "description": "A simple mediterranean recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-20-ingredient-1",
+          "name": "chickpeas",
+          "normalizedName": "chickpeas",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-20-ingredient-2",
+          "name": "cucumber",
+          "normalizedName": "cucumber",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-20-ingredient-3",
+          "name": "feta",
+          "normalizedName": "feta",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "chickpeas",
+        "cucumber",
+        "feta"
+      ],
+      "instructions": [
+        "Prepare the chickpeas.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 0,
+      "servings": 2,
+      "dishTypes": [
+        "Salad"
+      ],
+      "mealTypes": [
+        "lunch"
+      ],
+      "tags": [
+        "Mediterranean",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-20T00:00:00.000Z",
+      "modifiedAt": "2026-01-20T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-21",
+      "name": "Apple Walnut Salad",
+      "description": "A simple fall recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-21-ingredient-1",
+          "name": "apples",
+          "normalizedName": "apples",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-21-ingredient-2",
+          "name": "walnuts",
+          "normalizedName": "walnuts",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-21-ingredient-3",
+          "name": "greens",
+          "normalizedName": "greens",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "apples",
+        "walnuts",
+        "greens"
+      ],
+      "instructions": [
+        "Prepare the apples.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 0,
+      "servings": 2,
+      "dishTypes": [
+        "Salad"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "fall",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-21T00:00:00.000Z",
+      "modifiedAt": "2026-01-21T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-22",
+      "name": "Sesame Cucumber Salad",
+      "description": "A simple asian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-22-ingredient-1",
+          "name": "cucumber",
+          "normalizedName": "cucumber",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-22-ingredient-2",
+          "name": "sesame oil",
+          "normalizedName": "sesame oil",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-22-ingredient-3",
+          "name": "rice vinegar",
+          "normalizedName": "rice vinegar",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "cucumber",
+        "sesame oil",
+        "rice vinegar"
+      ],
+      "instructions": [
+        "Prepare the cucumber.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 0,
+      "servings": 4,
+      "dishTypes": [
+        "Salad"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Asian",
+        "quick"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-22T00:00:00.000Z",
+      "modifiedAt": "2026-01-22T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-23",
+      "name": "Classic Vinaigrette",
+      "description": "A simple pantry staple recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-23-ingredient-1",
+          "name": "olive oil",
+          "normalizedName": "olive oil",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-23-ingredient-2",
+          "name": "vinegar",
+          "normalizedName": "vinegar",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-23-ingredient-3",
+          "name": "mustard",
+          "normalizedName": "mustard",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "olive oil",
+        "vinegar",
+        "mustard"
+      ],
+      "instructions": [
+        "Prepare the olive oil.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 20,
+      "servings": 2,
+      "dishTypes": [
+        "Sauce"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "pantry staple",
+        "quick"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-23T00:00:00.000Z",
+      "modifiedAt": "2026-01-23T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-24",
+      "name": "Roasted Garlic Tomato Sauce",
+      "description": "A simple italian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-24-ingredient-1",
+          "name": "tomatoes",
+          "normalizedName": "tomatoes",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-24-ingredient-2",
+          "name": "garlic",
+          "normalizedName": "garlic",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-24-ingredient-3",
+          "name": "basil",
+          "normalizedName": "basil",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "tomatoes",
+        "garlic",
+        "basil"
+      ],
+      "instructions": [
+        "Prepare the tomatoes.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 25,
+      "servings": 2,
+      "dishTypes": [
+        "Sauce"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "Italian",
+        "freezer-friendly"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-24T00:00:00.000Z",
+      "modifiedAt": "2026-01-24T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-25",
+      "name": "Peanut Lime Sauce",
+      "description": "A simple asian-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-25-ingredient-1",
+          "name": "peanut butter",
+          "normalizedName": "peanut butter",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-25-ingredient-2",
+          "name": "lime",
+          "normalizedName": "lime",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-25-ingredient-3",
+          "name": "soy sauce",
+          "normalizedName": "soy sauce",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "peanut butter",
+        "lime",
+        "soy sauce"
+      ],
+      "instructions": [
+        "Prepare the peanut butter.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 30,
+      "servings": 4,
+      "dishTypes": [
+        "Sauce"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Asian-inspired",
+        "vegan"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-25T00:00:00.000Z",
+      "modifiedAt": "2026-01-25T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-26",
+      "name": "Creamy Dill Dip",
+      "description": "A simple quick recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-26-ingredient-1",
+          "name": "yogurt",
+          "normalizedName": "yogurt",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-26-ingredient-2",
+          "name": "dill",
+          "normalizedName": "dill",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-26-ingredient-3",
+          "name": "lemon",
+          "normalizedName": "lemon",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "yogurt",
+        "dill",
+        "lemon"
+      ],
+      "instructions": [
+        "Prepare the yogurt.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 10,
+      "servings": 2,
+      "dishTypes": [
+        "Sauce"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "quick",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-26T00:00:00.000Z",
+      "modifiedAt": "2026-01-26T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-27",
+      "name": "Crispy Roasted Potatoes",
+      "description": "A simple vegetarian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-27-ingredient-1",
+          "name": "potatoes",
+          "normalizedName": "potatoes",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-27-ingredient-2",
+          "name": "olive oil",
+          "normalizedName": "olive oil",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-27-ingredient-3",
+          "name": "paprika",
+          "normalizedName": "paprika",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "potatoes",
+        "olive oil",
+        "paprika"
+      ],
+      "instructions": [
+        "Prepare the potatoes.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Side"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "vegetarian",
+        "one pan"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-27T00:00:00.000Z",
+      "modifiedAt": "2026-01-27T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-28",
+      "name": "Garlic Green Beans",
+      "description": "A simple quick recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-28-ingredient-1",
+          "name": "green beans",
+          "normalizedName": "green beans",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-28-ingredient-2",
+          "name": "garlic",
+          "normalizedName": "garlic",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-28-ingredient-3",
+          "name": "butter",
+          "normalizedName": "butter",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "green beans",
+        "garlic",
+        "butter"
+      ],
+      "instructions": [
+        "Prepare the green beans.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 20,
+      "servings": 4,
+      "dishTypes": [
+        "Side"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "quick",
+        "vegetarian"
+      ],
+      "favorite": true,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-28T00:00:00.000Z",
+      "modifiedAt": "2026-01-28T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-29",
+      "name": "Lemony Couscous",
+      "description": "A simple mediterranean recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-29-ingredient-1",
+          "name": "couscous",
+          "normalizedName": "couscous",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-29-ingredient-2",
+          "name": "lemon",
+          "normalizedName": "lemon",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-29-ingredient-3",
+          "name": "parsley",
+          "normalizedName": "parsley",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "couscous",
+        "lemon",
+        "parsley"
+      ],
+      "instructions": [
+        "Prepare the couscous.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 25,
+      "servings": 2,
+      "dishTypes": [
+        "Side"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Mediterranean",
+        "quick"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-29T00:00:00.000Z",
+      "modifiedAt": "2026-01-29T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-30",
+      "name": "Cornbread Muffins",
+      "description": "A simple baking recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-30-ingredient-1",
+          "name": "cornmeal",
+          "normalizedName": "cornmeal",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-30-ingredient-2",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-30-ingredient-3",
+          "name": "milk",
+          "normalizedName": "milk",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "cornmeal",
+        "flour",
+        "milk"
+      ],
+      "instructions": [
+        "Prepare the cornmeal.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 30,
+      "servings": 2,
+      "dishTypes": [
+        "Bread"
+      ],
+      "mealTypes": [
+        "dinner",
+        "snack"
+      ],
+      "tags": [
+        "baking",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-30T00:00:00.000Z",
+      "modifiedAt": "2026-01-30T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-31",
+      "name": "Rosemary Focaccia",
+      "description": "A simple italian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-31-ingredient-1",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-31-ingredient-2",
+          "name": "rosemary",
+          "normalizedName": "rosemary",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-31-ingredient-3",
+          "name": "olive oil",
+          "normalizedName": "olive oil",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "flour",
+        "rosemary",
+        "olive oil"
+      ],
+      "instructions": [
+        "Prepare the flour.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 10,
+      "servings": 4,
+      "dishTypes": [
+        "Bread"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Italian",
+        "baking"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-01-31T00:00:00.000Z",
+      "modifiedAt": "2026-01-31T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-32",
+      "name": "Skillet Garlic Naan",
+      "description": "A simple indian-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-32-ingredient-1",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-32-ingredient-2",
+          "name": "yogurt",
+          "normalizedName": "yogurt",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-32-ingredient-3",
+          "name": "garlic",
+          "normalizedName": "garlic",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "flour",
+        "yogurt",
+        "garlic"
+      ],
+      "instructions": [
+        "Prepare the flour.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Bread"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "Indian-inspired",
+        "quick"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-01T00:00:00.000Z",
+      "modifiedAt": "2026-02-01T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-33",
+      "name": "Chocolate Chip Cookies",
+      "description": "A simple baking recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-33-ingredient-1",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-33-ingredient-2",
+          "name": "chocolate chips",
+          "normalizedName": "chocolate chips",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-33-ingredient-3",
+          "name": "butter",
+          "normalizedName": "butter",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "flour",
+        "chocolate chips",
+        "butter"
+      ],
+      "instructions": [
+        "Prepare the flour.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 20,
+      "servings": 2,
+      "dishTypes": [
+        "Dessert"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "baking",
+        "sweet"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-02T00:00:00.000Z",
+      "modifiedAt": "2026-02-02T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-34",
+      "name": "Berry Crumble",
+      "description": "A simple summer recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-34-ingredient-1",
+          "name": "berries",
+          "normalizedName": "berries",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-34-ingredient-2",
+          "name": "oats",
+          "normalizedName": "oats",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-34-ingredient-3",
+          "name": "butter",
+          "normalizedName": "butter",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "berries",
+        "oats",
+        "butter"
+      ],
+      "instructions": [
+        "Prepare the berries.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 25,
+      "servings": 4,
+      "dishTypes": [
+        "Dessert"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "summer",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-03T00:00:00.000Z",
+      "modifiedAt": "2026-02-03T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-35",
+      "name": "No-Bake Peanut Butter Bars",
+      "description": "A simple no-bake recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-35-ingredient-1",
+          "name": "peanut butter",
+          "normalizedName": "peanut butter",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-35-ingredient-2",
+          "name": "oats",
+          "normalizedName": "oats",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-35-ingredient-3",
+          "name": "chocolate chips",
+          "normalizedName": "chocolate chips",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "peanut butter",
+        "oats",
+        "chocolate chips"
+      ],
+      "instructions": [
+        "Prepare the peanut butter.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 30,
+      "servings": 2,
+      "dishTypes": [
+        "Dessert"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "no-bake",
+        "freezer-friendly"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-04T00:00:00.000Z",
+      "modifiedAt": "2026-02-04T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-36",
+      "name": "Lemon Olive Oil Cake",
+      "description": "A simple baking recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-36-ingredient-1",
+          "name": "lemon",
+          "normalizedName": "lemon",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-36-ingredient-2",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-36-ingredient-3",
+          "name": "olive oil",
+          "normalizedName": "olive oil",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "lemon",
+        "flour",
+        "olive oil"
+      ],
+      "instructions": [
+        "Prepare the lemon.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 10,
+      "servings": 2,
+      "dishTypes": [
+        "Dessert"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "baking",
+        "Mediterranean"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-05T00:00:00.000Z",
+      "modifiedAt": "2026-02-05T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-37",
+      "name": "Iced Matcha Latte",
+      "description": "A simple quick recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-37-ingredient-1",
+          "name": "matcha",
+          "normalizedName": "matcha",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-37-ingredient-2",
+          "name": "milk",
+          "normalizedName": "milk",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-37-ingredient-3",
+          "name": "honey",
+          "normalizedName": "honey",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "matcha",
+        "milk",
+        "honey"
+      ],
+      "instructions": [
+        "Prepare the matcha.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 0,
+      "servings": 4,
+      "dishTypes": [
+        "Drink"
+      ],
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "tags": [
+        "quick",
+        "cafe-style"
+      ],
+      "favorite": true,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-06T00:00:00.000Z",
+      "modifiedAt": "2026-02-06T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-38",
+      "name": "Cucumber Mint Agua Fresca",
+      "description": "A simple summer recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-38-ingredient-1",
+          "name": "cucumber",
+          "normalizedName": "cucumber",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-38-ingredient-2",
+          "name": "mint",
+          "normalizedName": "mint",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-38-ingredient-3",
+          "name": "lime",
+          "normalizedName": "lime",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "cucumber",
+        "mint",
+        "lime"
+      ],
+      "instructions": [
+        "Prepare the cucumber.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 0,
+      "servings": 2,
+      "dishTypes": [
+        "Drink"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "summer",
+        "vegan"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-07T00:00:00.000Z",
+      "modifiedAt": "2026-02-07T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-39",
+      "name": "Spiced Apple Cider",
+      "description": "A simple fall recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-39-ingredient-1",
+          "name": "apple cider",
+          "normalizedName": "apple cider",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-39-ingredient-2",
+          "name": "cinnamon",
+          "normalizedName": "cinnamon",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-39-ingredient-3",
+          "name": "orange",
+          "normalizedName": "orange",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "apple cider",
+        "cinnamon",
+        "orange"
+      ],
+      "instructions": [
+        "Prepare the apple cider.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 0,
+      "servings": 2,
+      "dishTypes": [
+        "Drink"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "fall",
+        "holiday"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-08T00:00:00.000Z",
+      "modifiedAt": "2026-02-08T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-40",
+      "name": "Hummus Snack Box",
+      "description": "A simple no-cook recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-40-ingredient-1",
+          "name": "hummus",
+          "normalizedName": "hummus",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-40-ingredient-2",
+          "name": "carrots",
+          "normalizedName": "carrots",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-40-ingredient-3",
+          "name": "crackers",
+          "normalizedName": "crackers",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "hummus",
+        "carrots",
+        "crackers"
+      ],
+      "instructions": [
+        "Prepare the hummus.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 30,
+      "servings": 4,
+      "dishTypes": [
+        "Snack"
+      ],
+      "mealTypes": [
+        "snack",
+        "lunch"
+      ],
+      "tags": [
+        "no-cook",
+        "meal prep"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-09T00:00:00.000Z",
+      "modifiedAt": "2026-02-09T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-41",
+      "name": "Parmesan Popcorn",
+      "description": "A simple quick recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-41-ingredient-1",
+          "name": "popcorn",
+          "normalizedName": "popcorn",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-41-ingredient-2",
+          "name": "parmesan",
+          "normalizedName": "parmesan",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-41-ingredient-3",
+          "name": "butter",
+          "normalizedName": "butter",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "popcorn",
+        "parmesan",
+        "butter"
+      ],
+      "instructions": [
+        "Prepare the popcorn.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 10,
+      "servings": 2,
+      "dishTypes": [
+        "Snack"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "quick",
+        "movie night"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-10T00:00:00.000Z",
+      "modifiedAt": "2026-02-10T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-42",
+      "name": "Energy Date Balls",
+      "description": "A simple no-bake recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-42-ingredient-1",
+          "name": "dates",
+          "normalizedName": "dates",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-42-ingredient-2",
+          "name": "oats",
+          "normalizedName": "oats",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-42-ingredient-3",
+          "name": "peanut butter",
+          "normalizedName": "peanut butter",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "dates",
+        "oats",
+        "peanut butter"
+      ],
+      "instructions": [
+        "Prepare the dates.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Snack"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "no-bake",
+        "vegan"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-11T00:00:00.000Z",
+      "modifiedAt": "2026-02-11T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-43",
+      "name": "Mini Caprese Skewers",
+      "description": "A simple italian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-43-ingredient-1",
+          "name": "mozzarella",
+          "normalizedName": "mozzarella",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-43-ingredient-2",
+          "name": "tomatoes",
+          "normalizedName": "tomatoes",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-43-ingredient-3",
+          "name": "basil",
+          "normalizedName": "basil",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "mozzarella",
+        "tomatoes",
+        "basil"
+      ],
+      "instructions": [
+        "Prepare the mozzarella.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 20,
+      "servings": 4,
+      "dishTypes": [
+        "Snack"
+      ],
+      "mealTypes": [
+        "snack",
+        "lunch"
+      ],
+      "tags": [
+        "Italian",
+        "no-cook"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-12T00:00:00.000Z",
+      "modifiedAt": "2026-02-12T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-44",
+      "name": "Vegetable Stir-Fry",
+      "description": "A simple asian-inspired recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-44-ingredient-1",
+          "name": "broccoli",
+          "normalizedName": "broccoli",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-44-ingredient-2",
+          "name": "bell peppers",
+          "normalizedName": "bell peppers",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-44-ingredient-3",
+          "name": "tofu",
+          "normalizedName": "tofu",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "broccoli",
+        "bell peppers",
+        "tofu"
+      ],
+      "instructions": [
+        "Prepare the broccoli.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 25,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "lunch",
+        "dinner"
+      ],
+      "tags": [
+        "Asian-inspired",
+        "vegan"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-13T00:00:00.000Z",
+      "modifiedAt": "2026-02-13T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-45",
+      "name": "Lentil Shepherd’s Pie",
+      "description": "A simple vegetarian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-45-ingredient-1",
+          "name": "lentils",
+          "normalizedName": "lentils",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-45-ingredient-2",
+          "name": "potatoes",
+          "normalizedName": "potatoes",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-45-ingredient-3",
+          "name": "carrots",
+          "normalizedName": "carrots",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "lentils",
+        "potatoes",
+        "carrots"
+      ],
+      "instructions": [
+        "Prepare the lentils.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 30,
+      "servings": 2,
+      "dishTypes": [
+        "Main"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "vegetarian",
+        "comfort food"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-14T00:00:00.000Z",
+      "modifiedAt": "2026-02-14T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-46",
+      "name": "Pesto White Bean Salad",
+      "description": "A simple italian recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-46-ingredient-1",
+          "name": "white beans",
+          "normalizedName": "white beans",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-46-ingredient-2",
+          "name": "pesto",
+          "normalizedName": "pesto",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-46-ingredient-3",
+          "name": "arugula",
+          "normalizedName": "arugula",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "white beans",
+        "pesto",
+        "arugula"
+      ],
+      "instructions": [
+        "Prepare the white beans.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 0,
+      "servings": 4,
+      "dishTypes": [
+        "Salad"
+      ],
+      "mealTypes": [
+        "lunch"
+      ],
+      "tags": [
+        "Italian",
+        "quick"
+      ],
+      "favorite": true,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-15T00:00:00.000Z",
+      "modifiedAt": "2026-02-15T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-47",
+      "name": "Buttermilk Biscuits",
+      "description": "A simple baking recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-47-ingredient-1",
+          "name": "flour",
+          "normalizedName": "flour",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-47-ingredient-2",
+          "name": "buttermilk",
+          "normalizedName": "buttermilk",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-47-ingredient-3",
+          "name": "butter",
+          "normalizedName": "butter",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "flour",
+        "buttermilk",
+        "butter"
+      ],
+      "instructions": [
+        "Prepare the flour.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 15,
+      "cookMinutes": 15,
+      "servings": 2,
+      "dishTypes": [
+        "Bread"
+      ],
+      "mealTypes": [
+        "breakfast",
+        "brunch"
+      ],
+      "tags": [
+        "baking",
+        "weekend"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-16T00:00:00.000Z",
+      "modifiedAt": "2026-02-16T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-48",
+      "name": "Mango Chia Pudding",
+      "description": "A simple vegan recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-48-ingredient-1",
+          "name": "chia seeds",
+          "normalizedName": "chia seeds",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-48-ingredient-2",
+          "name": "mango",
+          "normalizedName": "mango",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-48-ingredient-3",
+          "name": "coconut milk",
+          "normalizedName": "coconut milk",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "chia seeds",
+        "mango",
+        "coconut milk"
+      ],
+      "instructions": [
+        "Prepare the chia seeds.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 20,
+      "cookMinutes": 20,
+      "servings": 2,
+      "dishTypes": [
+        "Breakfast"
+      ],
+      "mealTypes": [
+        "breakfast",
+        "snack"
+      ],
+      "tags": [
+        "vegan",
+        "make-ahead"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-17T00:00:00.000Z",
+      "modifiedAt": "2026-02-17T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-49",
+      "name": "Spicy Lentil Dip",
+      "description": "A simple vegan recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-49-ingredient-1",
+          "name": "lentils",
+          "normalizedName": "lentils",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-49-ingredient-2",
+          "name": "tomatoes",
+          "normalizedName": "tomatoes",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-49-ingredient-3",
+          "name": "cumin",
+          "normalizedName": "cumin",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "lentils",
+        "tomatoes",
+        "cumin"
+      ],
+      "instructions": [
+        "Prepare the lentils.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 5,
+      "cookMinutes": 25,
+      "servings": 4,
+      "dishTypes": [
+        "Sauce"
+      ],
+      "mealTypes": [
+        "snack"
+      ],
+      "tags": [
+        "vegan",
+        "freezer-friendly"
+      ],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-18T00:00:00.000Z",
+      "modifiedAt": "2026-02-18T00:00:00.000Z"
+    },
+    {
+      "id": "demo-recipe-50",
+      "name": "Maple Roasted Carrots",
+      "description": "A simple fall recipe for testing Pantry Book’s browsing and search tools.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "demo-50-ingredient-1",
+          "name": "carrots",
+          "normalizedName": "carrots",
+          "quantity": "1",
+          "unit": "cup"
+        },
+        {
+          "id": "demo-50-ingredient-2",
+          "name": "maple syrup",
+          "normalizedName": "maple syrup",
+          "quantity": "2",
+          "unit": "tbsp"
+        },
+        {
+          "id": "demo-50-ingredient-3",
+          "name": "thyme",
+          "normalizedName": "thyme",
+          "quantity": "1",
+          "unit": "tsp"
+        }
+      ],
+      "ingredientNames": [
+        "carrots",
+        "maple syrup",
+        "thyme"
+      ],
+      "instructions": [
+        "Prepare the carrots.",
+        "Combine with the remaining ingredients and cook or assemble until ready to serve."
+      ],
+      "prepMinutes": 10,
+      "cookMinutes": 30,
+      "servings": 2,
+      "dishTypes": [
+        "Side"
+      ],
+      "mealTypes": [
+        "dinner"
+      ],
+      "tags": [
+        "fall",
+        "vegetarian"
+      ],
+      "favorite": false,
+      "notes": "Demo note: adjust seasoning to taste.",
+      "sourceName": "Pantry Book demo collection",
+      "sourceUrl": "",
+      "createdAt": "2026-02-19T00:00:00.000Z",
+      "modifiedAt": "2026-02-19T00:00:00.000Z"
+    },
+    {
+      "name": "The Best Buffalo Chicken Dip (Easy &amp; Cheesy)",
+      "description": "This Easy Buffalo Chicken Dip is the best — creamy, spicy, perfectly melty, and loaded with tender rotisserie chicken. It’s simple to make, irresistibly delicious, and guaranteed to disappear at every game-day gathering.",
+      "photoDataUrl": null,
+      "ingredients": [
+        {
+          "id": "8ee1d83f-81a5-4838-a267-8c7d850e8793",
+          "quantity": "2",
+          "unit": "",
+          "name": "or 3 cups shredded chicken (we usually use rotisserie)",
+          "normalizedName": "or 3 cups shredded chicken (we usually use rotisserie)"
+        },
+        {
+          "id": "7dd15d56-7284-4911-9a02-970d5013d116",
+          "quantity": "8",
+          "unit": "ounces",
+          "name": "cream cheese (regular or plant-based)",
+          "normalizedName": "cream cheese (regular or plant-based)"
+        },
+        {
+          "id": "4e0a6569-646f-4323-8b08-605db8f46615",
+          "quantity": "1",
+          "unit": "cup",
+          "name": "ranch dressing (regular or plant-based)",
+          "normalizedName": "ranch dressing (regular or plant-based)"
+        },
+        {
+          "id": "87e0cb15-0af2-440b-8143-b42fbb1c4908",
+          "quantity": "1",
+          "unit": "cup",
+          "name": "buffalo sauce (we usually use the primal kitchen brand)",
+          "normalizedName": "buffalo sauce (we usually use the primal kitchen brand)"
+        },
+        {
+          "id": "ab0d23c3-b5ed-45bf-932a-81e119d608d2",
+          "quantity": "",
+          "unit": "",
+          "name": "extra hot sauce to taste (optional)",
+          "normalizedName": "extra hot sauce to taste (optional)"
+        },
+        {
+          "id": "2c50a812-e7d4-429c-9276-dd84d157951b",
+          "quantity": "1",
+          "unit": "cup",
+          "name": "shredded mozzarella cheese (regular or plant-based)",
+          "normalizedName": "shredded mozzarella cheese (regular or plant-based)"
+        },
+        {
+          "id": "88d59421-41c1-4b18-a000-3fd9b51264f9",
+          "quantity": "2",
+          "unit": "cups",
+          "name": "shredded cheddar cheese (regular or plant-based)",
+          "normalizedName": "shredded cheddar cheese (regular or plant-based)"
+        },
+        {
+          "id": "3d327322-cff9-4ec1-b825-19848aba32c8",
+          "quantity": "2/3",
+          "unit": "cup",
+          "name": "green onions",
+          "normalizedName": "green onions"
+        },
+        {
+          "id": "2fbf13c6-a23a-4699-bf37-0f5bedb57de6",
+          "quantity": "",
+          "unit": "",
+          "name": "salt and pepper to taste",
+          "normalizedName": "salt and pepper to taste"
+        }
+      ],
+      "instructions": [
+        "How To Make Easy Cheesy Buffalo Chicken Dip — Preheat the oven to 350.",
+        "How To Make Easy Cheesy Buffalo Chicken Dip — In a medium saucepan, add your cream cheese, ranch dressing, and buffalo sauce and bring the contents to medium-low heat. Stir well and once fully combined, add your shredded chicken, 1/2 cup mozzarella, and 1 cup of cheddar cheese. Option to add more hot sauce, salt and pepper to taste.",
+        "How To Make Easy Cheesy Buffalo Chicken Dip — Stir well and once the mixture is combined, add it to a small baking dish. Fold in green onions and top with the remaining cheese.",
+        "How To Make Easy Cheesy Buffalo Chicken Dip — Bake in the oven for 25 minutes or until the cheese on top is melted. Enjoy warm and top with more fresh green onions. We serve this with tortilla chips!"
+      ],
+      "prepMinutes": null,
+      "cookMinutes": null,
+      "servings": null,
+      "dishTypes": [],
+      "mealTypes": [],
+      "tags": [],
+      "favorite": false,
+      "notes": "",
+      "sourceName": "peanutbutterandjilly.com",
+      "sourceUrl": "https://peanutbutterandjilly.com/easy-cheesy-buffalo-chicken-dip/",
+      "id": "63cddb5e-9059-41e6-b6de-4ff669cdae20",
+      "ingredientNames": [
+        "or 3 cups shredded chicken (we usually use rotisserie)",
+        "cream cheese (regular or plant-based)",
+        "ranch dressing (regular or plant-based)",
+        "buffalo sauce (we usually use the primal kitchen brand)",
+        "extra hot sauce to taste (optional)",
+        "shredded mozzarella cheese (regular or plant-based)",
+        "shredded cheddar cheese (regular or plant-based)",
+        "green onions",
+        "salt and pepper to taste"
+      ],
+      "createdAt": "2026-09-18T16:39:41.274Z",
+      "modifiedAt": "2026-09-18T16:39:41.274Z"
+    }
+  ]
+}

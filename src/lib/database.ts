@@ -1,5 +1,5 @@
 import type { Recipe, RecipeDraft } from '../types'
-import { normalizeIngredientName, uniqueLabels, uniqueStrings } from './normalize'
+import { materializeRecipe } from './recipeModel'
 
 const DATABASE_NAME = 'pantry-book'
 const DATABASE_VERSION = 2
@@ -68,34 +68,8 @@ export async function getRecipe(id: string): Promise<Recipe | undefined> {
 
 function prepareRecipe(draft: RecipeDraft, existing?: Recipe): Recipe {
   const now = new Date().toISOString()
-  const ingredients = draft.ingredients
-    .map((ingredient) => ({
-      ...ingredient,
-      name: ingredient.name.trim(),
-      normalizedName: normalizeIngredientName(ingredient.name),
-      quantity: ingredient.quantity.trim(),
-      unit: ingredient.unit.trim(),
-    }))
-    .filter((ingredient) => ingredient.name)
-
-  return {
-    ...draft,
-    id: existing?.id ?? crypto.randomUUID(),
-    name: draft.name.trim(),
-    description: draft.description.trim(),
-    photoDataUrl: draft.photoDataUrl ?? null,
-    ingredients,
-    ingredientNames: uniqueStrings(ingredients.map((ingredient) => ingredient.normalizedName)),
-    instructions: draft.instructions.map((step) => step.trim()).filter(Boolean),
-    dishTypes: uniqueLabels(draft.dishTypes),
-    mealTypes: [...new Set(draft.mealTypes)],
-    tags: uniqueLabels(draft.tags),
-    notes: draft.notes.trim(),
-    sourceName: draft.sourceName.trim(),
-    sourceUrl: draft.sourceUrl.trim(),
-    createdAt: existing?.createdAt ?? now,
-    modifiedAt: now,
-  }
+  const recipe = materializeRecipe(draft, { id: existing?.id, now })
+  return { ...recipe, createdAt: existing?.createdAt ?? now }
 }
 
 export async function setRecipeFavorite(id: string, favorite: boolean): Promise<void> {

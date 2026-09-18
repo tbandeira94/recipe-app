@@ -1,18 +1,7 @@
-import type { Ingredient, ImportWarning, RecipeDraft, RecipeImportResult, RecipeImportSource } from '../types'
+import type { ImportWarning, RecipeDraft, RecipeImportResult, RecipeImportSource } from '../types'
+import { parseIngredientLine } from './ingredientParser'
 
 const EMPTY_SOURCE: RecipeImportSource = { sourceName: '', sourceUrl: '' }
-const FRACTIONS = '¼½¾⅓⅔⅛⅜⅝⅞'
-const quantityPart = `(?:(?:(?:about|approx(?:imately)?|scant|heaping|generous)\\s+)?(?:\\d+(?:[.,]\\d+)?(?:\\s+\\d+\\/\\d+|[${FRACTIONS}])?|\\d+\\/\\d+|[${FRACTIONS}]+))`
-const quantityExpression = `${quantityPart}(?:\\s*(?:-|–|to)\\s*${quantityPart})?`
-const units = [
-  'cup', 'cups', 'c', 'tablespoon', 'tablespoons', 'tbsp', 'tbs', 'teaspoon', 'teaspoons', 'tsp',
-  'ounce', 'ounces', 'oz', 'pound', 'pounds', 'lb', 'lbs', 'gram', 'grams', 'g', 'kilogram', 'kilograms', 'kg',
-  'milliliter', 'milliliters', 'ml', 'liter', 'liters', 'l', 'clove', 'cloves', 'can', 'cans', 'package', 'packages',
-  'pkg', 'stick', 'sticks', 'slice', 'slices', 'pinch', 'pinches', 'dash', 'dashes', 'piece', 'pieces',
-]
-const unitExpression = `(?:${units.join('|')})\\.?`
-const ingredientExpression = new RegExp(`^(${quantityExpression})(?:\\s*(${unitExpression}))?\\s+(.+)$`, 'i')
-const quantityAtStart = new RegExp(`^${quantityExpression}`, 'i')
 const ingredientHeading = /^(?:ingredients?|ingredient checklist|what you(?:'|’)ll need|what you will need)(?:\s*\([^)]*\))?(?:\s*[-–—|]?\s*(?:1x\s+2x\s+3x|us customary(?:\s*[-–—|]\s*metric)?|metric))?\s*:?$/i
 const instructionHeading = /^(?:(?:step[- ]by[- ]step|recipe)\s+)?(?:instructions?|directions?|method|preparation|procedure|steps?|how to make(?: it| this)?)(?:\s*\([^)]*\))?\s*:?$/i
 const detailHeading = /^(?:details?|notes?|nutrition(?: information| facts)?|equipment|storage|substitutions?)\s*:?$/i
@@ -131,25 +120,6 @@ function stripInstructionMarker(line: string): string {
     .trim()
 }
 
-function parseIngredient(line: string, index: number, warnings: ImportWarning[]): Ingredient {
-  const original = stripListMarker(line)
-  if (subsectionHeading.test(original)) {
-    warnings.push({ field: 'ingredients', index, message: `“${original}” looks like an ingredient subsection. It was kept as an ingredient because recipes cannot yet be grouped.` })
-    return { id: crypto.randomUUID(), quantity: '', unit: '', name: original, normalizedName: '' }
-  }
-  const match = original.match(ingredientExpression)
-  if (!match) {
-    if (quantityAtStart.test(original)) warnings.push({ field: 'ingredients', index, message: `Couldn’t separate the amount from “${original}”. It was kept intact for review.` })
-    return { id: crypto.randomUUID(), quantity: '', unit: '', name: original, normalizedName: '' }
-  }
-  const [, quantity, unit = '', name] = match
-  if (!name.trim()) {
-    warnings.push({ field: 'ingredients', index, message: `Couldn’t separate the amount from “${original}”. Review this ingredient.` })
-    return { id: crypto.randomUUID(), quantity: '', unit: '', name: original, normalizedName: '' }
-  }
-  return { id: crypto.randomUUID(), quantity: quantity.trim(), unit: unit.replace(/\.$/, '').trim(), name: name.trim(), normalizedName: '' }
-}
-
 /** Parses intentionally copied recipe text without fetching or sending it anywhere. */
 export function parseRecipeText(text: string, source: RecipeImportSource = EMPTY_SOURCE): RecipeImportResult {
   const lines = text.replace(/\r\n?/g, '\n').split('\n').map(cleanLine).flatMap(splitInlineSection)
@@ -176,7 +146,7 @@ export function parseRecipeText(text: string, source: RecipeImportSource = EMPTY
   } else {
     const end = instructionIndex > ingredientIndex ? instructionIndex : lines.length
     const parsedLines = ingredientLines(lines.slice(ingredientIndex + 1, end))
-    draft.ingredients = parsedLines.map((line, index) => parseIngredient(line, index, warnings))
+    draft.ingredients = parsedLines.map((line, index) => parseIngredientLine(stripListMarker(line), index, warnings))
     if (!draft.ingredients.length) warnings.push({ field: 'ingredients', message: 'No ingredient lines were found below the Ingredients heading.' })
   }
 

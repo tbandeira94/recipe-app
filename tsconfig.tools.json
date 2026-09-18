@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["scripts/recipe-import/**/*.ts", "src/lib/backupFormat.ts", "src/lib/ingredientParser.ts", "src/lib/normalize.ts", "src/lib/recipeModel.ts", "src/types.ts"]
+}

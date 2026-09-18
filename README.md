@@ -54,6 +54,23 @@ Settings can export all recipes as formatted, human-readable JSON. On devices su
 
 Import parses and validates the complete file, format identifier, version, timestamps, recipes, and duplicate IDs before asking for confirmation. Only then does it clear and replace the recipe store in one read/write transaction. A failed transaction is rolled back by IndexedDB. The format is documented in [BACKUP_FORMAT.md](./BACKUP_FORMAT.md).
 
+## Local recipe webpage importer
+
+The developer-only importer converts recipe webpage URLs into a Pantry Book backup. It uses schema.org Recipe JSON-LD first, falls back only to limited HTML metadata/itemprop fields, and does not add a backend or change the PWA.
+
+```bash
+# One recipe
+pnpm recipe:import -- url "https://example.com/recipe" --out recipe-import-output
+
+# One URL per nonblank line; # comments are allowed
+pnpm recipe:import -- batch saved-recipe-urls.txt --out recipe-import-output
+
+# Merge into an exported current backup before restoring it in the PWA
+pnpm recipe:import -- batch saved-recipe-urls.txt --base-backup recipes-backup.json --out recipe-import-output
+```
+
+The output directory contains `pantry-book-import.json`, `review.md`, `report.json`, and raw JSON-LD artifacts for recipes needing review. The generated JSON is run through the same backup parser as PWA restore. **Restore replaces the whole collection**, so use `--base-backup` when adding to an existing library.
+
 ## Quality checks and production build
 
 ```bash
