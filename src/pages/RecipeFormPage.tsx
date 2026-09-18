@@ -1,7 +1,8 @@
-import { useState, type FormEvent } from 'react'
+import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
 import { MEAL_TYPES, type Ingredient, type MealType, type Recipe, type RecipeDraft } from '../types'
 import { ArrowLeftIcon, CloseIcon, PlusIcon } from '../components/Icons'
 import { ChipEditor } from '../components/ChipEditor'
+import { prepareRecipePhoto } from '../lib/photo'
 
 interface Props {
   recipe?: Recipe
@@ -15,12 +16,12 @@ const emptyIngredient = (): Ingredient => ({ id: crypto.randomUUID(), name: '', 
 
 function initialDraft(recipe?: Recipe): RecipeDraft {
   return recipe ? {
-    name: recipe.name, description: recipe.description, ingredients: recipe.ingredients.map((item) => ({ ...item })),
+    name: recipe.name, description: recipe.description, photoDataUrl: recipe.photoDataUrl, ingredients: recipe.ingredients.map((item) => ({ ...item })),
     instructions: [...recipe.instructions], prepMinutes: recipe.prepMinutes, cookMinutes: recipe.cookMinutes,
     servings: recipe.servings, dishTypes: [...recipe.dishTypes], mealTypes: [...recipe.mealTypes], tags: [...recipe.tags], favorite: recipe.favorite,
     notes: recipe.notes, sourceName: recipe.sourceName, sourceUrl: recipe.sourceUrl,
   } : {
-    name: '', description: '', ingredients: [emptyIngredient()], instructions: [''], prepMinutes: null, cookMinutes: null,
+    name: '', description: '', photoDataUrl: null, ingredients: [emptyIngredient()], instructions: [''], prepMinutes: null, cookMinutes: null,
     servings: null, dishTypes: [], mealTypes: [], tags: [], favorite: false, notes: '', sourceName: '', sourceUrl: '',
   }
 }
@@ -35,7 +36,9 @@ const mealLabel = (meal: MealType) => meal[0].toUpperCase() + meal.slice(1)
 export function RecipeFormPage({ recipe, dishTypeSuggestions, tagSuggestions, onCancel, onSave }: Props) {
   const [draft, setDraft] = useState(() => initialDraft(recipe))
   const [saving, setSaving] = useState(false)
+  const [preparingPhoto, setPreparingPhoto] = useState(false)
   const [error, setError] = useState('')
+  const photoInput = useRef<HTMLInputElement>(null)
 
   const updateIngredient = (id: string, field: keyof Ingredient, value: string) => {
     setDraft((current) => ({ ...current, ingredients: current.ingredients.map((item) => item.id === id ? { ...item, [field]: value } : item) }))
@@ -45,6 +48,7 @@ export function RecipeFormPage({ recipe, dishTypeSuggestions, tagSuggestions, on
   }
   const submit = async (event: FormEvent) => {
     event.preventDefault()
+    if (preparingPhoto) return
     if (!draft.name.trim()) { setError('Give your recipe a name.'); return }
     if (!draft.ingredients.some((item) => item.name.trim())) { setError('Add at least one ingredient.'); return }
     if (!draft.instructions.some((step) => step.trim())) { setError('Add at least one instruction.'); return }
@@ -52,19 +56,42 @@ export function RecipeFormPage({ recipe, dishTypeSuggestions, tagSuggestions, on
     try { await onSave(draft) }
     catch (cause) { setError(cause instanceof Error ? cause.message : 'Could not save this recipe.'); setSaving(false) }
   }
+  const selectPhoto = async (event: ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    event.target.value = ''
+    if (!file) return
+    setPreparingPhoto(true); setError('')
+    try {
+      const photoDataUrl = await prepareRecipePhoto(file)
+      setDraft((current) => ({ ...current, photoDataUrl }))
+    }
+    catch { setError('That photo couldn’t be opened. Try a different image.') }
+    finally { setPreparingPhoto(false) }
+  }
 
   return (
     <form className="page form-page" onSubmit={submit}>
       <header className="form-toolbar">
         <button type="button" className="icon-button" onClick={onCancel} aria-label="Cancel"><ArrowLeftIcon /></button>
         <h1>{recipe ? 'Edit recipe' : 'New recipe'}</h1>
-        <button className="text-button" type="submit" disabled={saving}>{saving ? 'Saving…' : 'Save'}</button>
+        <button className="text-button" type="submit" disabled={saving || preparingPhoto}>{saving ? 'Saving…' : 'Save'}</button>
       </header>
       {error && <div className="error-message" role="alert">{error}</div>}
+      <input ref={photoInput} className="visually-hidden" type="file" accept="image/*" aria-label="Choose recipe photo" onChange={(event) => void selectPhoto(event)} />
 
       <section className="form-section">
         <label className="field"><span>Recipe name</span><input value={draft.name} onChange={(event) => setDraft({ ...draft, name: event.target.value })} placeholder="e.g. Lemon pasta" autoFocus /></label>
         <label className="field"><span>Description <small>optional</small></span><textarea value={draft.description} onChange={(event) => setDraft({ ...draft, description: event.target.value })} placeholder="A quick note about this recipe" rows={3} /></label>
+        <div className="photo-field">
+          <span className="field-label">Photo <small>optional</small></span>
+          <div className="photo-control">
+            {draft.photoDataUrl ? <img src={draft.photoDataUrl} alt="" className="photo-form-preview" /> : <div className="photo-placeholder" aria-hidden="true">{draft.name.slice(0, 1).toUpperCase() || 'R'}</div>}
+            <div className="photo-actions">
+              <button type="button" className="secondary-button" disabled={preparingPhoto} onClick={() => photoInput.current?.click()}>{preparingPhoto ? 'Preparing photo…' : draft.photoDataUrl ? 'Replace photo' : 'Add photo'}</button>
+              {draft.photoDataUrl && <button type="button" className="photo-remove-button" disabled={preparingPhoto} onClick={() => setDraft({ ...draft, photoDataUrl: null })}>Remove photo</button>}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className="form-section">
@@ -107,7 +134,7 @@ export function RecipeFormPage({ recipe, dishTypeSuggestions, tagSuggestions, on
         <label className="field"><span>Source name</span><input value={draft.sourceName} onChange={(e) => setDraft({ ...draft, sourceName: e.target.value })} placeholder="Grandma, cookbook, website…" /></label>
         <label className="field"><span>Source URL</span><input type="url" inputMode="url" value={draft.sourceUrl} onChange={(e) => setDraft({ ...draft, sourceUrl: e.target.value })} placeholder="https://…" /></label>
       </section>
-      <button className="primary-button form-submit" type="submit" disabled={saving}>{saving ? 'Saving recipe…' : 'Save recipe'}</button>
+      <button className="primary-button form-submit" type="submit" disabled={saving || preparingPhoto}>{saving ? 'Saving recipe…' : 'Save recipe'}</button>
     </form>
   )
 }

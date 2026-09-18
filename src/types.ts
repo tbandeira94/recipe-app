@@ -13,6 +13,7 @@ export interface Recipe {
   id: string
   name: string
   description: string
+  photoDataUrl: string | null
   ingredients: Ingredient[]
   ingredientNames: string[]
   instructions: string[]
@@ -34,7 +35,7 @@ export type RecipeDraft = Omit<Recipe, 'id' | 'createdAt' | 'modifiedAt' | 'ingr
 
 export interface RecipeBackup {
   format: 'pantry-book-backup'
-  version: 2
+  version: 3
   exportedAt: string
   recipes: Recipe[]
 }

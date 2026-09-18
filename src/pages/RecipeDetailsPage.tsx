@@ -23,7 +23,7 @@ export function RecipeDetailsPage({ recipe, onBack, onEdit, onToggleFavorite, on
         </div>
       </header>
       <section className="detail-hero">
-        <div className="recipe-mark" aria-hidden="true">{recipe.name.slice(0, 1).toUpperCase()}</div>
+        {recipe.photoDataUrl ? <div className="detail-photo"><img src={recipe.photoDataUrl} alt="" /></div> : <div className="recipe-mark" aria-hidden="true">{recipe.name.slice(0, 1).toUpperCase()}</div>}
         <h1>{recipe.name}</h1>
         {recipe.description && <p>{recipe.description}</p>}
         <div className="detail-stats">

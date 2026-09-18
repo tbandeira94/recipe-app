@@ -13,6 +13,7 @@ export function RecipeCard({ recipe, onOpen, onToggleFavorite, matchLabel }: Rec
   return (
     <article className="recipe-card">
       <button className="recipe-card-open" onClick={onOpen}>
+        {recipe.photoDataUrl ? <img className="recipe-thumbnail" src={recipe.photoDataUrl} alt="" /> : <span className="recipe-thumbnail recipe-thumbnail-placeholder" aria-hidden="true">{recipe.name.slice(0, 1).toUpperCase()}</span>}
         <span className="recipe-card-main">
         <strong>{recipe.name}</strong>
         {recipe.description && <span className="card-description">{recipe.description}</span>}

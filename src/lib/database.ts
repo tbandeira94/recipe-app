@@ -7,6 +7,10 @@ const RECIPE_STORE = 'recipes'
 
 let databasePromise: Promise<IDBDatabase> | undefined
 
+function normalizeStoredRecipe(recipe: Recipe): Recipe {
+  return { ...recipe, photoDataUrl: recipe.photoDataUrl ?? null }
+}
+
 function requestResult<T>(request: IDBRequest<T>): Promise<T> {
   return new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result)
@@ -52,13 +56,14 @@ export async function getRecipes(): Promise<Recipe[]> {
   const database = await openDatabase()
   const transaction = database.transaction(RECIPE_STORE, 'readonly')
   const recipes = await requestResult(transaction.objectStore(RECIPE_STORE).getAll())
-  return recipes.sort((a, b) => b.modifiedAt.localeCompare(a.modifiedAt))
+  return recipes.map(normalizeStoredRecipe).sort((a, b) => b.modifiedAt.localeCompare(a.modifiedAt))
 }
 
 export async function getRecipe(id: string): Promise<Recipe | undefined> {
   const database = await openDatabase()
   const transaction = database.transaction(RECIPE_STORE, 'readonly')
-  return requestResult(transaction.objectStore(RECIPE_STORE).get(id))
+  const recipe = await requestResult<Recipe | undefined>(transaction.objectStore(RECIPE_STORE).get(id))
+  return recipe ? normalizeStoredRecipe(recipe) : undefined
 }
 
 function prepareRecipe(draft: RecipeDraft, existing?: Recipe): Recipe {
@@ -78,6 +83,7 @@ function prepareRecipe(draft: RecipeDraft, existing?: Recipe): Recipe {
     id: existing?.id ?? crypto.randomUUID(),
     name: draft.name.trim(),
     description: draft.description.trim(),
+    photoDataUrl: draft.photoDataUrl ?? null,
     ingredients,
     ingredientNames: uniqueStrings(ingredients.map((ingredient) => ingredient.normalizedName)),
     instructions: draft.instructions.map((step) => step.trim()).filter(Boolean),
@@ -101,7 +107,7 @@ export async function setRecipeFavorite(id: string, favorite: boolean): Promise<
     transaction.abort()
     throw new Error('Recipe not found.')
   }
-  store.put({ ...recipe, favorite })
+  store.put({ ...normalizeStoredRecipe(recipe), favorite })
   await transactionComplete(transaction)
 }
 
