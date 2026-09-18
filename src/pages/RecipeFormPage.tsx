@@ -1,6 +1,6 @@
-import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
+import { useRef, useState, type ChangeEvent, type FormEvent, type KeyboardEvent, type PointerEvent } from 'react'
 import { MEAL_TYPES, type ImportWarning, type Ingredient, type MealType, type Recipe, type RecipeDraft } from '../types'
-import { ArrowLeftIcon, CloseIcon, PlusIcon } from '../components/Icons'
+import { ArrowLeftIcon, CloseIcon, DragHandleIcon, PlusIcon } from '../components/Icons'
 import { ChipEditor } from '../components/ChipEditor'
 import { prepareRecipePhoto } from '../lib/photo'
 
@@ -39,6 +39,8 @@ function optionalNumber(value: string): number | null {
 const COMMON_DISH_TYPES = ['Main', 'Side', 'Soup', 'Salad', 'Sauce', 'Dessert', 'Bread', 'Drink']
 const mealLabel = (meal: MealType) => meal[0].toUpperCase() + meal.slice(1)
 
+type IngredientDrag = { id: string; pointerId: number; startX: number; startY: number; mode: 'pending' | 'reorder' | 'delete' }
+
 export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dishTypeSuggestions, tagSuggestions, onCancel, onSave }: Props) {
   const [draft, setDraft] = useState(() => createInitialDraft(recipe, initialDraft))
   const [editingIngredientId, setEditingIngredientId] = useState<string | null>(null)
@@ -46,6 +48,8 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
   const [preparingPhoto, setPreparingPhoto] = useState(false)
   const [error, setError] = useState('')
   const photoInput = useRef<HTMLInputElement>(null)
+  const ingredientList = useRef<HTMLDivElement>(null)
+  const ingredientDrag = useRef<IngredientDrag | null>(null)
 
   const updateIngredient = (id: string, field: keyof Ingredient, value: string) => {
     setDraft((current) => ({ ...current, ingredients: current.ingredients.map((item) => item.id === id ? { ...item, [field]: value } : item) }))
@@ -56,6 +60,69 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
   }
   const updateStep = (index: number, value: string) => {
     setDraft((current) => ({ ...current, instructions: current.instructions.map((step, stepIndex) => stepIndex === index ? value : step) }))
+  }
+  const removeIngredient = (id: string) => {
+    setDraft((current) => current.ingredients.length === 1 ? current : { ...current, ingredients: current.ingredients.filter((ingredient) => ingredient.id !== id) })
+  }
+  const moveIngredient = (id: string, targetId: string) => {
+    if (id === targetId) return
+    setDraft((current) => {
+      const from = current.ingredients.findIndex((item) => item.id === id)
+      const target = current.ingredients.findIndex((item) => item.id === targetId)
+      if (from < 0 || target < 0) return current
+      const ingredients = [...current.ingredients]
+      const [item] = ingredients.splice(from, 1)
+      ingredients.splice(target, 0, item)
+      return { ...current, ingredients }
+    })
+  }
+  const findIngredientAt = (clientY: number) => {
+    const rows = [...(ingredientList.current?.querySelectorAll<HTMLElement>('[data-ingredient-id]') ?? [])]
+    return rows.sort((a, b) => Math.abs(a.getBoundingClientRect().top + a.getBoundingClientRect().height / 2 - clientY) - Math.abs(b.getBoundingClientRect().top + b.getBoundingClientRect().height / 2 - clientY))[0]?.dataset.ingredientId
+  }
+  const resetIngredientDrag = (handle: HTMLButtonElement) => {
+    const row = handle.closest<HTMLElement>('[data-ingredient-id]')
+    row?.classList.remove('is-dragging', 'is-delete-ready')
+    row?.style.removeProperty('--ingredient-swipe-offset')
+    ingredientDrag.current = null
+  }
+  const startIngredientDrag = (event: PointerEvent<HTMLButtonElement>, id: string) => {
+    if (draft.ingredients.length === 1) return
+    event.currentTarget.setPointerCapture(event.pointerId)
+    ingredientDrag.current = { id, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, mode: 'pending' }
+    event.currentTarget.closest<HTMLElement>('[data-ingredient-id]')?.classList.add('is-dragging')
+  }
+  const continueIngredientDrag = (event: PointerEvent<HTMLButtonElement>) => {
+    const drag = ingredientDrag.current
+    if (!drag || drag.pointerId !== event.pointerId) return
+    const x = event.clientX - drag.startX
+    const y = event.clientY - drag.startY
+    const row = event.currentTarget.closest<HTMLElement>('[data-ingredient-id]')
+    if (x <= -56 && Math.abs(x) > Math.abs(y) * 1.35) drag.mode = 'delete'
+    else if (Math.abs(y) > 9 && Math.abs(y) > Math.abs(x)) drag.mode = 'reorder'
+    else if (drag.mode !== 'reorder') drag.mode = 'pending'
+    row?.classList.toggle('is-delete-ready', drag.mode === 'delete')
+    row?.style.setProperty('--ingredient-swipe-offset', `${drag.mode === 'delete' ? Math.max(x, -84) : 0}px`)
+    if (drag.mode === 'reorder') {
+      event.preventDefault()
+      const targetId = findIngredientAt(event.clientY)
+      if (targetId) moveIngredient(drag.id, targetId)
+    }
+  }
+  const endIngredientDrag = (event: PointerEvent<HTMLButtonElement>) => {
+    const drag = ingredientDrag.current
+    if (!drag || drag.pointerId !== event.pointerId) return
+    const shouldDelete = drag.mode === 'delete'
+    resetIngredientDrag(event.currentTarget)
+    if (shouldDelete) removeIngredient(drag.id)
+  }
+  const moveIngredientWithKeyboard = (event: KeyboardEvent<HTMLButtonElement>, id: string) => {
+    if (event.key !== 'ArrowUp' && event.key !== 'ArrowDown' && event.key !== 'Delete' && event.key !== 'Backspace') return
+    event.preventDefault()
+    if (event.key === 'Delete' || event.key === 'Backspace') { removeIngredient(id); return }
+    const index = draft.ingredients.findIndex((item) => item.id === id)
+    const target = draft.ingredients[index + (event.key === 'ArrowUp' ? -1 : 1)]
+    if (target) moveIngredient(id, target.id)
   }
   const submit = async (event: FormEvent) => {
     event.preventDefault()
@@ -112,7 +179,8 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
       <section className="form-section">
         <div className="section-heading"><div><span className="section-number">1</span><h2>Ingredients</h2></div></div>
         <div className="ingredient-labels"><span>Amount</span><span>Unit</span><span>Ingredient</span></div>
-        {draft.ingredients.map((item) => <div className="ingredient-row" key={item.id}>
+        <div className="ingredient-list" ref={ingredientList}>
+        {draft.ingredients.map((item) => <div className="ingredient-row" data-ingredient-id={item.id} key={item.id}>
           <input aria-label="Quantity" value={item.quantity} onChange={(event) => updateIngredient(item.id, 'quantity', event.target.value)} placeholder="1½" />
           <input aria-label="Unit" value={item.unit} onChange={(event) => updateIngredient(item.id, 'unit', event.target.value)} placeholder="cups" />
           <textarea
@@ -126,8 +194,9 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
             placeholder="flour"
             rows={1}
           />
-          <button type="button" className="remove-button" aria-label="Remove ingredient" disabled={draft.ingredients.length === 1} onClick={() => setDraft({ ...draft, ingredients: draft.ingredients.filter((ingredient) => ingredient.id !== item.id) })}><CloseIcon size={18} /></button>
+          <button type="button" className="ingredient-handle" aria-label="Reorder ingredient" aria-description="Drag up or down to reorder. Swipe left to delete." disabled={draft.ingredients.length === 1} onPointerDown={(event) => startIngredientDrag(event, item.id)} onPointerMove={continueIngredientDrag} onPointerUp={endIngredientDrag} onPointerCancel={(event) => resetIngredientDrag(event.currentTarget)} onKeyDown={(event) => moveIngredientWithKeyboard(event, item.id)}><DragHandleIcon size={20} /></button>
         </div>)}
+        </div>
         <button type="button" className="add-row-button" onClick={() => setDraft({ ...draft, ingredients: [...draft.ingredients, emptyIngredient()] })}><PlusIcon size={19} /> Add ingredient</button>
       </section>
 

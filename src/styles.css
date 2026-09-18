@@ -138,11 +138,21 @@ input::placeholder, textarea::placeholder { color: #a2a7a4; }
 .section-heading h2 { margin: 0; font-family: Georgia, serif; color: var(--green); font-size: 1.35rem; }
 .section-number { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--orange); color: white; font-weight: 800; font-size: .82rem; }
 .ingredient-labels { display: grid; grid-template-columns: 66px 78px 1fr; gap: 8px; padding-right: 38px; color: var(--muted); font-size: .7rem; font-weight: 800; text-transform: uppercase; }
+.ingredient-list { display: grid; gap: 8px; }
 .ingredient-row { display: grid; grid-template-columns: 66px 78px minmax(0, 1fr) 30px; gap: 8px; align-items: start; }
+.ingredient-row.is-dragging { opacity: .78; }
+.ingredient-row.is-delete-ready { color: #9b3523; }
+.ingredient-row.is-delete-ready > :not(.ingredient-handle) { transform: translateX(var(--ingredient-swipe-offset)); }
+.ingredient-row > :not(.ingredient-handle) { transition: transform .12s ease; }
 .ingredient-row input { padding-left: 9px; padding-right: 9px; }
 .ingredient-name { min-height: 48px; resize: none; overflow: hidden; transition: min-height .16s ease; }
 .ingredient-name.is-editing { height: 104px; min-height: 104px; }
 .remove-button { width: 30px; height: 44px; display: grid; place-items: center; border: 0; background: transparent; color: #9b4c3e; padding: 0; }
+.ingredient-handle { width: 30px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 10px; background: transparent; color: var(--muted); padding: 0; cursor: grab; touch-action: none; }
+.ingredient-handle:active { cursor: grabbing; }
+.ingredient-handle:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.ingredient-row.is-delete-ready .ingredient-handle { color: #9b3523; background: #fbe8e3; }
+.ingredient-handle:disabled { opacity: .4; cursor: default; }
 .add-row-button { justify-self: start; min-height: 44px; border: 0; background: transparent; color: var(--orange); font-weight: 800; display: flex; align-items: center; gap: 6px; }
 .step-row { display: grid; grid-template-columns: 30px minmax(0, 1fr) 30px; gap: 8px; align-items: start; }
 .step-row > span { margin-top: 7px; width: 30px; height: 30px; display: grid; place-items: center; border-radius: 50%; color: white; background: var(--green); font-weight: 800; font-size: .8rem; }

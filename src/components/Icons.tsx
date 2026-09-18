@@ -16,6 +16,7 @@ export const UploadIcon = (props: IconProps) => <Icon {...props}><path d="M12 16
 export const TrashIcon = (props: IconProps) => <Icon {...props}><path d="M4 7h16M9 7V4h6v3m3 0-1 14H7L6 7m4 4v6m4-6v6"/></Icon>
 export const CheckIcon = (props: IconProps) => <Icon {...props}><path d="m5 12 4 4L19 6"/></Icon>
 export const CloseIcon = (props: IconProps) => <Icon {...props}><path d="m6 6 12 12M18 6 6 18"/></Icon>
+export const DragHandleIcon = (props: IconProps) => <Icon {...props}><circle cx="9" cy="5" r=".8" fill="currentColor"/><circle cx="15" cy="5" r=".8" fill="currentColor"/><circle cx="9" cy="12" r=".8" fill="currentColor"/><circle cx="15" cy="12" r=".8" fill="currentColor"/><circle cx="9" cy="19" r=".8" fill="currentColor"/><circle cx="15" cy="19" r=".8" fill="currentColor"/></Icon>
 export const StarIcon = ({ filled = false, ...props }: IconProps & { filled?: boolean }) => <Icon {...props}><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-2.9-5.6 2.9 1.1-6.2L3 9.6l6.2-.9Z" fill={filled ? 'currentColor' : 'none'} /></Icon>
 export const GridIcon = (props: IconProps) => <Icon {...props}><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></Icon>
 export const TagIcon = (props: IconProps) => <Icon {...props}><path d="M20 13 13 20 4 11V4h7Z"/><circle cx="8.5" cy="8.5" r="1" fill="currentColor"/></Icon>
