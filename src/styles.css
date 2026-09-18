@@ -140,8 +140,10 @@ input::placeholder, textarea::placeholder { color: #a2a7a4; }
 .ingredient-labels { display: grid; grid-template-columns: 66px 78px 1fr; gap: 8px; padding-right: 38px; color: var(--muted); font-size: .7rem; font-weight: 800; text-transform: uppercase; }
 .ingredient-list { display: grid; gap: 8px; }
 .ingredient-row { display: grid; grid-template-columns: 66px 78px minmax(0, 1fr) 30px; gap: 8px; align-items: start; }
-.ingredient-row.is-dragging { opacity: .78; }
+.ingredient-row.is-dragging { position: relative; z-index: 2; }
+.ingredient-row.is-dragging::before { content: ''; position: absolute; z-index: -1; inset: -7px -8px; border: 2px solid var(--orange); border-radius: 17px; background: rgba(248, 227, 217, .9); box-shadow: 0 10px 22px rgba(190, 74, 48, .22); }
 .ingredient-row.is-delete-ready { color: #9b3523; }
+.ingredient-row.is-delete-ready::before { border-color: #c95540; background: #fbe8e3; box-shadow: 0 10px 22px rgba(155, 53, 35, .2); }
 .ingredient-row.is-delete-ready > :not(.ingredient-handle) { transform: translateX(var(--ingredient-swipe-offset)); }
 .ingredient-row > :not(.ingredient-handle) { transition: transform .12s ease; }
 .ingredient-row input { padding-left: 9px; padding-right: 9px; }
