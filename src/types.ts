@@ -33,6 +33,24 @@ export interface Recipe {
 
 export type RecipeDraft = Omit<Recipe, 'id' | 'createdAt' | 'modifiedAt' | 'ingredientNames'>
 
+export type ImportWarningField = 'name' | 'description' | 'ingredients' | 'instructions' | 'details'
+
+export interface ImportWarning {
+  field: ImportWarningField
+  index?: number
+  message: string
+}
+
+export interface RecipeImportSource {
+  sourceName: string
+  sourceUrl: string
+}
+
+export interface RecipeImportResult {
+  draft: RecipeDraft
+  warnings: ImportWarning[]
+}
+
 export interface RecipeBackup {
   format: 'pantry-book-backup'
   version: 3

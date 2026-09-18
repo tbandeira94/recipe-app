@@ -1,11 +1,13 @@
 import { useRef, useState, type ChangeEvent, type FormEvent } from 'react'
-import { MEAL_TYPES, type Ingredient, type MealType, type Recipe, type RecipeDraft } from '../types'
+import { MEAL_TYPES, type ImportWarning, type Ingredient, type MealType, type Recipe, type RecipeDraft } from '../types'
 import { ArrowLeftIcon, CloseIcon, PlusIcon } from '../components/Icons'
 import { ChipEditor } from '../components/ChipEditor'
 import { prepareRecipePhoto } from '../lib/photo'
 
 interface Props {
   recipe?: Recipe
+  initialDraft?: RecipeDraft
+  importWarnings?: ImportWarning[]
   dishTypeSuggestions: string[]
   tagSuggestions: string[]
   onCancel: () => void
@@ -14,12 +16,16 @@ interface Props {
 
 const emptyIngredient = (): Ingredient => ({ id: crypto.randomUUID(), name: '', normalizedName: '', quantity: '', unit: '' })
 
-function initialDraft(recipe?: Recipe): RecipeDraft {
+function createInitialDraft(recipe?: Recipe, importedDraft?: RecipeDraft): RecipeDraft {
   return recipe ? {
     name: recipe.name, description: recipe.description, photoDataUrl: recipe.photoDataUrl, ingredients: recipe.ingredients.map((item) => ({ ...item })),
     instructions: [...recipe.instructions], prepMinutes: recipe.prepMinutes, cookMinutes: recipe.cookMinutes,
     servings: recipe.servings, dishTypes: [...recipe.dishTypes], mealTypes: [...recipe.mealTypes], tags: [...recipe.tags], favorite: recipe.favorite,
     notes: recipe.notes, sourceName: recipe.sourceName, sourceUrl: recipe.sourceUrl,
+  } : importedDraft ? {
+    ...importedDraft,
+    ingredients: importedDraft.ingredients.map((item) => ({ ...item })),
+    instructions: [...importedDraft.instructions], dishTypes: [...importedDraft.dishTypes], mealTypes: [...importedDraft.mealTypes], tags: [...importedDraft.tags],
   } : {
     name: '', description: '', photoDataUrl: null, ingredients: [emptyIngredient()], instructions: [''], prepMinutes: null, cookMinutes: null,
     servings: null, dishTypes: [], mealTypes: [], tags: [], favorite: false, notes: '', sourceName: '', sourceUrl: '',
@@ -33,8 +39,8 @@ function optionalNumber(value: string): number | null {
 const COMMON_DISH_TYPES = ['Main', 'Side', 'Soup', 'Salad', 'Sauce', 'Dessert', 'Bread', 'Drink']
 const mealLabel = (meal: MealType) => meal[0].toUpperCase() + meal.slice(1)
 
-export function RecipeFormPage({ recipe, dishTypeSuggestions, tagSuggestions, onCancel, onSave }: Props) {
-  const [draft, setDraft] = useState(() => initialDraft(recipe))
+export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dishTypeSuggestions, tagSuggestions, onCancel, onSave }: Props) {
+  const [draft, setDraft] = useState(() => createInitialDraft(recipe, initialDraft))
   const [saving, setSaving] = useState(false)
   const [preparingPhoto, setPreparingPhoto] = useState(false)
   const [error, setError] = useState('')
@@ -77,6 +83,10 @@ export function RecipeFormPage({ recipe, dishTypeSuggestions, tagSuggestions, on
         <button className="text-button" type="submit" disabled={saving || preparingPhoto}>{saving ? 'Saving…' : 'Save'}</button>
       </header>
       {error && <div className="error-message" role="alert">{error}</div>}
+      {initialDraft && <section className="import-warning" aria-labelledby="import-warning-title">
+        <strong id="import-warning-title">Imported from text — review before saving</strong>
+        {importWarnings.length > 0 ? <ul>{importWarnings.map((warning, index) => <li key={`${warning.field}-${warning.index ?? ''}-${index}`}>{warning.message}</li>)}</ul> : <p>Check the details below; anything uncertain was left for you to decide.</p>}
+      </section>}
       <input ref={photoInput} className="visually-hidden" type="file" accept="image/*" aria-label="Choose recipe photo" onChange={(event) => void selectPhoto(event)} />
 
       <section className="form-section">

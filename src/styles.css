@@ -165,6 +165,32 @@ input::placeholder, textarea::placeholder { color: #a2a7a4; }
 .suggestion-row button { min-height: 34px; padding: 0 9px; border: 1px dashed #bbbdb7; border-radius: 99px; background: transparent; color: var(--muted); font-size: .77rem; font-weight: 700; }
 .form-submit { margin: 24px 20px; width: calc(100% - 40px); }
 .error-message { margin: 16px 20px 0; padding: 13px 15px; border-radius: 12px; color: #8f2e20; background: #fde5df; line-height: 1.45; }
+.import-warning { margin: 16px 20px 0; padding: 15px; border: 1px solid #e9c8a1; border-radius: 13px; background: #fff4df; color: #754919; line-height: 1.45; }
+.import-warning strong { color: #684116; }
+.import-warning p, .import-warning ul { margin: 7px 0 0; }
+.import-warning ul { padding-left: 20px; display: grid; gap: 5px; }
+
+.choice-backdrop { position: fixed; z-index: 40; inset: 0; display: grid; place-items: end center; padding: 20px; background: rgba(25, 53, 47, .34); }
+.choice-dialog { width: min(100%, 500px); display: grid; gap: 11px; padding: 24px 20px calc(20px + env(safe-area-inset-bottom)); border-radius: 24px; background: var(--card); box-shadow: 0 18px 45px rgba(15, 34, 29, .25); }
+.choice-dialog h2 { margin: 4px 0 7px; color: var(--green); font-family: Georgia, serif; font-size: 1.55rem; }
+.choice-option { min-height: 76px; padding: 15px; border: 1px solid var(--line); border-radius: 15px; color: var(--green); background: var(--card); text-align: left; display: grid; gap: 4px; cursor: pointer; }
+.choice-option:hover { border-color: var(--green); background: var(--soft-green); }
+.choice-option span { color: var(--muted); font-size: .86rem; line-height: 1.35; }
+.choice-cancel { justify-self: center; margin-top: 1px; }
+
+.import-page { max-width: 600px; margin: 0 auto; display: grid; align-content: start; gap: 20px; }
+.import-header { display: grid; grid-template-columns: 72px 1fr 72px; align-items: center; margin: 2px 0 3px; }
+.import-header h1 { margin: 0; color: var(--green); font-family: Georgia, serif; font-size: 1.5rem; text-align: center; }
+.import-header .text-button { justify-self: start; min-width: 0; padding: 0; }
+.import-intro { display: grid; gap: 7px; }
+.import-intro h2 { margin: 0; color: var(--green); font-family: Georgia, serif; font-size: 1.8rem; }
+.import-intro p { margin: 0; color: var(--muted); line-height: 1.5; }
+.import-page .error-message { margin: 0; }
+.import-text-field textarea { min-height: 290px; }
+.import-source { display: grid; gap: 14px; padding: 19px; border: 1px solid var(--line); border-radius: 17px; background: rgba(255, 253, 248, .62); }
+.import-source h2 { margin: 0; color: var(--green); font-family: Georgia, serif; font-size: 1.2rem; }
+.import-source h2 small { color: var(--muted); font-family: Inter, ui-rounded, sans-serif; font-size: .74rem; font-weight: 500; }
+.import-review-button { width: 100%; }
 
 .search-panel { display: grid; gap: 14px; margin-bottom: 25px; }
 .search-mode-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin: -9px 0 22px; padding: 4px; border-radius: 14px; background: #e8e7df; }
