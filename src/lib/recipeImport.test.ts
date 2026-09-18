@@ -101,4 +101,99 @@ Toast the bread.`)
       expect.stringContaining('Total time was not used'),
     ]))
   })
+
+  it('removes checkbox-style bullets used by recipe card plugins', () => {
+    const result = parseRecipeText(`Sheet Pan Dinner
+
+INGREDIENTS (4 servings)
+▢ 1½ lbs chicken thighs
+□2 tbsp olive oil
+☐ Salt and pepper
+
+RECIPE INSTRUCTIONS
+▢ Preheat the oven.
+☑ Roast until browned.`)
+
+    expect(result.draft.ingredients.map(({ quantity, unit, name }) => ({ quantity, unit, name }))).toEqual([
+      { quantity: '1½', unit: 'lbs', name: 'chicken thighs' },
+      { quantity: '2', unit: 'tbsp', name: 'olive oil' },
+      { quantity: '', unit: '', name: 'Salt and pepper' },
+    ])
+    expect(result.draft.instructions).toEqual(['Preheat the oven.', 'Roast until browned.'])
+    expect(result.draft.ingredients.every((item) => !/[▢□☐]/.test(item.name))).toBe(true)
+  })
+
+  it('handles the controls, continuations, nutrition block, and step labels in a Good Food-style card', () => {
+    const result = parseRecipeText(`Easy chicken casserole
+Serves 4
+Prep: 5 mins
+Cook: 50 mins
+
+Ingredients
+Nutrition
+Units:
+MetricUS
+• 8 bone-in chicken thighs
+skin pulled off and discarded
+• 400g new potatoes
+halved if large
+• small handful fresh herbs
+chopped
+Nutrition: per serving
+• kcal 368
+• fat 12g
+
+Method
+• step 1
+Brown the chicken well.
+• step 2
+Add the vegetables and simmer.`)
+
+    expect(result.draft.ingredients.map(({ quantity, unit, name }) => ({ quantity, unit, name }))).toEqual([
+      { quantity: '8', unit: '', name: 'bone-in chicken thighs, skin pulled off and discarded' },
+      { quantity: '400', unit: 'g', name: 'new potatoes, halved if large' },
+      { quantity: '', unit: '', name: 'small handful fresh herbs, chopped' },
+    ])
+    expect(result.draft.instructions).toEqual(['Brown the chicken well.', 'Add the vegetables and simmer.'])
+    expect(result.draft).toMatchObject({ prepMinutes: 5, cookMinutes: 50, servings: 4 })
+  })
+
+  it('ignores unit toggles and stops at notes in a printable recipe card', () => {
+    const result = parseRecipeText(`Chocolate Chip Cookies
+
+Prep Time: 15 minutes
+Cook Time: 30 minutes
+Servings: 25
+
+Ingredients
+[Button: US Customary][Button: Metric]
+* ¾ cup rolled oats
+* ½ teaspoon baking powder
+* 1 large egg
+
+Instructions
+* Preheat the oven to 350°F.
+* Mix the dry ingredients.
+
+Notes
+Freeze for up to three months.`)
+
+    expect(result.draft.ingredients).toHaveLength(3)
+    expect(result.draft.ingredients.map((item) => item.name)).toEqual(['rolled oats', 'baking powder', 'large egg'])
+    expect(result.draft.instructions).toEqual(['Preheat the oven to 350°F.', 'Mix the dry ingredients.'])
+  })
+
+  it('recognizes alternate section labels and headings with inline content', () => {
+    const result = parseRecipeText(`Quick dressing
+
+Ingredient Checklist: 3 tbsp olive oil
+1 tbsp vinegar
+
+How to make it
+Step 1: Whisk everything together.
+Step 2 — Season to taste.`)
+
+    expect(result.draft.ingredients.map((item) => item.name)).toEqual(['olive oil', 'vinegar'])
+    expect(result.draft.instructions).toEqual(['Whisk everything together.', 'Season to taste.'])
+  })
 })
