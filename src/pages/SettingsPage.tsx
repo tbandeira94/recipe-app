@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react'
 import { DownloadIcon, UploadIcon } from '../components/Icons'
 import { exportBackup, parseBackup, importBackup } from '../lib/backup'
+import { APP_BUILD_ID } from '../buildInfo'
 
 interface Props { recipeCount: number; onImported: () => Promise<void> }
 
@@ -38,6 +39,6 @@ export function SettingsPage({ recipeCount, onImported }: Props) {
     </section>
     <section className="info-card"><h2>Private by design</h2><p>Everything is stored in this browser using IndexedDB. Nothing is uploaded. Clearing Safari website data or deleting the app can remove it, so keep a backup elsewhere.</p></section>
     <section className="info-card"><h2>Install on iPhone</h2><p>In Safari, tap Share, then <strong>Add to Home Screen</strong>. Open it once online before relying on offline access.</p></section>
-    <p className="version-label">Pantry Book · Backup format v3</p>
+    <p className="version-label">Pantry Book · Build {APP_BUILD_ID} · Backup format v3</p>
   </div>
 }

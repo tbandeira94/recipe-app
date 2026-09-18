@@ -1,4 +1,5 @@
-const CACHE_NAME = 'pantry-book-v2'
+const buildId = new URL(self.location.href).searchParams.get('build') || 'v2'
+const CACHE_NAME = `pantry-book-${buildId}`
 const APP_SHELL = ['./', './index.html', './manifest.webmanifest']
 
 self.addEventListener('install', (event) => {

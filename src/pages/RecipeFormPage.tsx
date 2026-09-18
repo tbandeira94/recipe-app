@@ -41,6 +41,7 @@ const mealLabel = (meal: MealType) => meal[0].toUpperCase() + meal.slice(1)
 
 export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dishTypeSuggestions, tagSuggestions, onCancel, onSave }: Props) {
   const [draft, setDraft] = useState(() => createInitialDraft(recipe, initialDraft))
+  const [editingIngredientId, setEditingIngredientId] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [preparingPhoto, setPreparingPhoto] = useState(false)
   const [error, setError] = useState('')
@@ -48,6 +49,10 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
 
   const updateIngredient = (id: string, field: keyof Ingredient, value: string) => {
     setDraft((current) => ({ ...current, ingredients: current.ingredients.map((item) => item.id === id ? { ...item, [field]: value } : item) }))
+  }
+  const expandIngredientName = (textarea: HTMLTextAreaElement) => {
+    textarea.style.height = 'auto'
+    textarea.style.height = `${Math.max(textarea.scrollHeight, 104)}px`
   }
   const updateStep = (index: number, value: string) => {
     setDraft((current) => ({ ...current, instructions: current.instructions.map((step, stepIndex) => stepIndex === index ? value : step) }))
@@ -110,7 +115,17 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
         {draft.ingredients.map((item) => <div className="ingredient-row" key={item.id}>
           <input aria-label="Quantity" value={item.quantity} onChange={(event) => updateIngredient(item.id, 'quantity', event.target.value)} placeholder="1½" />
           <input aria-label="Unit" value={item.unit} onChange={(event) => updateIngredient(item.id, 'unit', event.target.value)} placeholder="cups" />
-          <input aria-label="Ingredient name" value={item.name} onChange={(event) => updateIngredient(item.id, 'name', event.target.value)} placeholder="flour" />
+          <textarea
+            aria-label="Ingredient name"
+            className={`ingredient-name${editingIngredientId === item.id ? ' is-editing' : ''}`}
+            value={item.name}
+            onClick={(event) => { setEditingIngredientId(item.id); expandIngredientName(event.currentTarget) }}
+            onFocus={(event) => { setEditingIngredientId(item.id); expandIngredientName(event.currentTarget) }}
+            onChange={(event) => { updateIngredient(item.id, 'name', event.target.value); expandIngredientName(event.currentTarget) }}
+            onBlur={(event) => { event.currentTarget.style.height = ''; setEditingIngredientId((current) => current === item.id ? null : current) }}
+            placeholder="flour"
+            rows={1}
+          />
           <button type="button" className="remove-button" aria-label="Remove ingredient" disabled={draft.ingredients.length === 1} onClick={() => setDraft({ ...draft, ingredients: draft.ingredients.filter((ingredient) => ingredient.id !== item.id) })}><CloseIcon size={18} /></button>
         </div>)}
         <button type="button" className="add-row-button" onClick={() => setDraft({ ...draft, ingredients: [...draft.ingredients, emptyIngredient()] })}><PlusIcon size={19} /> Add ingredient</button>
