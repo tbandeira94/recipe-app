@@ -1,4 +1,4 @@
-import type { ExtractedRecipe } from './types'
+import type { ExtractedRecipe, ImageCandidate } from './types'
 
 function attributeValue(attributes: string, name: string): string | undefined {
   const match = attributes.match(new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)'|([^\\s>]+))`, 'i'))
@@ -101,4 +101,32 @@ export function canonicalUrlFromHtml(html: string, responseUrl: string): string 
     }
   }
   return responseUrl
+}
+
+function imageUrls(value: unknown): string[] {
+  if (typeof value === 'string') return [value.trim()].filter(Boolean)
+  if (Array.isArray(value)) return value.flatMap(imageUrls)
+  if (!value || typeof value !== 'object') return []
+  const item = value as Record<string, unknown>
+  return [item.url, item.contentUrl].flatMap(imageUrls)
+}
+
+function resolvedHttpUrl(value: string, baseUrl: string): string | undefined {
+  try {
+    const url = new URL(value, baseUrl)
+    return /^https?:$/i.test(url.protocol) ? url.toString() : undefined
+  } catch { return undefined }
+}
+
+/** Returns ordered image candidates without downloading them. */
+export function recipeImageCandidates(recipe: Record<string, unknown>, html: string, pageUrl: string): ImageCandidate[] {
+  const candidates: ImageCandidate[] = []
+  const add = (url: string, source: ImageCandidate['source']) => {
+    const resolved = resolvedHttpUrl(url, pageUrl)
+    if (resolved && !candidates.some((candidate) => candidate.url === resolved)) candidates.push({ url: resolved, source })
+  }
+  imageUrls(recipe.image).forEach((url) => add(url, 'recipe-image'))
+  const socialImage = metaContent(html, 'og:image')
+  if (socialImage) add(socialImage, 'og-image')
+  return candidates
 }

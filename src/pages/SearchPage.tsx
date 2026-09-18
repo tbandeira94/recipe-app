@@ -4,6 +4,7 @@ import type { MatchMode } from '../lib/search'
 import { searchRecipes, searchRecipesByIngredients } from '../lib/search'
 import { CloseIcon, PlusIcon, SearchIcon } from '../components/Icons'
 import { RecipeCard } from '../components/RecipeCard'
+import { ProgressiveList } from '../components/ProgressiveList'
 
 type SearchMode = 'recipes' | 'ingredients'
 
@@ -54,7 +55,7 @@ export function SearchPage({ recipes, onOpen, onToggleFavorite }: Props) {
         <div><SearchIcon size={31} /></div><h2>Search your whole recipe book</h2><p>Try a recipe name, tag, dish type, meal, or ingredient.</p>
         {suggestions.length > 0 && <div className="search-suggestions">{suggestions.map((suggestion) => <button key={suggestion} onClick={() => setQuery(suggestion)}>{suggestion}</button>)}</div>}
       </section>
-      : results.length ? <section className="recipe-list"><p className="count-label">{results.length} {results.length === 1 ? 'result' : 'results'}</p>{results.map(({ recipe }) => <RecipeCard key={recipe.id} recipe={recipe} onOpen={() => onOpen(recipe.id)} onToggleFavorite={() => onToggleFavorite(recipe)} />)}</section>
+      : results.length ? <ProgressiveList key={`recipes:${query}`} items={results} itemKey={({ recipe }) => recipe.id} renderItem={({ recipe }) => <RecipeCard recipe={recipe} onOpen={() => onOpen(recipe.id)} onToggleFavorite={() => onToggleFavorite(recipe)} />} label={results.length === 1 ? 'result' : 'results'} />
       : <section className="status-card"><strong>No recipes found</strong><span>Try fewer words or a different tag.</span></section>}
     </> : <>
       <section className="search-panel">
@@ -63,7 +64,7 @@ export function SearchPage({ recipes, onOpen, onToggleFavorite }: Props) {
         {ingredients.length > 0 && <label className="mode-select">Show recipes that match <select value={matchMode} onChange={(event) => setMatchMode(event.target.value as MatchMode)}><option value="all">all ingredients</option><option value="any">any ingredient</option></select></label>}
       </section>
       {!ingredients.length ? <section className="search-placeholder"><div><SearchIcon size={31} /></div><h2>What’s in your kitchen?</h2><p>Add two or three ingredients to find recipes you can make.</p></section>
-        : ingredientResults.length ? <section className="recipe-list"><p className="count-label">{ingredientResults.length} {ingredientResults.length === 1 ? 'match' : 'matches'}</p>{ingredientResults.map((result) => <RecipeCard key={result.recipe.id} recipe={result.recipe} onOpen={() => onOpen(result.recipe.id)} onToggleFavorite={() => onToggleFavorite(result.recipe)} matchLabel={`${result.matchedIngredients.length}/${ingredients.length} matched`} />)}</section>
+        : ingredientResults.length ? <ProgressiveList key={`ingredients:${matchMode}:${ingredients.join('|')}`} items={ingredientResults} itemKey={({ recipe }) => recipe.id} renderItem={(result) => <RecipeCard recipe={result.recipe} onOpen={() => onOpen(result.recipe.id)} onToggleFavorite={() => onToggleFavorite(result.recipe)} matchLabel={`${result.matchedIngredients.length}/${ingredients.length} matched`} />} label={ingredientResults.length === 1 ? 'match' : 'matches'} />
         : <section className="status-card"><strong>No matches yet</strong><span>Try “any ingredient” or remove one of your choices.</span></section>}
     </>}
   </div>

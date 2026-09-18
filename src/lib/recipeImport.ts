@@ -13,7 +13,7 @@ const servingLabels = ['servings?', 'yield', 'serves?']
 
 function emptyDraft(source: RecipeImportSource): RecipeDraft {
   return {
-    name: '', description: '', photoDataUrl: null, ingredients: [], instructions: [], prepMinutes: null, cookMinutes: null,
+    name: '', description: '', ingredients: [], instructions: [], prepMinutes: null, cookMinutes: null,
     servings: null, dishTypes: [], mealTypes: [], tags: [], favorite: false, notes: '',
     sourceName: source.sourceName.trim(), sourceUrl: source.sourceUrl.trim(),
   }

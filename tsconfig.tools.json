@@ -7,5 +7,5 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["scripts/recipe-import/**/*.ts", "src/lib/backupFormat.ts", "src/lib/ingredientParser.ts", "src/lib/normalize.ts", "src/lib/recipeModel.ts", "src/types.ts"]
+  "include": ["scripts/recipe-import/**/*.ts", "src/lib/backupFormat.ts", "src/lib/ingredientParser.ts", "src/lib/normalize.ts", "src/lib/photoConfig.ts", "src/lib/recipeModel.ts", "src/lib/zip.ts", "src/types.ts"]
 }

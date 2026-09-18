@@ -1,14 +1,25 @@
-# Pantry Book backup format
+# Pantry Book archive format
 
-Pantry Book exports UTF-8 JSON with this top-level shape:
+Pantry Book exports a standard, uncompressed ZIP file with the extension `.pantrybook`. JPEGs are stored without further compression so the archive can be assembled from browser `Blob`s without building a Base64 copy of the library.
+
+Every archive contains `manifest.json`:
 
 ```json
 {
-  "format": "pantry-book-backup",
-  "version": 3,
-  "exportedAt": "2026-09-17T12:00:00.000Z",
-  "recipes": []
+  "format": "pantry-book-archive",
+  "version": 1,
+  "exportedAt": "2026-09-18T12:00:00.000Z",
+  "recipes": [],
+  "photos": [
+    {
+      "recipeId": "example-id",
+      "full": "photos/000001-full.jpg",
+      "thumbnail": "photos/000001-thumbnail.jpg"
+    }
+  ]
 }
 ```
 
-`recipes` contains complete recipe objects as stored in IndexedDB, including dish types, meal types, tags, favorite status, and an optional compressed JPEG `photoDataUrl`. Version 3 imports replace the local recipe collection only after the whole file and every recipe have passed validation. Version 2 backups remain supported and restore recipes without photos. Older backup versions are rejected.
+`recipes` contains the photo-free records stored in IndexedDB. A recipe with `hasPhoto: true` must have exactly one corresponding item in `photos`; recipes without photos must not have one. Each photo mapping points to a 1200px JPEG and a 256px thumbnail.
+
+Restore accepts only format version 1. It rejects duplicate IDs, unexpected or missing entries, non-canonical image paths, unsupported ZIP features, and CRC failures before replacing the local collection in one IndexedDB transaction.

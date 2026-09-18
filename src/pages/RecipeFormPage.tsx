@@ -1,8 +1,9 @@
 import { useRef, useState, type ChangeEvent, type FormEvent, type KeyboardEvent, type PointerEvent } from 'react'
-import { MEAL_TYPES, type ImportWarning, type Ingredient, type MealType, type Recipe, type RecipeDraft } from '../types'
+import { MEAL_TYPES, type ImportWarning, type Ingredient, type MealType, type PhotoUpdate, type Recipe, type RecipeDraft } from '../types'
 import { ArrowLeftIcon, CloseIcon, DragHandleIcon, PlusIcon } from '../components/Icons'
 import { ChipEditor } from '../components/ChipEditor'
 import { prepareRecipePhoto } from '../lib/photo'
+import { BlobImage, RecipeImage } from '../components/RecipeImage'
 
 interface Props {
   recipe?: Recipe
@@ -11,14 +12,14 @@ interface Props {
   dishTypeSuggestions: string[]
   tagSuggestions: string[]
   onCancel: () => void
-  onSave: (draft: RecipeDraft) => Promise<void>
+  onSave: (draft: RecipeDraft, photoUpdate: PhotoUpdate) => Promise<void>
 }
 
 const emptyIngredient = (): Ingredient => ({ id: crypto.randomUUID(), name: '', normalizedName: '', quantity: '', unit: '' })
 
 function createInitialDraft(recipe?: Recipe, importedDraft?: RecipeDraft): RecipeDraft {
   return recipe ? {
-    name: recipe.name, description: recipe.description, photoDataUrl: recipe.photoDataUrl, ingredients: recipe.ingredients.map((item) => ({ ...item })),
+    name: recipe.name, description: recipe.description, ingredients: recipe.ingredients.map((item) => ({ ...item })),
     instructions: [...recipe.instructions], prepMinutes: recipe.prepMinutes, cookMinutes: recipe.cookMinutes,
     servings: recipe.servings, dishTypes: [...recipe.dishTypes], mealTypes: [...recipe.mealTypes], tags: [...recipe.tags], favorite: recipe.favorite,
     notes: recipe.notes, sourceName: recipe.sourceName, sourceUrl: recipe.sourceUrl,
@@ -27,7 +28,7 @@ function createInitialDraft(recipe?: Recipe, importedDraft?: RecipeDraft): Recip
     ingredients: importedDraft.ingredients.map((item) => ({ ...item })),
     instructions: [...importedDraft.instructions], dishTypes: [...importedDraft.dishTypes], mealTypes: [...importedDraft.mealTypes], tags: [...importedDraft.tags],
   } : {
-    name: '', description: '', photoDataUrl: null, ingredients: [emptyIngredient()], instructions: [''], prepMinutes: null, cookMinutes: null,
+    name: '', description: '', ingredients: [emptyIngredient()], instructions: [''], prepMinutes: null, cookMinutes: null,
     servings: null, dishTypes: [], mealTypes: [], tags: [], favorite: false, notes: '', sourceName: '', sourceUrl: '',
   }
 }
@@ -46,6 +47,7 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
   const [editingIngredientId, setEditingIngredientId] = useState<string | null>(null)
   const [saving, setSaving] = useState(false)
   const [preparingPhoto, setPreparingPhoto] = useState(false)
+  const [photoUpdate, setPhotoUpdate] = useState<PhotoUpdate>({ kind: 'keep' })
   const [error, setError] = useState('')
   const photoInput = useRef<HTMLInputElement>(null)
   const ingredientList = useRef<HTMLDivElement>(null)
@@ -131,7 +133,7 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
     if (!draft.ingredients.some((item) => item.name.trim())) { setError('Add at least one ingredient.'); return }
     if (!draft.instructions.some((step) => step.trim())) { setError('Add at least one instruction.'); return }
     setSaving(true); setError('')
-    try { await onSave(draft) }
+    try { await onSave(draft, photoUpdate) }
     catch (cause) { setError(cause instanceof Error ? cause.message : 'Could not save this recipe.'); setSaving(false) }
   }
   const selectPhoto = async (event: ChangeEvent<HTMLInputElement>) => {
@@ -140,12 +142,14 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
     if (!file) return
     setPreparingPhoto(true); setError('')
     try {
-      const photoDataUrl = await prepareRecipePhoto(file)
-      setDraft((current) => ({ ...current, photoDataUrl }))
+      const photo = await prepareRecipePhoto(file)
+      setPhotoUpdate({ kind: 'replace', photo })
     }
     catch { setError('That photo couldn’t be opened. Try a different image.') }
     finally { setPreparingPhoto(false) }
   }
+
+  const hasPhoto = photoUpdate.kind === 'replace' || (photoUpdate.kind === 'keep' && Boolean(recipe?.hasPhoto))
 
   return (
     <form className="page form-page" onSubmit={submit}>
@@ -167,10 +171,12 @@ export function RecipeFormPage({ recipe, initialDraft, importWarnings = [], dish
         <div className="photo-field">
           <span className="field-label">Photo <small>optional</small></span>
           <div className="photo-control">
-            {draft.photoDataUrl ? <img src={draft.photoDataUrl} alt="" className="photo-form-preview" /> : <div className="photo-placeholder" aria-hidden="true">{draft.name.slice(0, 1).toUpperCase() || 'R'}</div>}
+            {photoUpdate.kind === 'replace' ? <BlobImage blob={photoUpdate.photo.full} className="photo-form-preview" />
+              : hasPhoto && recipe ? <RecipeImage recipeId={recipe.id} variant="full" eager className="photo-form-preview" placeholder={<span className="photo-placeholder" aria-hidden="true">{draft.name.slice(0, 1).toUpperCase() || 'R'}</span>} />
+              : <div className="photo-placeholder" aria-hidden="true">{draft.name.slice(0, 1).toUpperCase() || 'R'}</div>}
             <div className="photo-actions">
-              <button type="button" className="secondary-button" disabled={preparingPhoto} onClick={() => photoInput.current?.click()}>{preparingPhoto ? 'Preparing photo…' : draft.photoDataUrl ? 'Replace photo' : 'Add photo'}</button>
-              {draft.photoDataUrl && <button type="button" className="photo-remove-button" disabled={preparingPhoto} onClick={() => setDraft({ ...draft, photoDataUrl: null })}>Remove photo</button>}
+              <button type="button" className="secondary-button" disabled={preparingPhoto} onClick={() => photoInput.current?.click()}>{preparingPhoto ? 'Preparing photo…' : hasPhoto ? 'Replace photo' : 'Add photo'}</button>
+              {hasPhoto && <button type="button" className="photo-remove-button" disabled={preparingPhoto} onClick={() => setPhotoUpdate({ kind: 'remove' })}>Remove photo</button>}
             </div>
           </div>
         </div>

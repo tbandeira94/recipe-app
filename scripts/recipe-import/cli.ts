@@ -1,8 +1,9 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
-import { createBackupFromRecipes, parseBackup } from '../../src/lib/backupFormat'
+import { extname, resolve } from 'node:path'
+import { createRecipeArchive, readRecipeArchive } from './archive'
 import { convertUrls } from './batch'
-import { markdownReport } from './report'
+import { markdownReport, resultsForReport } from './report'
+import type { BatchResult } from './types'
 
 interface Options {
   command?: 'url' | 'batch'
@@ -14,10 +15,10 @@ interface Options {
 
 function usage(): string {
   return `Usage:
-  pnpm recipe:import -- url <recipe-url> [--out <directory>] [--base-backup <backup.json>]
-  pnpm recipe:import -- batch <urls.txt> [--out <directory>] [--base-backup <backup.json>] [--concurrency 3]
+  pnpm recipe:import -- url <recipe-url> [--out <directory>] [--base-backup <backup.pantrybook>]
+  pnpm recipe:import -- batch <urls.txt> [--out <directory>] [--base-backup <backup.pantrybook>] [--concurrency 3]
 
-The generated backup is compatible with Pantry Book restore. Restore replaces the app's collection, so pass an exported current backup with --base-backup when merging into an existing library.`
+The generated .pantrybook archive can be restored by the Pantry Book PWA.`
 }
 
 function parseArgs(args: string[]): Options {
@@ -48,17 +49,24 @@ async function run(): Promise<void> {
   const options = parseArgs(process.argv.slice(2))
   const urls = await inputUrls(options)
   if (!urls.length) throw new Error('No URLs were found in the input file.')
-  const base = options.baseBackup ? parseBackup(await readFile(resolve(options.baseBackup), 'utf8')) : undefined
-  const results = await convertUrls(urls, options.concurrency, base?.recipes)
-  const imported = results.filter((result) => result.status === 'success').map((result) => result.recipe)
-  const backup = createBackupFromRecipes([...(base?.recipes ?? []), ...imported])
-  // The same parser used by the PWA is the final output compatibility gate.
-  const validated = parseBackup(JSON.stringify(backup))
+  let base: Awaited<ReturnType<typeof readRecipeArchive>> | undefined
+  if (options.baseBackup) {
+    if (extname(options.baseBackup).toLocaleLowerCase() !== '.pantrybook') throw new Error('--base-backup must be a .pantrybook archive.')
+    const bytes = await readFile(resolve(options.baseBackup))
+    base = await readRecipeArchive(new Blob([new Uint8Array(bytes)]))
+  }
+  const results = await convertUrls(urls, options.concurrency, base?.manifest.recipes)
+  const successes = results.filter((result): result is Extract<BatchResult, { status: 'success' }> => result.status === 'success')
+  const imported = successes.map((result) => result.recipe)
+  const recipes = [...(base?.manifest.recipes ?? []), ...imported]
+  const photos = new Map(base?.photos ?? [])
+  for (const result of successes) if (result.photo) photos.set(result.recipe.id, result.photo)
+  const { archive, manifest } = await createRecipeArchive(recipes, photos)
   const out = resolve(options.out)
   await mkdir(resolve(out, 'raw'), { recursive: true })
-  const backupName = 'pantry-book-import.json'
-  await writeFile(resolve(out, backupName), `${JSON.stringify(validated, null, 2)}\n`, 'utf8')
-  await writeFile(resolve(out, 'report.json'), `${JSON.stringify({ generatedAt: backup.exportedAt, baseBackup: options.baseBackup ?? null, results }, null, 2)}\n`, 'utf8')
+  const backupName = 'pantry-book-import.pantrybook'
+  await writeFile(resolve(out, backupName), new Uint8Array(await archive.arrayBuffer()))
+  await writeFile(resolve(out, 'report.json'), `${JSON.stringify({ generatedAt: manifest.exportedAt, baseBackup: options.baseBackup ?? null, results: resultsForReport(results) }, null, 2)}\n`, 'utf8')
   await writeFile(resolve(out, 'review.md'), markdownReport(results, backupName), 'utf8')
   await Promise.all(results.map(async (result, index) => {
     if (result.status === 'success' && (result.warnings.length || result.unmappedFields.length)) {
@@ -67,8 +75,8 @@ async function run(): Promise<void> {
   }))
   const failures = results.filter((result) => result.status === 'failure').length
   const duplicates = results.filter((result) => result.status === 'duplicate').length
-  console.log(`Created ${resolve(out, backupName)} with ${validated.recipes.length} recipe(s): ${imported.length} imported, ${duplicates} duplicate(s) skipped, ${failures} failure(s).`)
-  if (!base) console.warn('Warning: Pantry Book restore replaces its full library. Use --base-backup with an exported backup before restoring into a nonempty library.')
+  console.log(`Created ${resolve(out, backupName)} with ${manifest.recipes.length} recipe(s): ${imported.length} imported, ${duplicates} duplicate(s) skipped, ${failures} failure(s).`)
+  if (!base) console.warn('Warning: Pantry Book restore replaces its full library. Use --base-backup with an exported archive before restoring into a nonempty library.')
   if (failures) process.exitCode = 2
 }
 

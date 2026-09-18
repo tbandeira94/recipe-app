@@ -1,6 +1,7 @@
 import { MEAL_TYPES, type MealType, type Recipe } from '../types'
 import { GridIcon, PlusIcon, SearchIcon, StarIcon, TagIcon } from '../components/Icons'
 import { RecipeCard } from '../components/RecipeCard'
+import { ProgressiveList } from '../components/ProgressiveList'
 
 export type LibraryView = 'all' | 'types' | 'tags' | 'favorites'
 export type LibrarySelection = { kind: 'dishType' | 'meal' | 'tag'; value: string; label: string } | null
@@ -55,10 +56,14 @@ export function RecipesPage({ recipes, loading, libraryState, onLibraryStateChan
     return recipes
   })()
 
-  const renderRecipeList = (emptyMessage: string, emptyDetail = 'Add details while editing a recipe, or choose another view.') => filteredRecipes.length ? <section className="recipe-list" aria-label="Recipes">
-    <p className="count-label">{filteredRecipes.length} {filteredRecipes.length === 1 ? 'recipe' : 'recipes'}</p>
-    {filteredRecipes.map((recipe) => <RecipeCard key={recipe.id} recipe={recipe} onOpen={() => onOpen(recipe.id)} onToggleFavorite={() => onToggleFavorite(recipe)} />)}
-  </section> : <div className="status-card"><strong>{emptyMessage}</strong><span>{emptyDetail}</span></div>
+  const listKey = `${libraryState.view}:${libraryState.selection?.kind ?? ''}:${libraryState.selection?.value ?? ''}:${libraryState.mealFilter ?? ''}`
+  const renderRecipeList = (emptyMessage: string, emptyDetail = 'Add details while editing a recipe, or choose another view.') => filteredRecipes.length ? <ProgressiveList
+    key={listKey}
+    items={filteredRecipes}
+    itemKey={(recipe) => recipe.id}
+    renderItem={(recipe) => <RecipeCard recipe={recipe} onOpen={() => onOpen(recipe.id)} onToggleFavorite={() => onToggleFavorite(recipe)} />}
+    label={filteredRecipes.length === 1 ? 'recipe' : 'recipes'}
+  /> : <div className="status-card"><strong>{emptyMessage}</strong><span>{emptyDetail}</span></div>
 
   return <div className="page">
     <header className="page-header home-header">

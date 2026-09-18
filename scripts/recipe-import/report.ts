@@ -1,5 +1,16 @@
 import type { BatchResult } from './types'
 
+export type ReportResult = Omit<Extract<BatchResult, { status: 'success' }>, 'photo'> | Exclude<BatchResult, { status: 'success' }>
+
+export function resultsForReport(results: BatchResult[]): ReportResult[] {
+  return results.map((result) => {
+    if (result.status !== 'success') return result
+    const { photo, ...reportResult } = result
+    void photo
+    return reportResult
+  })
+}
+
 export function markdownReport(results: BatchResult[], outputName: string): string {
   const successes = results.filter((result) => result.status === 'success')
   const duplicates = results.filter((result) => result.status === 'duplicate')
@@ -9,6 +20,8 @@ export function markdownReport(results: BatchResult[], outputName: string): stri
     lines.push('## Imported recipes', '')
     for (const result of successes) {
       lines.push(`- **${result.recipe.name}** — ${result.inputUrl}`)
+      if (result.image.status === 'downloaded') lines.push(`  - Photo imported from: ${result.image.sourceUrl}`)
+      else lines.push(`  - Photo unavailable: ${result.image.reason}`)
       for (const warning of result.warnings) lines.push(`  - Warning: ${warning.message}`)
       if (result.unmappedFields.length) lines.push(`  - Unmapped structured fields retained in raw artifact: ${result.unmappedFields.join(', ')}`)
     }

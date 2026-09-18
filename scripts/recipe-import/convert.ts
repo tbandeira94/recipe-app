@@ -55,7 +55,7 @@ function flattenInstructions(value: unknown, section = ''): string[] {
   return flattenInstructions(item.itemListElement ?? item.text ?? item.name, section)
 }
 
-export function convertRecipe(source: Record<string, unknown>, sourceUrl: string, fallbackSourceName = ''): ConvertedRecipe {
+export function convertRecipe(source: Record<string, unknown>, sourceUrl: string, fallbackSourceName = '', hasPhoto = false): ConvertedRecipe {
   const warnings: ConversionWarning[] = []
   const ingredientsRaw = strings(source.recipeIngredient)
   const ingredientWarnings: { field: 'ingredients'; index?: number; message: string }[] = []
@@ -69,7 +69,7 @@ export function convertRecipe(source: Record<string, unknown>, sourceUrl: string
   const meals = [...new Set([...categories, ...tagValues].map((value) => value.toLocaleLowerCase()).filter((value): value is MealType => MEAL_TYPES.includes(value as MealType)))]
   const sourceName = personName(source.publisher) || fallbackSourceName || personName(source.author)
   const draft: RecipeDraft = {
-    name: text(source.name), description: text(source.description), photoDataUrl: null, ingredients, instructions,
+    name: text(source.name), description: text(source.description), ingredients, instructions,
     prepMinutes: durationMinutes(source.prepTime, 'prep time', warnings), cookMinutes: durationMinutes(source.cookTime, 'cook time', warnings),
     servings: servings(source.recipeYield, warnings), dishTypes: categories, mealTypes: meals, tags: tagValues, favorite: false, notes: '', sourceName, sourceUrl,
   }
@@ -77,7 +77,6 @@ export function convertRecipe(source: Record<string, unknown>, sourceUrl: string
   if (!draft.ingredients.length) warnings.push({ code: 'missing-ingredients', message: 'No ingredients were found.' })
   if (!draft.instructions.length) warnings.push({ code: 'missing-instructions', message: 'No instructions were found.' })
   const unmappedFields = Object.keys(source).filter((key) => !SUPPORTED_FIELDS.has(key))
-  if (source.image) unmappedFields.push('image')
   if (source.totalTime) unmappedFields.push('totalTime')
-  return { recipe: materializeRecipe(draft), warnings, unmappedFields: [...new Set(unmappedFields)].sort() }
+  return { recipe: materializeRecipe(draft, { hasPhoto }), warnings, unmappedFields: [...new Set(unmappedFields)].sort() }
 }

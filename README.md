@@ -28,7 +28,7 @@ public/
   sw.js              Offline cache and update lifecycle
 scripts/
   generate_icons.py  Rebuilds PNG icons (requires Pillow)
-BACKUP_FORMAT.md      Stable JSON backup contract
+BACKUP_FORMAT.md      Binary archive backup contract
 ```
 
 ## Install and run
@@ -44,15 +44,15 @@ Open the local URL printed by Vite. To test on an iPhone, the phone must be able
 
 ## Local storage
 
-`src/lib/database.ts` is the only module that knows IndexedDB details. Database `pantry-book`, schema version `2`, contains a `recipes` object store keyed by recipe ID. Each recipe is stored as one document, including structured ingredients, dish types, meal occasions, tags, and favorite status. This fits IndexedDB better than simulating relational tables and makes an entire recipe atomic to save and export.
+`src/lib/database.ts` is the only module that knows IndexedDB details. Database `pantry-book`, schema version `3`, stores photo-free recipe documents in `recipes` and JPEG `Blob`s in `recipePhotos`. Each photo has a 1200px full image and a 256px thumbnail. The recipe list loads only metadata at startup; image blobs are fetched as cards approach the viewport.
 
-The store also contains indexes for modification date, tags, dish types, meal types, and normalized ingredient names. `ingredientNames` is derived from the ingredient objects and indexed with `multiEntry`, leaving room for more targeted ingredient queries later. During this early development phase, the version-2 upgrade recreates the recipe store rather than carrying migration code.
+The recipe store also contains indexes for modification date, tags, dish types, meal types, and normalized ingredient names. `ingredientNames` is derived from the ingredient objects and indexed with `multiEntry`, leaving room for more targeted ingredient queries later. During this early development phase, the version-3 upgrade recreates storage rather than carrying migration code.
 
 ## Backup and restore
 
-Settings can export all recipes as formatted, human-readable JSON. On devices supporting file sharing through the Web Share API—including modern iOS Safari—the app opens the system share sheet. Other browsers download `recipes-backup-YYYY-MM-DD.json`.
+Settings prepares a `.pantrybook` ZIP archive containing a JSON manifest and binary JPEG files, then enables a second explicit save action. That fresh click downloads `recipes-backup-YYYY-MM-DD.pantrybook` on desktop and opens the system share sheet on supported mobile devices.
 
-Import parses and validates the complete file, format identifier, version, timestamps, recipes, and duplicate IDs before asking for confirmation. Only then does it clear and replace the recipe store in one read/write transaction. A failed transaction is rolled back by IndexedDB. The format is documented in [BACKUP_FORMAT.md](./BACKUP_FORMAT.md).
+Import validates the archive directory, manifest, recipes, expected image entries, and CRCs before replacing both stores in one read/write transaction. A failed transaction is rolled back by IndexedDB. Old JSON backups are intentionally unsupported. The format is documented in [BACKUP_FORMAT.md](./BACKUP_FORMAT.md).
 
 ## Local recipe webpage importer
 
@@ -66,10 +66,10 @@ pnpm recipe:import -- url "https://example.com/recipe" --out recipe-import-outpu
 pnpm recipe:import -- batch saved-recipe-urls.txt --out recipe-import-output
 
 # Merge into an exported current backup before restoring it in the PWA
-pnpm recipe:import -- batch saved-recipe-urls.txt --base-backup recipes-backup.json --out recipe-import-output
+pnpm recipe:import -- batch saved-recipe-urls.txt --base-backup recipes-backup.pantrybook --out recipe-import-output
 ```
 
-The output directory contains `pantry-book-import.json`, `review.md`, `report.json`, and raw JSON-LD artifacts for recipes needing review. The generated JSON is run through the same backup parser as PWA restore. **Restore replaces the whole collection**, so use `--base-backup` when adding to an existing library.
+The output directory contains `pantry-book-import.pantrybook`, `review.md`, `report.json`, and raw JSON-LD artifacts for recipes needing review. The generated archive is validated against the same manifest and store-only ZIP rules used by PWA restore. **Restore replaces the whole collection**, so use `--base-backup` when adding to an existing library. Only current `.pantrybook` archives are accepted as base backups; legacy JSON backups are not supported.
 
 ## Quality checks and production build
 

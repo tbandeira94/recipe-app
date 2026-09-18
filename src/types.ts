@@ -13,7 +13,7 @@ export interface Recipe {
   id: string
   name: string
   description: string
-  photoDataUrl: string | null
+  hasPhoto: boolean
   ingredients: Ingredient[]
   ingredientNames: string[]
   instructions: string[]
@@ -31,7 +31,19 @@ export interface Recipe {
   modifiedAt: string
 }
 
-export type RecipeDraft = Omit<Recipe, 'id' | 'createdAt' | 'modifiedAt' | 'ingredientNames'>
+export type RecipeDraft = Omit<Recipe, 'id' | 'createdAt' | 'modifiedAt' | 'ingredientNames' | 'hasPhoto'>
+
+export interface PreparedRecipePhoto {
+  full: Blob
+  thumbnail: Blob
+}
+
+export type PhotoUpdate =
+  | { kind: 'keep' }
+  | { kind: 'remove' }
+  | { kind: 'replace'; photo: PreparedRecipePhoto }
+
+export type RecipePhotoVariant = 'full' | 'thumbnail'
 
 export type ImportWarningField = 'name' | 'description' | 'ingredients' | 'instructions' | 'details'
 
@@ -51,9 +63,16 @@ export interface RecipeImportResult {
   warnings: ImportWarning[]
 }
 
-export interface RecipeBackup {
-  format: 'pantry-book-backup'
-  version: 3
+export interface RecipeArchivePhoto {
+  recipeId: string
+  full: string
+  thumbnail: string
+}
+
+export interface RecipeArchiveManifest {
+  format: 'pantry-book-archive'
+  version: 1
   exportedAt: string
   recipes: Recipe[]
+  photos: RecipeArchivePhoto[]
 }

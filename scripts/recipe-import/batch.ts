@@ -1,9 +1,10 @@
-import type { Recipe } from '../../src/types'
-import { canonicalUrlFromHtml, extractRecipe } from './extract'
+import { canonicalUrlFromHtml, extractRecipe, recipeImageCandidates } from './extract'
 import { convertRecipe } from './convert'
 import { normalizedUrlKey } from './deduplicate'
 import { fetchRecipePage } from './fetchPage'
+import { downloadRecipePhoto } from './photo'
 import type { BatchResult } from './types'
+import type { Recipe } from '../../src/types'
 
 function hostname(url: string): string {
   try { return new URL(url).hostname.replace(/^www\./, '') } catch { return '' }
@@ -17,13 +18,15 @@ export async function convertUrl(inputUrl: string): Promise<BatchResult> {
   const sourceUrl = canonicalUrlFromHtml(page.html, page.responseUrl)
   const extraction = extractRecipe(page.html)
   if (!extraction.extracted) return { status: 'failure', inputUrl, stage: 'extract', message: extraction.warnings[0] ?? 'No Recipe JSON-LD or usable HTML recipe metadata was found.' }
-  const converted = convertRecipe(extraction.extracted.recipe, sourceUrl, hostname(sourceUrl))
+  const photo = await downloadRecipePhoto(recipeImageCandidates(extraction.extracted.recipe, page.html, page.responseUrl))
+  const converted = convertRecipe(extraction.extracted.recipe, sourceUrl, hostname(sourceUrl), photo.photo !== null)
+  if (photo.result.status === 'unavailable') converted.warnings.push({ code: 'image-unavailable', message: `Recipe image was not imported: ${photo.result.reason}` })
   converted.warnings.unshift(...extraction.warnings.map((message) => ({ code: 'extraction-warning', message })))
   if (!converted.recipe.name || !converted.recipe.ingredients.length || !converted.recipe.instructions.length) {
     return { status: 'failure', inputUrl, stage: 'convert', message: converted.warnings.map((warning) => warning.message).join(' ') || 'The page did not contain a complete recipe.' }
   }
   if (extraction.extracted.candidateCount > 1) converted.warnings.push({ code: 'multiple-recipe-candidates', message: `Selected the most complete Recipe JSON-LD object from ${extraction.extracted.candidateCount} candidates.` })
-  return { status: 'success', inputUrl, sourceUrl, recipe: converted.recipe, warnings: converted.warnings, unmappedFields: converted.unmappedFields, raw: extraction.extracted.recipe }
+  return { status: 'success', inputUrl, sourceUrl, recipe: converted.recipe, photo: photo.photo, image: photo.result, warnings: converted.warnings, unmappedFields: converted.unmappedFields, raw: extraction.extracted.recipe }
 }
 
 export async function convertUrls(urls: string[], concurrency: number, existingRecipes: Recipe[] = []): Promise<BatchResult[]> {

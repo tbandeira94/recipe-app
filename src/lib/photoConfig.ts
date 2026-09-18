@@ -1,0 +1,5 @@
+export const PHOTO_MAX_INPUT_BYTES = 25 * 1024 * 1024
+export const PHOTO_OUTPUT_SIZE = 1200
+export const PHOTO_JPEG_QUALITY = 82
+export const PHOTO_THUMBNAIL_SIZE = 256
+export const PHOTO_THUMBNAIL_JPEG_QUALITY = 72

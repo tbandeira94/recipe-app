@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { readFile } from 'node:fs/promises'
-import { parseBackup } from '../../src/lib/backupFormat'
+import { parseArchiveManifest } from '../../src/lib/backupFormat'
 import { convertRecipe } from './convert'
 import { extractRecipe } from './extract'
 
@@ -16,9 +16,9 @@ describe('recipe webpage conversion', () => {
       { quantity: '', unit: '', name: 'Salt and pepper to taste' },
     ])
     expect(converted.recipe.instructions).toEqual(['Make the sauce — Whisk the oil.', 'Serve warm.'])
-    expect(converted.recipe).toMatchObject({ prepMinutes: 15, cookMinutes: 60, servings: 4, sourceName: 'Example Kitchen', sourceUrl: 'https://example.test/pasta', photoDataUrl: null })
-    expect(converted.unmappedFields).toContain('image')
-    expect(() => parseBackup(JSON.stringify({ format: 'pantry-book-backup', version: 3, exportedAt: new Date().toISOString(), recipes: [converted.recipe] }))).not.toThrow()
+    expect(converted.recipe).toMatchObject({ prepMinutes: 15, cookMinutes: 60, servings: 4, sourceName: 'Example Kitchen', sourceUrl: 'https://example.test/pasta', hasPhoto: false })
+    expect(converted.unmappedFields).not.toContain('image')
+    expect(() => parseArchiveManifest(JSON.stringify({ format: 'pantry-book-archive', version: 1, exportedAt: new Date().toISOString(), recipes: [converted.recipe], photos: [] }))).not.toThrow()
   })
 
   it('keeps malformed JSON-LD from blocking another usable recipe block', () => {

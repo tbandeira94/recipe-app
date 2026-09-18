@@ -1,5 +1,6 @@
 import type { Recipe } from '../types'
 import { ArrowLeftIcon, ClockIcon, MoreIcon, StarIcon, TrashIcon } from '../components/Icons'
+import { RecipeImage } from '../components/RecipeImage'
 
 interface Props {
   recipe: Recipe
@@ -23,7 +24,7 @@ export function RecipeDetailsPage({ recipe, onBack, onEdit, onToggleFavorite, on
         </div>
       </header>
       <section className="detail-hero">
-        {recipe.photoDataUrl ? <div className="detail-photo"><img src={recipe.photoDataUrl} alt="" /></div> : <div className="recipe-mark" aria-hidden="true">{recipe.name.slice(0, 1).toUpperCase()}</div>}
+        {recipe.hasPhoto ? <div className="detail-photo"><RecipeImage recipeId={recipe.id} variant="full" eager className="detail-photo-image" placeholder={<span className="detail-photo-placeholder" aria-hidden="true">{recipe.name.slice(0, 1).toUpperCase()}</span>} /></div> : <div className="recipe-mark" aria-hidden="true">{recipe.name.slice(0, 1).toUpperCase()}</div>}
         <h1>{recipe.name}</h1>
         {recipe.description && <p>{recipe.description}</p>}
         <div className="detail-stats">

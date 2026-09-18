@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import type { ImportWarning, Recipe, RecipeDraft } from './types'
+import type { ImportWarning, PhotoUpdate, Recipe, RecipeDraft } from './types'
 import { deleteRecipe, getRecipes, saveRecipe, setRecipeFavorite } from './lib/database'
 import { Layout, type Tab } from './components/Layout'
 import { RecipesPage, type LibraryState } from './pages/RecipesPage'
@@ -9,6 +9,7 @@ import { RecipeDetailsPage } from './pages/RecipeDetailsPage'
 import { RecipeFormPage } from './pages/RecipeFormPage'
 import { RecipeImportPage, type RecipeImportInput } from './pages/RecipeImportPage'
 import { parseRecipeText } from './lib/recipeImport'
+import { requestPersistentStorage } from './lib/storage'
 
 type View =
   | { kind: 'tab'; tab: Tab }
@@ -79,7 +80,7 @@ export default function App() {
         setView({ kind: 'form', from: view.from, initialDraft: result.draft, importWarnings: result.warnings })
       } catch (error) { setImportError(error instanceof Error ? error.message : 'Couldn’t read that recipe text.') }
     }} />
-    if (view.kind === 'form' && (!view.id || selected)) return <RecipeFormPage recipe={selected} initialDraft={view.initialDraft} importWarnings={view.importWarnings} dishTypeSuggestions={dishTypeSuggestions} tagSuggestions={tagSuggestions} onCancel={() => setView(view.id ? { kind: 'details', id: view.id, from: view.from } : view.initialDraft ? { kind: 'import', from: view.from } : { kind: 'tab', tab: view.from })} onSave={async (draft: RecipeDraft) => { const saved = await saveRecipe(draft, selected); await refresh(); if (view.initialDraft) setImportInput(emptyImportInput()); setView({ kind: 'details', id: saved.id, from: view.from }) }} />
+    if (view.kind === 'form' && (!view.id || selected)) return <RecipeFormPage recipe={selected} initialDraft={view.initialDraft} importWarnings={view.importWarnings} dishTypeSuggestions={dishTypeSuggestions} tagSuggestions={tagSuggestions} onCancel={() => setView(view.id ? { kind: 'details', id: view.id, from: view.from } : view.initialDraft ? { kind: 'import', from: view.from } : { kind: 'tab', tab: view.from })} onSave={async (draft: RecipeDraft, photoUpdate: PhotoUpdate) => { const saved = await saveRecipe(draft, photoUpdate, selected); if (photoUpdate.kind === 'replace') void requestPersistentStorage(); await refresh(); if (view.initialDraft) setImportInput(emptyImportInput()); setView({ kind: 'details', id: saved.id, from: view.from }) }} />
     if (view.kind !== 'tab') return <div className="page"><div className="status-card">Opening recipe…</div></div>
     if (view.tab === 'search') return <SearchPage recipes={recipes} onOpen={(id) => openRecipe(id, 'search')} onToggleFavorite={(recipe) => void toggleFavorite(recipe)} />
     if (view.tab === 'settings') return <SettingsPage recipeCount={recipes.length} onImported={refresh} />

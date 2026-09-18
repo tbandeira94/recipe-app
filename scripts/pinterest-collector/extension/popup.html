@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pinterest URL Collector</title>
+    <style>
+      body { box-sizing: border-box; font: 14px system-ui, sans-serif; margin: 0; padding: 16px; width: 300px; }
+      label, input, button { display: block; width: 100%; }
+      input { box-sizing: border-box; margin: 6px 0 12px; padding: 7px; }
+      button { margin: 8px 0; padding: 8px; }
+      #status { line-height: 1.35; margin-top: 12px; white-space: pre-wrap; }
+      .quiet { color: #666; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <strong>Pantry Book URL Collector</strong>
+    <p class="quiet">Open the Pinterest board first. This only collects destination URLs; it never imports recipes.</p>
+    <label for="limit">Pins to test (leave blank for the entire board)</label>
+    <input id="limit" type="number" min="1" placeholder="25">
+    <button id="start">Collect / resume</button>
+    <button id="download" disabled>Download URL list</button>
+    <button id="reset">Discard saved progress</button>
+    <div id="status">Checking saved progress…</div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -5,6 +5,7 @@ export interface RecipeMaterializationOptions {
   id?: string
   now?: string
   idFactory?: () => string
+  hasPhoto?: boolean
 }
 
 /**
@@ -30,7 +31,7 @@ export function materializeRecipe(draft: RecipeDraft, options: RecipeMaterializa
     id: options.id ?? idFactory(),
     name: draft.name.trim(),
     description: draft.description.trim(),
-    photoDataUrl: draft.photoDataUrl ?? null,
+    hasPhoto: options.hasPhoto ?? false,
     ingredients,
     ingredientNames: uniqueStrings(ingredients.map((ingredient) => ingredient.normalizedName)),
     instructions: draft.instructions.map((step) => step.trim()).filter(Boolean),
