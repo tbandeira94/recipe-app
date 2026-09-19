@@ -1,0 +1,154 @@
+{
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  "name": "Linguine alla Caprese (A Fresh and Easy Tomato Sauce)",
+  "description": "Whether you prefer semolina pasta or whole wheat pasta, this Caprese sauce is a fresh and quick sauce that will provide the family with a quick meal.  It is so easy to make and with minimal ingredients.  All you need is fresh garlic, fresh tomatoes, fresh basil and olive oil. ",
+  "author": {
+    "@type": "Person",
+    "name": "Mia"
+  },
+  "keywords": "Fresh tomato sauce recipe, easy Italian recipes, Easy dinner recipe, Healthy pasta recipe, Fresh and easy sauce recipe",
+  "image": [
+    "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=225%2C225&ssl=1",
+    "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=195%2C195&ssl=1",
+    "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=180%2C180&ssl=1",
+    "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=1200%2C1200&ssl=1"
+  ],
+  "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/",
+  "recipeIngredient": [
+    "2 Cups (350 grams) Diced Fresh Roma Tomatoes",
+    "1/4 teaspoon (1.5 grams) Kosher Salt",
+    "1/4 teaspoon (&lt;1 gram) Black Pepper",
+    "1/4 teaspoon (&lt;1 gram) Calabrese Pepper or Red Pepper Flakes",
+    "2 teaspoons (6 grams) Fresh Garlic, minced",
+    "3 tablespoons Fresh Basil, chiffonade (shredded into ribbons) or torn into pieces",
+    "4 teaspoons (18 grams) Olive Oil",
+    "1 Cup (230 grams) Chicken or Vegetable Broth or water",
+    "6 ounces Linguine Pasta or Whole Wheat Capellini"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "text": "Begin to heat a large pot of water over high heat.  Once the water becomes warm, turn off the heat and add a tablespoon of table salt to the water, stirring to dissolve.  Turn the heat source back to high and bring the water to a full boil.",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-1"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Meanwhile, heat a large skillet over medium heat.  Once the pan is heated, add the oil to the hot pan.",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-2"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "When the oil begins to shimmer, add the garlic and stir, cooking for 1 minute.  ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-3"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Just as the garlic begins to take on a hint of gold, add the tomatoes and stir well to combine.  Add the black pepper, salt and red pepper flakes, if using.  Mix to combine into the sauce and continue to cook for an additional 3 1/2 to 4 minutes. ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-4"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add the broth and 1 tablespoon of fresh basil.  Continue to cook for an additional 3 minutes.  At this point , the sauce is finished.  Turn off the heat until pasta begins to cook.   ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-5"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Once the pasta water has begun to boil, add the pasta to the water and cook per package instructions. (If using whole wheat capellini, the pasta will cook for about 5-6 minutes.  If using linguine pasta made from semolina, the pasta will cook for about 10 minutes.)",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-6"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "While the pasta is cooking, return the heat back to low under the skillet of sauce. ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-7"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Remove the pasta from water and immediately add to the simmering sauce.  (I prefer to use tongs to scoop the pasta into the sauce pan.  However, you can drain the water from the pasta and then add it to the pan of sauce.  But be sure to reserve a cup of the water in case the sauce become too dry.)  ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-8"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Cook the pasta in the sauce for about 2 1/2 to 3 minutes. As the pasta continues to cook in the sauce, the liquid in the tomato sauce will begin to tighten up and thicken from the pasta starch.  However, it is possible that the pasta and sauce may become too dry if too much liquid has evaporated from the pan during cooking.  This is easily remedied.  Simply add a few tablespoons at a time, of the reserved pasta water until the desired thickness is achieved.   ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-9"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Remove from heat and sprinkle with additional basil, reserving some of the basil to garnish each plate.  ",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-10"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Serve and garnish plates with additional basil if desired.",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-11"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "This dish is best served with Romano cheese.",
+      "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-12"
+    }
+  ],
+  "prepTime": "PT10M",
+  "cookTime": "PT-497159H2M17S",
+  "totalTime": "PT25M",
+  "recipeYield": [
+    "4",
+    "4 1/2 Cups /3 servings"
+  ],
+  "recipeCategory": "Pasta Entree",
+  "cookingMethod": "Stove Top",
+  "recipeCuisine": "Italian",
+  "suitableForDiet": "LowFatDiet",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "reviewCount": "3",
+    "ratingValue": "5"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Riss"
+      },
+      "datePublished": "2021-11-10",
+      "reviewBody": "This pasta dish is delicious. I added a little more garlic, salt, and pepper but otherwise it was full of flavor! Will definitely make again."
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Joan"
+      },
+      "datePublished": "2022-09-22",
+      "reviewBody": "Delicious!  Fresh!  Easy to make!"
+    },
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Ann Cox"
+      },
+      "datePublished": "2025-05-18",
+      "reviewBody": "I loved this recipe! It’s now going to be way up at the top of my rotation! It’s so fresh, light, healthy and yummy!"
+    }
+  ],
+  "datePublished": "2020-10-11",
+  "@id": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#recipe",
+  "isPartOf": {
+    "@id": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#article"
+  },
+  "mainEntityOfPage": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/"
+}

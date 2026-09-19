@@ -22,6 +22,7 @@ export interface StagingLibrary {
   readonly name: string
   readonly lockToken: string
   database: IDBDatabase
+  photoBatchesSinceCheckpoint: number
 }
 
 let databasePromise: Promise<IDBDatabase> | undefined
@@ -316,7 +317,7 @@ export async function createStagingLibrary(): Promise<StagingLibrary> {
   const lockToken = acquireRestoreLock(name)
   try {
     registerDatabaseName(name)
-    return { name, lockToken, database: await openNamedDatabase(name) }
+    return { name, lockToken, database: await openNamedDatabase(name), photoBatchesSinceCheckpoint: 0 }
   }
   catch (error) {
     releaseRestoreLock(lockToken)
@@ -339,6 +340,7 @@ async function runStagingBatch(staging: StagingLibrary, queue: (transaction: IDB
       }
       staging.database.close()
       staging.database = await openNamedDatabase(staging.name)
+      staging.photoBatchesSinceCheckpoint = 0
     }
   }
 }
@@ -355,6 +357,18 @@ export async function stagePhotoBatch(staging: StagingLibrary, photos: RecipePho
     const store = transaction.objectStore(PHOTO_STORE)
     photos.forEach((photo) => store.put(photo))
   })
+  staging.photoBatchesSinceCheckpoint += 1
+  if (staging.photoBatchesSinceCheckpoint >= 5) await checkpointStagingLibrary(staging)
+}
+
+export async function checkpointStagingLibrary(staging: StagingLibrary): Promise<void> {
+  if (staging.photoBatchesSinceCheckpoint === 0) return
+  refreshRestoreLock(staging)
+  staging.database.close()
+  await new Promise<void>((resolve) => setTimeout(resolve, 50))
+  staging.database = await openNamedDatabase(staging.name)
+  staging.photoBatchesSinceCheckpoint = 0
+  refreshRestoreLock(staging)
 }
 
 export async function verifyStagingLibrary(staging: StagingLibrary, expectedRecipes: number, expectedPhotos: number): Promise<void> {

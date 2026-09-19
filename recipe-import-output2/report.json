@@ -1,0 +1,980 @@
+{
+  "generatedAt": "2026-09-18T22:57:45.133Z",
+  "baseBackup": null,
+  "results": [
+    {
+      "status": "failure",
+      "inputUrl": "https://www.instagram.com/reel/C0hpP8YPGZk/?utm_source=ig_web_copy_link&igshid=MTdlMjRlYjZlMQ==",
+      "stage": "convert",
+      "message": "No Recipe JSON-LD was found; used limited HTML metadata/itemprop fallback. No ingredients were found. No instructions were found. Recipe image was not imported: image request returned HTTP 403"
+    },
+    {
+      "status": "failure",
+      "inputUrl": "https://payhip.com/b/h4LuB?utm_source=Pinterest&utm_medium=organic",
+      "stage": "fetch",
+      "message": "HTTP 403 Forbidden"
+    },
+    {
+      "status": "success",
+      "inputUrl": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/?utm_source=Pinterest&utm_medium=organic",
+      "sourceUrl": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/",
+      "recipe": {
+        "name": "Linguine alla Caprese (A Fresh and Easy Tomato Sauce)",
+        "description": "Whether you prefer semolina pasta or whole wheat pasta, this Caprese sauce is a fresh and quick sauce that will provide the family with a quick meal. It is so easy to make and with minimal ingredients. All you need is fresh garlic, fresh tomatoes, fresh basil and olive oil.",
+        "ingredients": [
+          {
+            "id": "32062e5c-d735-4604-9419-a17c555b4098",
+            "quantity": "2",
+            "unit": "Cups",
+            "name": "(350 grams) Diced Fresh Roma Tomatoes",
+            "normalizedName": "(350 grams) diced fresh roma tomatoes"
+          },
+          {
+            "id": "1cc33fbc-8cfa-460d-b1f5-ac95a844cdf4",
+            "quantity": "1/4",
+            "unit": "teaspoon",
+            "name": "(1.5 grams) Kosher Salt",
+            "normalizedName": "(1.5 grams) kosher salt"
+          },
+          {
+            "id": "e6ea789e-16b3-4865-bf68-716e2d9d6e54",
+            "quantity": "1/4",
+            "unit": "teaspoon",
+            "name": "(&lt;1 gram) Black Pepper",
+            "normalizedName": "(&lt;1 gram) black pepper"
+          },
+          {
+            "id": "83807d7e-de8d-4463-bb95-70ea557163dc",
+            "quantity": "1/4",
+            "unit": "teaspoon",
+            "name": "(&lt;1 gram) Calabrese Pepper or Red Pepper Flakes",
+            "normalizedName": "(&lt;1 gram) calabrese pepper or red pepper flakes"
+          },
+          {
+            "id": "2cd17eed-d50d-4db4-90c1-009f0bc91cdf",
+            "quantity": "2",
+            "unit": "teaspoons",
+            "name": "(6 grams) Fresh Garlic, minced",
+            "normalizedName": "(6 grams) fresh garlic, minced"
+          },
+          {
+            "id": "b266131b-0b49-4c61-9179-a73c70997c50",
+            "quantity": "3",
+            "unit": "tablespoons",
+            "name": "Fresh Basil, chiffonade (shredded into ribbons) or torn into pieces",
+            "normalizedName": "fresh basil, chiffonade (shredded into ribbons) or torn into pieces"
+          },
+          {
+            "id": "771df9fc-a212-483d-81e8-682f741c4c75",
+            "quantity": "4",
+            "unit": "teaspoons",
+            "name": "(18 grams) Olive Oil",
+            "normalizedName": "(18 grams) olive oil"
+          },
+          {
+            "id": "d0e70aa6-83eb-4e5e-9b38-5cfec6068b49",
+            "quantity": "1",
+            "unit": "Cup",
+            "name": "(230 grams) Chicken or Vegetable Broth or water",
+            "normalizedName": "(230 grams) chicken or vegetable broth or water"
+          },
+          {
+            "id": "eaac2233-e2d1-44cd-8c8d-cd67584c45fa",
+            "quantity": "6",
+            "unit": "ounces",
+            "name": "Linguine Pasta or Whole Wheat Capellini",
+            "normalizedName": "linguine pasta or whole wheat capellini"
+          }
+        ],
+        "instructions": [
+          "Begin to heat a large pot of water over high heat.  Once the water becomes warm, turn off the heat and add a tablespoon of table salt to the water, stirring to dissolve.  Turn the heat source back to high and bring the water to a full boil.",
+          "Meanwhile, heat a large skillet over medium heat.  Once the pan is heated, add the oil to the hot pan.",
+          "When the oil begins to shimmer, add the garlic and stir, cooking for 1 minute.",
+          "Just as the garlic begins to take on a hint of gold, add the tomatoes and stir well to combine.  Add the black pepper, salt and red pepper flakes, if using.  Mix to combine into the sauce and continue to cook for an additional 3 1/2 to 4 minutes.",
+          "Add the broth and 1 tablespoon of fresh basil.  Continue to cook for an additional 3 minutes.  At this point , the sauce is finished.  Turn off the heat until pasta begins to cook.",
+          "Once the pasta water has begun to boil, add the pasta to the water and cook per package instructions. (If using whole wheat capellini, the pasta will cook for about 5-6 minutes.  If using linguine pasta made from semolina, the pasta will cook for about 10 minutes.)",
+          "While the pasta is cooking, return the heat back to low under the skillet of sauce.",
+          "Remove the pasta from water and immediately add to the simmering sauce.  (I prefer to use tongs to scoop the pasta into the sauce pan.  However, you can drain the water from the pasta and then add it to the pan of sauce.  But be sure to reserve a cup of the water in case the sauce become too dry.)",
+          "Cook the pasta in the sauce for about 2 1/2 to 3 minutes. As the pasta continues to cook in the sauce, the liquid in the tomato sauce will begin to tighten up and thicken from the pasta starch.  However, it is possible that the pasta and sauce may become too dry if too much liquid has evaporated from the pan during cooking.  This is easily remedied.  Simply add a few tablespoons at a time, of the reserved pasta water until the desired thickness is achieved.",
+          "Remove from heat and sprinkle with additional basil, reserving some of the basil to garnish each plate.",
+          "Serve and garnish plates with additional basil if desired.",
+          "This dish is best served with Romano cheese."
+        ],
+        "prepMinutes": 10,
+        "cookMinutes": null,
+        "servings": 4,
+        "dishTypes": [
+          "Pasta Entree"
+        ],
+        "mealTypes": [],
+        "tags": [
+          "Italian",
+          "Fresh tomato sauce recipe",
+          "easy Italian recipes",
+          "Easy dinner recipe",
+          "Healthy pasta recipe",
+          "Fresh and easy sauce recipe"
+        ],
+        "favorite": false,
+        "notes": "",
+        "sourceName": "miascucina.com",
+        "sourceUrl": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/",
+        "id": "10f7950f-ce75-4025-8cbe-b4799eeacd92",
+        "hasPhoto": true,
+        "ingredientNames": [
+          "(350 grams) diced fresh roma tomatoes",
+          "(1.5 grams) kosher salt",
+          "(&lt;1 gram) black pepper",
+          "(&lt;1 gram) calabrese pepper or red pepper flakes",
+          "(6 grams) fresh garlic, minced",
+          "fresh basil, chiffonade (shredded into ribbons) or torn into pieces",
+          "(18 grams) olive oil",
+          "(230 grams) chicken or vegetable broth or water",
+          "linguine pasta or whole wheat capellini"
+        ],
+        "createdAt": "2026-09-18T22:57:45.133Z",
+        "modifiedAt": "2026-09-18T22:57:45.133Z"
+      },
+      "image": {
+        "status": "downloaded",
+        "sourceUrl": "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=225%2C225&ssl=1",
+        "source": "recipe-image",
+        "attemptedUrls": [
+          "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=225%2C225&ssl=1"
+        ]
+      },
+      "warnings": [
+        {
+          "code": "unreadable-duration",
+          "message": "Could not read cook time duration “PT-497159H2M17S”."
+        }
+      ],
+      "unmappedFields": [
+        "aggregateRating",
+        "cookingMethod",
+        "datePublished",
+        "isPartOf",
+        "mainEntityOfPage",
+        "review",
+        "suitableForDiet",
+        "totalTime"
+      ],
+      "raw": {
+        "@context": "https://schema.org/",
+        "@type": "Recipe",
+        "name": "Linguine alla Caprese (A Fresh and Easy Tomato Sauce)",
+        "description": "Whether you prefer semolina pasta or whole wheat pasta, this Caprese sauce is a fresh and quick sauce that will provide the family with a quick meal.  It is so easy to make and with minimal ingredients.  All you need is fresh garlic, fresh tomatoes, fresh basil and olive oil. ",
+        "author": {
+          "@type": "Person",
+          "name": "Mia"
+        },
+        "keywords": "Fresh tomato sauce recipe, easy Italian recipes, Easy dinner recipe, Healthy pasta recipe, Fresh and easy sauce recipe",
+        "image": [
+          "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=225%2C225&ssl=1",
+          "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=195%2C195&ssl=1",
+          "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=180%2C180&ssl=1",
+          "https://i0.wp.com/www.miascucina.com/wp-content/uploads/2020/10/Linguine-alla-Caprese-Sqre-1.jpeg?fit=1200%2C1200&ssl=1"
+        ],
+        "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/",
+        "recipeIngredient": [
+          "2 Cups (350 grams) Diced Fresh Roma Tomatoes",
+          "1/4 teaspoon (1.5 grams) Kosher Salt",
+          "1/4 teaspoon (&lt;1 gram) Black Pepper",
+          "1/4 teaspoon (&lt;1 gram) Calabrese Pepper or Red Pepper Flakes",
+          "2 teaspoons (6 grams) Fresh Garlic, minced",
+          "3 tablespoons Fresh Basil, chiffonade (shredded into ribbons) or torn into pieces",
+          "4 teaspoons (18 grams) Olive Oil",
+          "1 Cup (230 grams) Chicken or Vegetable Broth or water",
+          "6 ounces Linguine Pasta or Whole Wheat Capellini"
+        ],
+        "recipeInstructions": [
+          {
+            "@type": "HowToStep",
+            "text": "Begin to heat a large pot of water over high heat.  Once the water becomes warm, turn off the heat and add a tablespoon of table salt to the water, stirring to dissolve.  Turn the heat source back to high and bring the water to a full boil.",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-1"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Meanwhile, heat a large skillet over medium heat.  Once the pan is heated, add the oil to the hot pan.",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-2"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "When the oil begins to shimmer, add the garlic and stir, cooking for 1 minute.  ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-3"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Just as the garlic begins to take on a hint of gold, add the tomatoes and stir well to combine.  Add the black pepper, salt and red pepper flakes, if using.  Mix to combine into the sauce and continue to cook for an additional 3 1/2 to 4 minutes. ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-4"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add the broth and 1 tablespoon of fresh basil.  Continue to cook for an additional 3 minutes.  At this point , the sauce is finished.  Turn off the heat until pasta begins to cook.   ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-5"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Once the pasta water has begun to boil, add the pasta to the water and cook per package instructions. (If using whole wheat capellini, the pasta will cook for about 5-6 minutes.  If using linguine pasta made from semolina, the pasta will cook for about 10 minutes.)",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-6"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "While the pasta is cooking, return the heat back to low under the skillet of sauce. ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-7"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Remove the pasta from water and immediately add to the simmering sauce.  (I prefer to use tongs to scoop the pasta into the sauce pan.  However, you can drain the water from the pasta and then add it to the pan of sauce.  But be sure to reserve a cup of the water in case the sauce become too dry.)  ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-8"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Cook the pasta in the sauce for about 2 1/2 to 3 minutes. As the pasta continues to cook in the sauce, the liquid in the tomato sauce will begin to tighten up and thicken from the pasta starch.  However, it is possible that the pasta and sauce may become too dry if too much liquid has evaporated from the pan during cooking.  This is easily remedied.  Simply add a few tablespoons at a time, of the reserved pasta water until the desired thickness is achieved.   ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-9"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Remove from heat and sprinkle with additional basil, reserving some of the basil to garnish each plate.  ",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-10"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Serve and garnish plates with additional basil if desired.",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-11"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "This dish is best served with Romano cheese.",
+            "url": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#instruction-step-12"
+          }
+        ],
+        "prepTime": "PT10M",
+        "cookTime": "PT-497159H2M17S",
+        "totalTime": "PT25M",
+        "recipeYield": [
+          "4",
+          "4 1/2 Cups /3 servings"
+        ],
+        "recipeCategory": "Pasta Entree",
+        "cookingMethod": "Stove Top",
+        "recipeCuisine": "Italian",
+        "suitableForDiet": "LowFatDiet",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "reviewCount": "3",
+          "ratingValue": "5"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Riss"
+            },
+            "datePublished": "2021-11-10",
+            "reviewBody": "This pasta dish is delicious. I added a little more garlic, salt, and pepper but otherwise it was full of flavor! Will definitely make again."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Joan"
+            },
+            "datePublished": "2022-09-22",
+            "reviewBody": "Delicious!  Fresh!  Easy to make!"
+          },
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "author": {
+              "@type": "Person",
+              "name": "Ann Cox"
+            },
+            "datePublished": "2025-05-18",
+            "reviewBody": "I loved this recipe! It’s now going to be way up at the top of my rotation! It’s so fresh, light, healthy and yummy!"
+          }
+        ],
+        "datePublished": "2020-10-11",
+        "@id": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#recipe",
+        "isPartOf": {
+          "@id": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/#article"
+        },
+        "mainEntityOfPage": "https://www.miascucina.com/linguine-alla-caprese-a-fresh-and-easy-tomato-sauce/"
+      }
+    },
+    {
+      "status": "success",
+      "inputUrl": "https://thecollegehousewife.com/creamy-lemon-pasta?utm_source=Pinterest&utm_medium=organic",
+      "sourceUrl": "https://everydayelizabeth.com/creamy-lemon-pasta",
+      "recipe": {
+        "name": "Creamy Lemon Pasta",
+        "description": "This&nbsp;Creamy Lemon Pasta&nbsp;is a quick and easy&nbsp;weeknight dinner&nbsp;that tastes like a special occasion! Each piece of pasta is coated in a&nbsp;bright and zesty lemon sauce&nbsp;that’s&nbsp;silky smooth. Full of cracked&nbsp;black pepper and parmigiano, one bite of this creamy sauce is like taking a trip to sunny Italy!",
+        "ingredients": [
+          {
+            "id": "7ea5e24d-c9cd-49ff-ab60-ed341c1ceeba",
+            "quantity": "8",
+            "unit": "oz",
+            "name": "fresh pasta",
+            "normalizedName": "fresh pasta"
+          },
+          {
+            "id": "1c8e5cda-3a0b-4866-9f97-94c11306eb08",
+            "quantity": "2",
+            "unit": "tbsp",
+            "name": "freshly cracked black pepper",
+            "normalizedName": "freshly cracked black pepper"
+          },
+          {
+            "id": "26057ded-7baa-48f8-b35b-872de4021e2f",
+            "quantity": "2",
+            "unit": "tbsp",
+            "name": "butter",
+            "normalizedName": "butter"
+          },
+          {
+            "id": "79f3df15-9615-478a-af8e-7a4b672439eb",
+            "quantity": "½",
+            "unit": "tbsp",
+            "name": "flour",
+            "normalizedName": "flour"
+          },
+          {
+            "id": "39e36937-ba70-4c44-9fed-06693d5d4838",
+            "quantity": "½",
+            "unit": "cup",
+            "name": "chicken broth",
+            "normalizedName": "chicken broth"
+          },
+          {
+            "id": "c9b8e35d-008b-4894-afb8-d904fe1ee5b9",
+            "quantity": "1",
+            "unit": "",
+            "name": "lemon zested and juiced (seeds removed)",
+            "normalizedName": "lemon zested and juiced (seeds removed)"
+          },
+          {
+            "id": "f653b5f5-0059-4d87-9e10-9ba3f117866e",
+            "quantity": "¾",
+            "unit": "cup",
+            "name": "heavy whipping cream",
+            "normalizedName": "heavy whipping cream"
+          },
+          {
+            "id": "94906754-de76-4b63-a5e7-c727c7afbfa3",
+            "quantity": "½",
+            "unit": "cup",
+            "name": "freshly fine grated parmesan reggiano cheese",
+            "normalizedName": "freshly fine grated parmesan reggiano cheese"
+          },
+          {
+            "id": "cfe2423e-3c9d-455e-bdc5-bbd123952d5d",
+            "quantity": "",
+            "unit": "",
+            "name": "Garnish:&nbsp;cracked black pepper (extra lemon zest, extra cheese)",
+            "normalizedName": "garnish:&nbsp;cracked black pepper (extra lemon zest, extra cheese)"
+          }
+        ],
+        "instructions": [
+          "Bring a large pot of salted water to a boil.&nbsp;",
+          "Add black pepper to the dry skillet and heat on medium-high heat. Cook for 1-2 mins or until very fragrant. Add the butter to a skillet and stir around. Once it melts, sprinkle the flour in and cook for 1-2 minutes, whisking frequently.&nbsp;",
+          "Add in the broth and let the mixture come to a low simmer. Whisk in cream and cook it for a few minutes until the sauce has thickened slightly.&nbsp;",
+          "Add fresh pasta to the boiling water and cook according to package instructions.&nbsp;",
+          "Stir in the parmesan cheese and take the skillet off the heat. Season with salt &amp; pepper to taste.",
+          "Add the drained pasta to the skillet along with lemon zest and juice. Toss until pasta is coated. Add in ¼ cup of pasta water at a time if the sauce becomes too thick.&nbsp;",
+          "Garnish with more parmesan, lemon zest, black pepper and a bit of chopped parsley if desired. Serve immediately."
+        ],
+        "prepMinutes": null,
+        "cookMinutes": 15,
+        "servings": 4,
+        "dishTypes": [
+          "Savory"
+        ],
+        "mealTypes": [],
+        "tags": [
+          "Italian",
+          "creamy lemon pasta",
+          "lemon cacio e pepe"
+        ],
+        "favorite": false,
+        "notes": "",
+        "sourceName": "everydayelizabeth.com",
+        "sourceUrl": "https://everydayelizabeth.com/creamy-lemon-pasta",
+        "id": "b86fd6ad-ae79-4ea1-9ace-acd76c158529",
+        "hasPhoto": true,
+        "ingredientNames": [
+          "fresh pasta",
+          "freshly cracked black pepper",
+          "butter",
+          "flour",
+          "chicken broth",
+          "lemon zested and juiced (seeds removed)",
+          "heavy whipping cream",
+          "freshly fine grated parmesan reggiano cheese",
+          "garnish:&nbsp;cracked black pepper (extra lemon zest, extra cheese)"
+        ],
+        "createdAt": "2026-09-18T22:57:40.719Z",
+        "modifiedAt": "2026-09-18T22:57:40.719Z"
+      },
+      "image": {
+        "status": "downloaded",
+        "sourceUrl": "https://everydayelizabeth.com/wp-content/uploads/2024/08/Lemon-Pasta-39-scaled.jpg",
+        "source": "recipe-image",
+        "attemptedUrls": [
+          "https://everydayelizabeth.com/wp-content/uploads/2024/08/Lemon-Pasta-39-scaled.jpg"
+        ]
+      },
+      "warnings": [],
+      "unmappedFields": [
+        "aggregateRating",
+        "datePublished",
+        "isPartOf",
+        "mainEntityOfPage",
+        "nutrition",
+        "review",
+        "totalTime"
+      ],
+      "raw": {
+        "@type": "Recipe",
+        "name": "Creamy Lemon Pasta",
+        "author": {
+          "@id": "https://everydayelizabeth.com/#/schema/person/3e2c4495e6539381e8b0229eedf7f0fe"
+        },
+        "description": "This&nbsp;Creamy Lemon Pasta&nbsp;is a quick and easy&nbsp;weeknight dinner&nbsp;that tastes like a special occasion! Each piece of pasta is coated in a&nbsp;bright and zesty lemon sauce&nbsp;that’s&nbsp;silky smooth. Full of cracked&nbsp;black pepper and parmigiano, one bite of this creamy sauce is like taking a trip to sunny Italy!",
+        "datePublished": "2024-10-03T13:49:53+00:00",
+        "image": [
+          "https://everydayelizabeth.com/wp-content/uploads/2024/08/Lemon-Pasta-39-scaled.jpg"
+        ],
+        "recipeYield": [
+          "4",
+          "4 servings"
+        ],
+        "cookTime": "PT15M",
+        "totalTime": "PT15M",
+        "recipeIngredient": [
+          "8 oz fresh pasta",
+          "2 tbsp freshly cracked black pepper",
+          "2 tbsp butter",
+          "½ tbsp flour",
+          "½ cup chicken broth",
+          "1  lemon zested and juiced (seeds removed)",
+          "¾ cup heavy whipping cream",
+          "½ cup freshly fine grated parmesan reggiano cheese",
+          "Garnish:&nbsp;cracked black pepper (extra lemon zest, extra cheese)"
+        ],
+        "recipeInstructions": [
+          {
+            "@type": "HowToStep",
+            "text": "Bring a large pot of salted water to a boil.&nbsp;",
+            "name": "Bring a large pot of salted water to a boil.&nbsp;",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-0"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add black pepper to the dry skillet and heat on medium-high heat. Cook for 1-2 mins or until very fragrant. Add the butter to a skillet and stir around. Once it melts, sprinkle the flour in and cook for 1-2 minutes, whisking frequently.&nbsp;",
+            "name": "Add black pepper to the dry skillet and heat on medium-high heat. Cook for 1-2 mins or until very fragrant. Add the butter to a skillet and stir around. Once it melts, sprinkle the flour in and cook for 1-2 minutes, whisking frequently.&nbsp;",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-1"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add in the broth and let the mixture come to a low simmer. Whisk in cream and cook it for a few minutes until the sauce has thickened slightly.&nbsp;",
+            "name": "Add in the broth and let the mixture come to a low simmer. Whisk in cream and cook it for a few minutes until the sauce has thickened slightly.&nbsp;",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-2"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add fresh pasta to the boiling water and cook according to package instructions.&nbsp;",
+            "name": "Add fresh pasta to the boiling water and cook according to package instructions.&nbsp;",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-3"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Stir in the parmesan cheese and take the skillet off the heat. Season with salt &amp; pepper to taste.",
+            "name": "Stir in the parmesan cheese and take the skillet off the heat. Season with salt &amp; pepper to taste.",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-4"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Add the drained pasta to the skillet along with lemon zest and juice. Toss until pasta is coated. Add in ¼ cup of pasta water at a time if the sauce becomes too thick.&nbsp;",
+            "name": "Add the drained pasta to the skillet along with lemon zest and juice. Toss until pasta is coated. Add in ¼ cup of pasta water at a time if the sauce becomes too thick.&nbsp;",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-5"
+          },
+          {
+            "@type": "HowToStep",
+            "text": "Garnish with more parmesan, lemon zest, black pepper and a bit of chopped parsley if desired. Serve immediately.",
+            "name": "Garnish with more parmesan, lemon zest, black pepper and a bit of chopped parsley if desired. Serve immediately.",
+            "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-6"
+          }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "ratingCount": "1",
+          "reviewCount": "1"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": {
+              "@type": "Rating",
+              "ratingValue": "5"
+            },
+            "reviewBody": "This recipe was exactly what I needed for dinner after a busy workday. I ended up adding some spicy Italian sausage and green peas to the dish. The lemon flavour is so pronounced and delightful. I will definitely be adding this to my regular rotation!",
+            "author": {
+              "@type": "Person",
+              "name": "Tamara"
+            },
+            "datePublished": "2025-07-14"
+          }
+        ],
+        "recipeCategory": [
+          "Savory"
+        ],
+        "recipeCuisine": [
+          "Italian"
+        ],
+        "keywords": "creamy lemon pasta, lemon cacio e pepe",
+        "nutrition": {
+          "@type": "NutritionInformation",
+          "calories": "370 kcal",
+          "sugarContent": "1 g",
+          "sodiumContent": "181 mg",
+          "fatContent": "23 g",
+          "saturatedFatContent": "14 g",
+          "transFatContent": "0.2 g",
+          "carbohydrateContent": "33 g",
+          "fiberContent": "0.03 g",
+          "proteinContent": "8 g",
+          "cholesterolContent": "107 mg",
+          "unsaturatedFatContent": "7 g",
+          "servingSize": "1 serving"
+        },
+        "@id": "https://everydayelizabeth.com/creamy-lemon-pasta#recipe",
+        "isPartOf": {
+          "@id": "https://everydayelizabeth.com/creamy-lemon-pasta#article"
+        },
+        "mainEntityOfPage": "https://everydayelizabeth.com/creamy-lemon-pasta"
+      }
+    },
+    {
+      "status": "success",
+      "inputUrl": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/?utm_source=Pinterest&utm_medium=organic",
+      "sourceUrl": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/",
+      "recipe": {
+        "name": "Spicy Yogurt-Marinated Chicken Tandoori with Cilantro Rice (Weeknight-Ready, Big Flavor)",
+        "description": "Spicy yogurt-marinated tandoori-style chicken with fluffy cilantro rice, finished with a quick lemony onion-cilantro salad for crunch.",
+        "ingredients": [
+          {
+            "id": "53a0dace-b580-4dad-ab27-6f056e1c6338",
+            "quantity": "1",
+            "unit": "",
+            "name": "½ pound boneless skinless chicken thigh (cut into 2-inch pieces (chicken breast works, but thighs stay juicier under high heat))",
+            "normalizedName": "½ pound boneless skinless chicken thigh (cut into 2-inch pieces (chicken breast works, but thighs stay juicier under high heat))"
+          },
+          {
+            "id": "492962f0-1074-4782-a601-edafec83a7b1",
+            "quantity": "¾",
+            "unit": "cup",
+            "name": "plain whole-milk yogurt (thick yogurt clings best (greek yogurt is great; thin yogurt can be strained for 10 minutes))",
+            "normalizedName": "plain whole-milk yogurt (thick yogurt clings best (greek yogurt is great; thin yogurt can be strained for 10 minutes))"
+          },
+          {
+            "id": "9e92c569-c95f-492b-a531-4d921ac690a8",
+            "quantity": "1",
+            "unit": "tablespoon",
+            "name": "neutral oil (such as avocado or canola (helps the spices bloom and encourages browning))",
+            "normalizedName": "neutral oil (such as avocado or canola (helps the spices bloom and encourages browning))"
+          },
+          {
+            "id": "2f57a9a6-e8e4-495f-bbb2-640533f6abc5",
+            "quantity": "1",
+            "unit": "tablespoon",
+            "name": "lemon juice (fresh is best (lime is a good swap))",
+            "normalizedName": "lemon juice (fresh is best (lime is a good swap))"
+          },
+          {
+            "id": "a2d17a8f-7e0c-48e9-99c8-c71909d2de93",
+            "quantity": "1",
+            "unit": "tablespoon",
+            "name": "ginger (finely grated (or 1 tablespoon ginger paste))",
+            "normalizedName": "ginger (finely grated (or 1 tablespoon ginger paste))"
+          },
+          {
+            "id": "39c2a3b9-b511-464f-8533-04b65f184ea4",
+            "quantity": "3",
+            "unit": "clove",
+            "name": "garlic (finely grated (or 1 1/2 teaspoon garlic paste))",
+            "normalizedName": "garlic (finely grated (or 1 1/2 teaspoon garlic paste))"
+          },
+          {
+            "id": "0a054cd8-2410-4b76-870c-ea9e88e9d947",
+            "quantity": "2",
+            "unit": "teaspoon",
+            "name": "kashmiri red chili powder (for color and mild heat (swap 1 teaspoon paprika + 1/2 teaspoon cayenne for more heat))",
+            "normalizedName": "kashmiri red chili powder (for color and mild heat (swap 1 teaspoon paprika + 1/2 teaspoon cayenne for more heat))"
+          },
+          {
+            "id": "3b20f03c-38ba-4a18-ad8d-0132e22ff017",
+            "quantity": "2",
+            "unit": "teaspoon",
+            "name": "ground cumin (warm and earthy)",
+            "normalizedName": "ground cumin (warm and earthy)"
+          },
+          {
+            "id": "9a7e4803-8867-41ec-bb06-277be59a27b6",
+            "quantity": "2",
+            "unit": "teaspoon",
+            "name": "ground coriander (citrusy and mellow)",
+            "normalizedName": "ground coriander (citrusy and mellow)"
+          },
+          {
+            "id": "82cbd335-beeb-449f-af37-5651c5465f62",
+            "quantity": "1",
+            "unit": "teaspoon",
+            "name": "garam masala (add at the end of mixing so it stays fragrant)",
+            "normalizedName": "garam masala (add at the end of mixing so it stays fragrant)"
+          },
+          {
+            "id": "4abece0e-7357-44eb-9f81-7c80f90ca160",
+            "quantity": "1",
+            "unit": "teaspoon",
+            "name": "smoked paprika (optional but adds a gentle \"tandoor\" illusion in the oven)",
+            "normalizedName": "smoked paprika (optional but adds a gentle \"tandoor\" illusion in the oven)"
+          },
+          {
+            "id": "64197c62-b892-4217-b9a1-b9adb53235fb",
+            "quantity": "½",
+            "unit": "teaspoon",
+            "name": "turmeric (optional for earthy color)",
+            "normalizedName": "turmeric (optional for earthy color)"
+          },
+          {
+            "id": "f8729c4a-06cf-452d-a788-e4b88b78f619",
+            "quantity": "1",
+            "unit": "",
+            "name": "½ teaspoon kosher salt (use 1 teaspoon if using fine salt)",
+            "normalizedName": "½ teaspoon kosher salt (use 1 teaspoon if using fine salt)"
+          },
+          {
+            "id": "77224ddc-2698-451f-a42b-f20879b73891",
+            "quantity": "½",
+            "unit": "teaspoon",
+            "name": "black pepper (freshly ground)",
+            "normalizedName": "black pepper (freshly ground)"
+          },
+          {
+            "id": "1eccae82-f2c7-4129-8e9a-11f92a012506",
+            "quantity": "1",
+            "unit": "",
+            "name": "½ cup basmati rice (rinsed until the water runs mostly clear (jasmine rice also works, but basmati is classic))",
+            "normalizedName": "½ cup basmati rice (rinsed until the water runs mostly clear (jasmine rice also works, but basmati is classic))"
+          },
+          {
+            "id": "22a2ee2d-ba89-4b80-ad07-d63b53de8b6e",
+            "quantity": "2",
+            "unit": "",
+            "name": "¼ cup water (for cooking (use broth for extra savoriness))",
+            "normalizedName": "¼ cup water (for cooking (use broth for extra savoriness))"
+          },
+          {
+            "id": "89674738-241e-437b-9cf0-712010e14181",
+            "quantity": "1",
+            "unit": "tablespoon",
+            "name": "butter (or ghee (olive oil is fine too))",
+            "normalizedName": "butter (or ghee (olive oil is fine too))"
+          },
+          {
+            "id": "c96c8d59-0a0b-4667-a9eb-bb3b0dc59e6c",
+            "quantity": "¾",
+            "unit": "teaspoon",
+            "name": "kosher salt (adjust to taste)",
+            "normalizedName": "kosher salt (adjust to taste)"
+          },
+          {
+            "id": "007c20c0-7145-46ff-8e2b-3562818e3fe5",
+            "quantity": "1",
+            "unit": "cup",
+            "name": "cilantro leaves and tender stems (chopped, plus extra for serving)",
+            "normalizedName": "cilantro leaves and tender stems (chopped, plus extra for serving)"
+          },
+          {
+            "id": "f46a7c19-ef73-4bfc-a04b-1cbd599aca10",
+            "quantity": "1",
+            "unit": "tablespoon",
+            "name": "lemon juice (brightens the rice right at the end)",
+            "normalizedName": "lemon juice (brightens the rice right at the end)"
+          },
+          {
+            "id": "18f02598-5766-4b28-979b-a661b101ceab",
+            "quantity": "½",
+            "unit": "",
+            "name": "red onion (thinly sliced)",
+            "normalizedName": "red onion (thinly sliced)"
+          },
+          {
+            "id": "30c11b93-ea48-493f-b4b1-db8bf5fef63b",
+            "quantity": "1",
+            "unit": "tablespoon",
+            "name": "lemon juice (to lightly \"pickle\" the onion)",
+            "normalizedName": "lemon juice (to lightly \"pickle\" the onion)"
+          },
+          {
+            "id": "bf6a1254-0144-4019-8294-0ac531f582a5",
+            "quantity": "¼",
+            "unit": "teaspoon",
+            "name": "kosher salt (just a pinch)",
+            "normalizedName": "kosher salt (just a pinch)"
+          }
+        ],
+        "instructions": [
+          "Marinate and prep — Heat the oven to 450°F and set a rack in the top third. If you have a wire rack, set it inside a rimmed sheet pan. Lining the pan with foil makes cleanup easier because yogurt marinade likes to leave souvenirs.",
+          "Marinate and prep — In a large bowl, stir together the yogurt, oil, lemon juice, ginger, garlic, kashmiri chili powder, cumin, coriander, garam masala, smoked paprika (if using), turmeric (if using), salt, and black pepper. Taste the marinade (it should be bold and a little salty; it's seasoning a lot of chicken).",
+          "Marinate and prep — Add the chicken thigh pieces and toss until every piece is coated. For the most flavorful chicken tandoori recipe, let it marinate 30 minutes at room temperature or 4 hours in the refrigerator (optional but wonderful). If you marinate longer than 4 hours, the texture can turn a little too soft from the yogurt.",
+          "Marinate and prep — Spread the chicken in a single layer on the rack or directly on the lined sheet pan. Leave a little space between pieces so they roast and char instead of steaming.",
+          "Cook the chicken and rice — Start the rice: add the rinsed basmati rice, water, butter, and salt to a medium saucepan. Bring to a boil over high heat, then immediately reduce to low, cover, and cook for 15 minutes. Turn off the heat and let it steam, covered, for 5 minutes. (Don't peek-steam is doing the work.)",
+          "Cook the chicken and rice — Roast the chicken: put the pan in the oven and roast for 18 minutes. Switch the oven to broil (high) and broil for 2 minutes to deepen the char. Flip the chicken pieces with tongs and broil for 2 minutes more, just until you see browned edges and a few darker spots. The chicken is done when the thickest piece hits 175°F (thighs love a slightly higher finish temperature).",
+          "Cook the chicken and rice — Make the quick onion topping (optional): while the chicken cooks, toss the sliced red onion with lemon juice and salt. Let it sit on the counter to soften and turn lightly tangy.",
+          "Cook the chicken and rice — Finish the cilantro rice: fluff the rice with a fork. Fold in the chopped cilantro and lemon juice. Taste and add a pinch more salt if it needs it. The rice should taste clean and bright next to the smoky-spiced chicken.",
+          "Serve — Serve the tandoori-style chicken over or alongside the cilantro rice. Scatter the quick lemony onion on top if you made it, and add extra cilantro for a fresh bite.",
+          "Serve — If you want a more \"restaurant\" feel, drizzle a spoonful of plain yogurt over the chicken, or stir yogurt with a pinch of salt and extra lemon juice as a quick sauce. This is also a great base for chicken starter recipes: skewer the cooked pieces with red onion and bell pepper and serve with a dip."
+        ],
+        "prepMinutes": 20,
+        "cookMinutes": 25,
+        "servings": 4,
+        "dishTypes": [
+          "Main Dish"
+        ],
+        "mealTypes": [],
+        "tags": [
+          "Indian"
+        ],
+        "favorite": false,
+        "notes": "",
+        "sourceName": "thehungrygoddess.com",
+        "sourceUrl": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/",
+        "id": "ce793dad-4bd6-4d68-b3e2-95a90a8d4bc7",
+        "hasPhoto": true,
+        "ingredientNames": [
+          "½ pound boneless skinless chicken thigh (cut into 2-inch pieces (chicken breast works, but thighs stay juicier under high heat))",
+          "plain whole-milk yogurt (thick yogurt clings best (greek yogurt is great; thin yogurt can be strained for 10 minutes))",
+          "neutral oil (such as avocado or canola (helps the spices bloom and encourages browning))",
+          "lemon juice (fresh is best (lime is a good swap))",
+          "ginger (finely grated (or 1 tablespoon ginger paste))",
+          "garlic (finely grated (or 1 1/2 teaspoon garlic paste))",
+          "kashmiri red chili powder (for color and mild heat (swap 1 teaspoon paprika + 1/2 teaspoon cayenne for more heat))",
+          "ground cumin (warm and earthy)",
+          "ground coriander (citrusy and mellow)",
+          "garam masala (add at the end of mixing so it stays fragrant)",
+          "smoked paprika (optional but adds a gentle \"tandoor\" illusion in the oven)",
+          "turmeric (optional for earthy color)",
+          "½ teaspoon kosher salt (use 1 teaspoon if using fine salt)",
+          "black pepper (freshly ground)",
+          "½ cup basmati rice (rinsed until the water runs mostly clear (jasmine rice also works, but basmati is classic))",
+          "¼ cup water (for cooking (use broth for extra savoriness))",
+          "butter (or ghee (olive oil is fine too))",
+          "kosher salt (adjust to taste)",
+          "cilantro leaves and tender stems (chopped, plus extra for serving)",
+          "lemon juice (brightens the rice right at the end)",
+          "red onion (thinly sliced)",
+          "lemon juice (to lightly \"pickle\" the onion)",
+          "kosher salt (just a pinch)"
+        ],
+        "createdAt": "2026-09-18T22:57:41.006Z",
+        "modifiedAt": "2026-09-18T22:57:41.006Z"
+      },
+      "image": {
+        "status": "downloaded",
+        "sourceUrl": "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice.webp",
+        "source": "recipe-image",
+        "attemptedUrls": [
+          "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice.webp"
+        ]
+      },
+      "warnings": [
+        {
+          "code": "flattened-instruction-sections",
+          "message": "Instruction sections were flattened because Pantry Book stores a single ordered step list."
+        }
+      ],
+      "unmappedFields": [
+        "datePublished",
+        "isPartOf",
+        "mainEntityOfPage",
+        "totalTime"
+      ],
+      "raw": {
+        "@type": "Recipe",
+        "name": "Spicy Yogurt-Marinated Chicken Tandoori with Cilantro Rice (Weeknight-Ready, Big Flavor)",
+        "author": {
+          "@type": "Person",
+          "name": "Sarah Gardner"
+        },
+        "description": "Spicy yogurt-marinated tandoori-style chicken with fluffy cilantro rice, finished with a quick lemony onion-cilantro salad for crunch.",
+        "datePublished": "2026-02-12T15:58:52+00:00",
+        "image": [
+          "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice.webp",
+          "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice-500x500.webp",
+          "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice-500x375.webp",
+          "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice-480x270.webp"
+        ],
+        "recipeYield": [
+          "4"
+        ],
+        "prepTime": "PT20M",
+        "cookTime": "PT25M",
+        "totalTime": "PT45M",
+        "recipeIngredient": [
+          "1 ½ pound boneless skinless chicken thigh (cut into 2-inch pieces (chicken breast works, but thighs stay juicier under high heat))",
+          "¾ cup plain whole-milk yogurt (thick yogurt clings best (greek yogurt is great; thin yogurt can be strained for 10 minutes))",
+          "1 tablespoon neutral oil (such as avocado or canola (helps the spices bloom and encourages browning))",
+          "1 tablespoon lemon juice (fresh is best (lime is a good swap))",
+          "1 tablespoon ginger (finely grated (or 1 tablespoon ginger paste))",
+          "3 clove garlic (finely grated (or 1 1/2 teaspoon garlic paste))",
+          "2 teaspoon kashmiri red chili powder (for color and mild heat (swap 1 teaspoon paprika + 1/2 teaspoon cayenne for more heat))",
+          "2 teaspoon ground cumin (warm and earthy)",
+          "2 teaspoon ground coriander (citrusy and mellow)",
+          "1 teaspoon garam masala (add at the end of mixing so it stays fragrant)",
+          "1 teaspoon smoked paprika (optional but adds a gentle \"tandoor\" illusion in the oven)",
+          "½ teaspoon turmeric (optional for earthy color)",
+          "1 ½ teaspoon kosher salt (use 1 teaspoon if using fine salt)",
+          "½ teaspoon black pepper (freshly ground)",
+          "1 ½ cup basmati rice (rinsed until the water runs mostly clear (jasmine rice also works, but basmati is classic))",
+          "2 ¼ cup water (for cooking (use broth for extra savoriness))",
+          "1 tablespoon butter (or ghee (olive oil is fine too))",
+          "¾ teaspoon kosher salt (adjust to taste)",
+          "1 cup cilantro leaves and tender stems (chopped, plus extra for serving)",
+          "1 tablespoon lemon juice (brightens the rice right at the end)",
+          "½  red onion (thinly sliced)",
+          "1 tablespoon lemon juice (to lightly \"pickle\" the onion)",
+          "¼ teaspoon kosher salt (just a pinch)"
+        ],
+        "recipeInstructions": [
+          {
+            "@type": "HowToSection",
+            "name": "Marinate and prep",
+            "itemListElement": [
+              {
+                "@type": "HowToStep",
+                "text": "Heat the oven to 450°F and set a rack in the top third. If you have a wire rack, set it inside a rimmed sheet pan. Lining the pan with foil makes cleanup easier because yogurt marinade likes to leave souvenirs.",
+                "name": "Heat the oven to 450°F and set a rack in the top third. If you have a wire rack, set it inside a rimmed sheet pan. Lining the pan with foil makes cleanup easier because yogurt marinade likes to leave souvenirs.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-0"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "In a large bowl, stir together the yogurt, oil, lemon juice, ginger, garlic, kashmiri chili powder, cumin, coriander, garam masala, smoked paprika (if using), turmeric (if using), salt, and black pepper. Taste the marinade (it should be bold and a little salty; it's seasoning a lot of chicken).",
+                "name": "In a large bowl, stir together the yogurt, oil, lemon juice, ginger, garlic, kashmiri chili powder, cumin, coriander, garam masala, smoked paprika (if using), turmeric (if using), salt, and black pepper. Taste the marinade (it should be bold and a little salty; it's seasoning a lot of chicken).",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-1"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Add the chicken thigh pieces and toss until every piece is coated. For the most flavorful chicken tandoori recipe, let it marinate 30 minutes at room temperature or 4 hours in the refrigerator (optional but wonderful). If you marinate longer than 4 hours, the texture can turn a little too soft from the yogurt.",
+                "name": "Add the chicken thigh pieces and toss until every piece is coated. For the most flavorful chicken tandoori recipe, let it marinate 30 minutes at room temperature or 4 hours in the refrigerator (optional but wonderful). If you marinate longer than 4 hours, the texture can turn a little too soft from the yogurt.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-2"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Spread the chicken in a single layer on the rack or directly on the lined sheet pan. Leave a little space between pieces so they roast and char instead of steaming.",
+                "name": "Spread the chicken in a single layer on the rack or directly on the lined sheet pan. Leave a little space between pieces so they roast and char instead of steaming.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-3"
+              }
+            ]
+          },
+          {
+            "@type": "HowToSection",
+            "name": "Cook the chicken and rice",
+            "itemListElement": [
+              {
+                "@type": "HowToStep",
+                "text": "Start the rice: add the rinsed basmati rice, water, butter, and salt to a medium saucepan. Bring to a boil over high heat, then immediately reduce to low, cover, and cook for 15 minutes. Turn off the heat and let it steam, covered, for 5 minutes. (Don't peek-steam is doing the work.)",
+                "name": "Start the rice: add the rinsed basmati rice, water, butter, and salt to a medium saucepan. Bring to a boil over high heat, then immediately reduce to low, cover, and cook for 15 minutes. Turn off the heat and let it steam, covered, for 5 minutes. (Don't peek-steam is doing the work.)",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-0"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Roast the chicken: put the pan in the oven and roast for 18 minutes. Switch the oven to broil (high) and broil for 2 minutes to deepen the char. Flip the chicken pieces with tongs and broil for 2 minutes more, just until you see browned edges and a few darker spots. The chicken is done when the thickest piece hits 175°F (thighs love a slightly higher finish temperature).",
+                "name": "Roast the chicken: put the pan in the oven and roast for 18 minutes. Switch the oven to broil (high) and broil for 2 minutes to deepen the char. Flip the chicken pieces with tongs and broil for 2 minutes more, just until you see browned edges and a few darker spots. The chicken is done when the thickest piece hits 175°F (thighs love a slightly higher finish temperature).",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-1"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Make the quick onion topping (optional): while the chicken cooks, toss the sliced red onion with lemon juice and salt. Let it sit on the counter to soften and turn lightly tangy.",
+                "name": "Make the quick onion topping (optional): while the chicken cooks, toss the sliced red onion with lemon juice and salt. Let it sit on the counter to soften and turn lightly tangy.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-2"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "Finish the cilantro rice: fluff the rice with a fork. Fold in the chopped cilantro and lemon juice. Taste and add a pinch more salt if it needs it. The rice should taste clean and bright next to the smoky-spiced chicken.",
+                "name": "Finish the cilantro rice: fluff the rice with a fork. Fold in the chopped cilantro and lemon juice. Taste and add a pinch more salt if it needs it. The rice should taste clean and bright next to the smoky-spiced chicken.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-3"
+              }
+            ]
+          },
+          {
+            "@type": "HowToSection",
+            "name": "Serve",
+            "itemListElement": [
+              {
+                "@type": "HowToStep",
+                "text": "Serve the tandoori-style chicken over or alongside the cilantro rice. Scatter the quick lemony onion on top if you made it, and add extra cilantro for a fresh bite.",
+                "name": "Serve the tandoori-style chicken over or alongside the cilantro rice. Scatter the quick lemony onion on top if you made it, and add extra cilantro for a fresh bite.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-2-0"
+              },
+              {
+                "@type": "HowToStep",
+                "text": "If you want a more \"restaurant\" feel, drizzle a spoonful of plain yogurt over the chicken, or stir yogurt with a pinch of salt and extra lemon juice as a quick sauce. This is also a great base for chicken starter recipes: skewer the cooked pieces with red onion and bell pepper and serve with a dip.",
+                "name": "If you want a more \"restaurant\" feel, drizzle a spoonful of plain yogurt over the chicken, or stir yogurt with a pinch of salt and extra lemon juice as a quick sauce. This is also a great base for chicken starter recipes: skewer the cooked pieces with red onion and bell pepper and serve with a dip.",
+                "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-2-1"
+              }
+            ]
+          }
+        ],
+        "recipeCategory": [
+          "Main Dish"
+        ],
+        "recipeCuisine": [
+          "Indian"
+        ],
+        "@id": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#recipe",
+        "mainEntityOfPage": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#webpage",
+        "isPartOf": {
+          "@id": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#richSnippet"
+        }
+      }
+    },
+    {
+      "status": "failure",
+      "inputUrl": "https://www.facebook.com/share/1CBje44xes/?mibextid=wwXIfr",
+      "stage": "convert",
+      "message": "No Recipe JSON-LD was found; used limited HTML metadata/itemprop fallback. No ingredients were found. No instructions were found. Recipe image was not imported: No Recipe.image or og:image URL was found."
+    },
+    {
+      "status": "failure",
+      "inputUrl": "https://www.thepastatable.com/post/prosciutto-caprese-pasta-salad?utm_source=Pinterest&utm_medium=organic",
+      "stage": "convert",
+      "message": "No Recipe JSON-LD was found; used limited HTML metadata/itemprop fallback. No ingredients were found. No instructions were found."
+    },
+    {
+      "status": "failure",
+      "inputUrl": "https://twistedfood.co.uk/?utm_source=Pinterest&utm_medium=organic",
+      "stage": "convert",
+      "message": "No Recipe JSON-LD was found; used limited HTML metadata/itemprop fallback. No ingredients were found. No instructions were found."
+    },
+    {
+      "status": "failure",
+      "inputUrl": "https://www.instagram.com/reel/DKkYBJAvTNo/?utm_source=Pinterest&utm_medium=organic",
+      "stage": "convert",
+      "message": "No Recipe JSON-LD was found; used limited HTML metadata/itemprop fallback. No ingredients were found. No instructions were found. Recipe image was not imported: image request returned HTTP 403"
+    }
+  ]
+}

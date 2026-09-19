@@ -1,6 +1,7 @@
 import type { RecipeArchiveManifest } from '../types'
 import {
   activateStagingLibrary,
+  checkpointStagingLibrary,
   createStagingLibrary,
   discardStagingLibrary,
   getRecipePhoto,
@@ -128,21 +129,25 @@ export async function importBackup(file: File, onProgress?: ProgressHandler): Pr
       onProgress?.({ phase: 'recipes', completed: offset + batch.length, total: manifest.recipes.length })
     }
 
-    const photoTotal = manifest.photos.length * 2
+    const photoTotal = manifest.photos.length
     let photoCompleted = 0
     let batchBytes = 0
+    let batchPhotos = 0
     let batch: RecipePhotoRecord[] = []
     const flushPhotos = async () => {
       if (!batch.length || !staging) return
-      const count = batch.length
+      const count = batchPhotos
       await stagePhotoBatch(staging, batch)
       photoCompleted += count
       onProgress?.({ phase: 'photos', completed: photoCompleted, total: photoTotal })
       batch = []
       batchBytes = 0
+      batchPhotos = 0
     }
 
     for (const photo of manifest.photos) {
+      const pair: RecipePhotoRecord[] = []
+      let pairBytes = 0
       for (const variant of ['full', 'thumbnail'] as const) {
         const path = photo[variant]
         const entry = entries.get(path)
@@ -152,15 +157,19 @@ export async function importBackup(file: File, onProgress?: ProgressHandler): Pr
         const data = await readStoredZipEntry(file, entry)
         const signature = new Uint8Array(await data.slice(0, 3).arrayBuffer())
         if (signature[0] !== 0xff || signature[1] !== 0xd8 || signature[2] !== 0xff) throw new Error(`The photo “${path}” is not a JPEG.`)
-        if (batch.length && (batch.length >= 20 || batchBytes + data.size > 8 * 1024 * 1024)) await flushPhotos()
-        batch.push({ recipeId: photo.recipeId, variant, blob: new Blob([data], { type: 'image/jpeg' }) })
-        batchBytes += data.size
+        pair.push({ recipeId: photo.recipeId, variant, blob: new Blob([data], { type: 'image/jpeg' }) })
+        pairBytes += data.size
       }
+      if (batchPhotos && (batchPhotos >= 10 || batchBytes + pairBytes > 8 * 1024 * 1024)) await flushPhotos()
+      batch.push(...pair)
+      batchBytes += pairBytes
+      batchPhotos += 1
     }
     await flushPhotos()
+    if (staging.photoBatchesSinceCheckpoint > 0) await checkpointStagingLibrary(staging)
 
     onProgress?.({ phase: 'activate', completed: 0, total: 1 })
-    await verifyStagingLibrary(staging, manifest.recipes.length, photoTotal)
+    await verifyStagingLibrary(staging, manifest.recipes.length, photoTotal * 2)
     await activateStagingLibrary(staging, manifest.recipes.length)
     activated = true
     onProgress?.({ phase: 'activate', completed: 1, total: 1 })

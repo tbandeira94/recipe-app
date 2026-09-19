@@ -1,0 +1,138 @@
+{
+  "@type": "Recipe",
+  "name": "Spicy Yogurt-Marinated Chicken Tandoori with Cilantro Rice (Weeknight-Ready, Big Flavor)",
+  "author": {
+    "@type": "Person",
+    "name": "Sarah Gardner"
+  },
+  "description": "Spicy yogurt-marinated tandoori-style chicken with fluffy cilantro rice, finished with a quick lemony onion-cilantro salad for crunch.",
+  "datePublished": "2026-02-12T15:58:52+00:00",
+  "image": [
+    "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice.webp",
+    "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice-500x500.webp",
+    "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice-500x375.webp",
+    "https://thehungrygoddess.com/wp-content/uploads/2026/02/recipe-spicy-yogurt-marinated-chicken-tandoori-with-cilantro-rice-480x270.webp"
+  ],
+  "recipeYield": [
+    "4"
+  ],
+  "prepTime": "PT20M",
+  "cookTime": "PT25M",
+  "totalTime": "PT45M",
+  "recipeIngredient": [
+    "1 ½ pound boneless skinless chicken thigh (cut into 2-inch pieces (chicken breast works, but thighs stay juicier under high heat))",
+    "¾ cup plain whole-milk yogurt (thick yogurt clings best (greek yogurt is great; thin yogurt can be strained for 10 minutes))",
+    "1 tablespoon neutral oil (such as avocado or canola (helps the spices bloom and encourages browning))",
+    "1 tablespoon lemon juice (fresh is best (lime is a good swap))",
+    "1 tablespoon ginger (finely grated (or 1 tablespoon ginger paste))",
+    "3 clove garlic (finely grated (or 1 1/2 teaspoon garlic paste))",
+    "2 teaspoon kashmiri red chili powder (for color and mild heat (swap 1 teaspoon paprika + 1/2 teaspoon cayenne for more heat))",
+    "2 teaspoon ground cumin (warm and earthy)",
+    "2 teaspoon ground coriander (citrusy and mellow)",
+    "1 teaspoon garam masala (add at the end of mixing so it stays fragrant)",
+    "1 teaspoon smoked paprika (optional but adds a gentle \"tandoor\" illusion in the oven)",
+    "½ teaspoon turmeric (optional for earthy color)",
+    "1 ½ teaspoon kosher salt (use 1 teaspoon if using fine salt)",
+    "½ teaspoon black pepper (freshly ground)",
+    "1 ½ cup basmati rice (rinsed until the water runs mostly clear (jasmine rice also works, but basmati is classic))",
+    "2 ¼ cup water (for cooking (use broth for extra savoriness))",
+    "1 tablespoon butter (or ghee (olive oil is fine too))",
+    "¾ teaspoon kosher salt (adjust to taste)",
+    "1 cup cilantro leaves and tender stems (chopped, plus extra for serving)",
+    "1 tablespoon lemon juice (brightens the rice right at the end)",
+    "½  red onion (thinly sliced)",
+    "1 tablespoon lemon juice (to lightly \"pickle\" the onion)",
+    "¼ teaspoon kosher salt (just a pinch)"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToSection",
+      "name": "Marinate and prep",
+      "itemListElement": [
+        {
+          "@type": "HowToStep",
+          "text": "Heat the oven to 450°F and set a rack in the top third. If you have a wire rack, set it inside a rimmed sheet pan. Lining the pan with foil makes cleanup easier because yogurt marinade likes to leave souvenirs.",
+          "name": "Heat the oven to 450°F and set a rack in the top third. If you have a wire rack, set it inside a rimmed sheet pan. Lining the pan with foil makes cleanup easier because yogurt marinade likes to leave souvenirs.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-0"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "In a large bowl, stir together the yogurt, oil, lemon juice, ginger, garlic, kashmiri chili powder, cumin, coriander, garam masala, smoked paprika (if using), turmeric (if using), salt, and black pepper. Taste the marinade (it should be bold and a little salty; it's seasoning a lot of chicken).",
+          "name": "In a large bowl, stir together the yogurt, oil, lemon juice, ginger, garlic, kashmiri chili powder, cumin, coriander, garam masala, smoked paprika (if using), turmeric (if using), salt, and black pepper. Taste the marinade (it should be bold and a little salty; it's seasoning a lot of chicken).",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-1"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Add the chicken thigh pieces and toss until every piece is coated. For the most flavorful chicken tandoori recipe, let it marinate 30 minutes at room temperature or 4 hours in the refrigerator (optional but wonderful). If you marinate longer than 4 hours, the texture can turn a little too soft from the yogurt.",
+          "name": "Add the chicken thigh pieces and toss until every piece is coated. For the most flavorful chicken tandoori recipe, let it marinate 30 minutes at room temperature or 4 hours in the refrigerator (optional but wonderful). If you marinate longer than 4 hours, the texture can turn a little too soft from the yogurt.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-2"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Spread the chicken in a single layer on the rack or directly on the lined sheet pan. Leave a little space between pieces so they roast and char instead of steaming.",
+          "name": "Spread the chicken in a single layer on the rack or directly on the lined sheet pan. Leave a little space between pieces so they roast and char instead of steaming.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-0-3"
+        }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Cook the chicken and rice",
+      "itemListElement": [
+        {
+          "@type": "HowToStep",
+          "text": "Start the rice: add the rinsed basmati rice, water, butter, and salt to a medium saucepan. Bring to a boil over high heat, then immediately reduce to low, cover, and cook for 15 minutes. Turn off the heat and let it steam, covered, for 5 minutes. (Don't peek-steam is doing the work.)",
+          "name": "Start the rice: add the rinsed basmati rice, water, butter, and salt to a medium saucepan. Bring to a boil over high heat, then immediately reduce to low, cover, and cook for 15 minutes. Turn off the heat and let it steam, covered, for 5 minutes. (Don't peek-steam is doing the work.)",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-0"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Roast the chicken: put the pan in the oven and roast for 18 minutes. Switch the oven to broil (high) and broil for 2 minutes to deepen the char. Flip the chicken pieces with tongs and broil for 2 minutes more, just until you see browned edges and a few darker spots. The chicken is done when the thickest piece hits 175°F (thighs love a slightly higher finish temperature).",
+          "name": "Roast the chicken: put the pan in the oven and roast for 18 minutes. Switch the oven to broil (high) and broil for 2 minutes to deepen the char. Flip the chicken pieces with tongs and broil for 2 minutes more, just until you see browned edges and a few darker spots. The chicken is done when the thickest piece hits 175°F (thighs love a slightly higher finish temperature).",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-1"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Make the quick onion topping (optional): while the chicken cooks, toss the sliced red onion with lemon juice and salt. Let it sit on the counter to soften and turn lightly tangy.",
+          "name": "Make the quick onion topping (optional): while the chicken cooks, toss the sliced red onion with lemon juice and salt. Let it sit on the counter to soften and turn lightly tangy.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-2"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "Finish the cilantro rice: fluff the rice with a fork. Fold in the chopped cilantro and lemon juice. Taste and add a pinch more salt if it needs it. The rice should taste clean and bright next to the smoky-spiced chicken.",
+          "name": "Finish the cilantro rice: fluff the rice with a fork. Fold in the chopped cilantro and lemon juice. Taste and add a pinch more salt if it needs it. The rice should taste clean and bright next to the smoky-spiced chicken.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-1-3"
+        }
+      ]
+    },
+    {
+      "@type": "HowToSection",
+      "name": "Serve",
+      "itemListElement": [
+        {
+          "@type": "HowToStep",
+          "text": "Serve the tandoori-style chicken over or alongside the cilantro rice. Scatter the quick lemony onion on top if you made it, and add extra cilantro for a fresh bite.",
+          "name": "Serve the tandoori-style chicken over or alongside the cilantro rice. Scatter the quick lemony onion on top if you made it, and add extra cilantro for a fresh bite.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-2-0"
+        },
+        {
+          "@type": "HowToStep",
+          "text": "If you want a more \"restaurant\" feel, drizzle a spoonful of plain yogurt over the chicken, or stir yogurt with a pinch of salt and extra lemon juice as a quick sauce. This is also a great base for chicken starter recipes: skewer the cooked pieces with red onion and bell pepper and serve with a dip.",
+          "name": "If you want a more \"restaurant\" feel, drizzle a spoonful of plain yogurt over the chicken, or stir yogurt with a pinch of salt and extra lemon juice as a quick sauce. This is also a great base for chicken starter recipes: skewer the cooked pieces with red onion and bell pepper and serve with a dip.",
+          "url": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#wprm-recipe-69240-step-2-1"
+        }
+      ]
+    }
+  ],
+  "recipeCategory": [
+    "Main Dish"
+  ],
+  "recipeCuisine": [
+    "Indian"
+  ],
+  "@id": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#recipe",
+  "mainEntityOfPage": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#webpage",
+  "isPartOf": {
+    "@id": "https://thehungrygoddess.com/chicken-tandoori-with-cilantro-rice/#richSnippet"
+  }
+}

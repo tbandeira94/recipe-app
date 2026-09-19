@@ -53,14 +53,15 @@ describe('staged backup restore', () => {
     const backup = await import('./backup')
     const database = await import('./database')
     const progress: string[] = []
-    const count = await backup.importBackup(await archiveFile(recipe('new', 'Imported', true), new Uint8Array([0xff, 0xd8, 0xff, 0x00])), ({ phase, completed }) => progress.push(`${phase}:${completed}`))
+    const count = await backup.importBackup(await archiveFile(recipe('new', 'Imported', true), new Uint8Array([0xff, 0xd8, 0xff, 0x00])), ({ phase, completed, total }) => progress.push(`${phase}:${completed}/${total}`))
 
     expect(count).toBe(1)
     expect((await database.getRecipes()).map((item) => item.name)).toEqual(['Imported'])
     expect(await (await database.getRecipePhoto('new', 'full'))?.arrayBuffer()).toBeInstanceOf(ArrayBuffer)
-    expect(progress).toContain('recipes:1')
-    expect(progress).toContain('photos:2')
-    expect(progress.at(-1)).toBe('activate:1')
+    expect(await (await database.getRecipePhoto('new', 'thumbnail'))?.arrayBuffer()).toBeInstanceOf(ArrayBuffer)
+    expect(progress).toContain('recipes:1/1')
+    expect(progress).toContain('photos:1/1')
+    expect(progress.at(-1)).toBe('activate:1/1')
   })
 
   it('keeps the active library when late photo validation fails', async () => {

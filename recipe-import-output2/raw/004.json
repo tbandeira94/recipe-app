@@ -1,0 +1,121 @@
+{
+  "@type": "Recipe",
+  "name": "Creamy Lemon Pasta",
+  "author": {
+    "@id": "https://everydayelizabeth.com/#/schema/person/3e2c4495e6539381e8b0229eedf7f0fe"
+  },
+  "description": "This&nbsp;Creamy Lemon Pasta&nbsp;is a quick and easy&nbsp;weeknight dinner&nbsp;that tastes like a special occasion! Each piece of pasta is coated in a&nbsp;bright and zesty lemon sauce&nbsp;that’s&nbsp;silky smooth. Full of cracked&nbsp;black pepper and parmigiano, one bite of this creamy sauce is like taking a trip to sunny Italy!",
+  "datePublished": "2024-10-03T13:49:53+00:00",
+  "image": [
+    "https://everydayelizabeth.com/wp-content/uploads/2024/08/Lemon-Pasta-39-scaled.jpg"
+  ],
+  "recipeYield": [
+    "4",
+    "4 servings"
+  ],
+  "cookTime": "PT15M",
+  "totalTime": "PT15M",
+  "recipeIngredient": [
+    "8 oz fresh pasta",
+    "2 tbsp freshly cracked black pepper",
+    "2 tbsp butter",
+    "½ tbsp flour",
+    "½ cup chicken broth",
+    "1  lemon zested and juiced (seeds removed)",
+    "¾ cup heavy whipping cream",
+    "½ cup freshly fine grated parmesan reggiano cheese",
+    "Garnish:&nbsp;cracked black pepper (extra lemon zest, extra cheese)"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "text": "Bring a large pot of salted water to a boil.&nbsp;",
+      "name": "Bring a large pot of salted water to a boil.&nbsp;",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-0"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add black pepper to the dry skillet and heat on medium-high heat. Cook for 1-2 mins or until very fragrant. Add the butter to a skillet and stir around. Once it melts, sprinkle the flour in and cook for 1-2 minutes, whisking frequently.&nbsp;",
+      "name": "Add black pepper to the dry skillet and heat on medium-high heat. Cook for 1-2 mins or until very fragrant. Add the butter to a skillet and stir around. Once it melts, sprinkle the flour in and cook for 1-2 minutes, whisking frequently.&nbsp;",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-1"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add in the broth and let the mixture come to a low simmer. Whisk in cream and cook it for a few minutes until the sauce has thickened slightly.&nbsp;",
+      "name": "Add in the broth and let the mixture come to a low simmer. Whisk in cream and cook it for a few minutes until the sauce has thickened slightly.&nbsp;",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-2"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add fresh pasta to the boiling water and cook according to package instructions.&nbsp;",
+      "name": "Add fresh pasta to the boiling water and cook according to package instructions.&nbsp;",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-3"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Stir in the parmesan cheese and take the skillet off the heat. Season with salt &amp; pepper to taste.",
+      "name": "Stir in the parmesan cheese and take the skillet off the heat. Season with salt &amp; pepper to taste.",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-4"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Add the drained pasta to the skillet along with lemon zest and juice. Toss until pasta is coated. Add in ¼ cup of pasta water at a time if the sauce becomes too thick.&nbsp;",
+      "name": "Add the drained pasta to the skillet along with lemon zest and juice. Toss until pasta is coated. Add in ¼ cup of pasta water at a time if the sauce becomes too thick.&nbsp;",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-5"
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Garnish with more parmesan, lemon zest, black pepper and a bit of chopped parsley if desired. Serve immediately.",
+      "name": "Garnish with more parmesan, lemon zest, black pepper and a bit of chopped parsley if desired. Serve immediately.",
+      "url": "https://everydayelizabeth.com/creamy-lemon-pasta#wprm-recipe-18472-step-0-6"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "1",
+    "reviewCount": "1"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "This recipe was exactly what I needed for dinner after a busy workday. I ended up adding some spicy Italian sausage and green peas to the dish. The lemon flavour is so pronounced and delightful. I will definitely be adding this to my regular rotation!",
+      "author": {
+        "@type": "Person",
+        "name": "Tamara"
+      },
+      "datePublished": "2025-07-14"
+    }
+  ],
+  "recipeCategory": [
+    "Savory"
+  ],
+  "recipeCuisine": [
+    "Italian"
+  ],
+  "keywords": "creamy lemon pasta, lemon cacio e pepe",
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "370 kcal",
+    "sugarContent": "1 g",
+    "sodiumContent": "181 mg",
+    "fatContent": "23 g",
+    "saturatedFatContent": "14 g",
+    "transFatContent": "0.2 g",
+    "carbohydrateContent": "33 g",
+    "fiberContent": "0.03 g",
+    "proteinContent": "8 g",
+    "cholesterolContent": "107 mg",
+    "unsaturatedFatContent": "7 g",
+    "servingSize": "1 serving"
+  },
+  "@id": "https://everydayelizabeth.com/creamy-lemon-pasta#recipe",
+  "isPartOf": {
+    "@id": "https://everydayelizabeth.com/creamy-lemon-pasta#article"
+  },
+  "mainEntityOfPage": "https://everydayelizabeth.com/creamy-lemon-pasta"
+}

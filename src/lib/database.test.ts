@@ -90,6 +90,27 @@ describe('recipe and photo storage', () => {
     await database.discardStagingLibrary(second)
   })
 
+  it('checkpoints after five photo batches and preserves staged records', async () => {
+    const database = await import('./database')
+    const staging = await database.createStagingLibrary()
+    const firstConnection = staging.database
+    for (let index = 0; index < 4; index += 1) {
+      await database.stagePhotoBatch(staging, [{ recipeId: `recipe-${index}`, variant: 'full', blob: new Blob([String(index)]) }])
+    }
+    expect(staging.database).toBe(firstConnection)
+    await database.stagePhotoBatch(staging, [{ recipeId: 'recipe-4', variant: 'full', blob: new Blob(['4']) }])
+    expect(staging.database).not.toBe(firstConnection)
+    expect(staging.photoBatchesSinceCheckpoint).toBe(0)
+    await database.verifyStagingLibrary(staging, 0, 5)
+
+    const secondConnection = staging.database
+    await database.stagePhotoBatch(staging, [{ recipeId: 'recipe-5', variant: 'full', blob: new Blob(['5']) }])
+    await database.checkpointStagingLibrary(staging)
+    expect(staging.database).not.toBe(secondConnection)
+    await database.verifyStagingLibrary(staging, 0, 6)
+    await database.discardStagingLibrary(staging)
+  })
+
   it('recreates the unreleased version-2 schema instead of migrating base64 records', async () => {
     await new Promise<void>((resolve, reject) => {
       const request = indexedDB.open('pantry-book', 2)
