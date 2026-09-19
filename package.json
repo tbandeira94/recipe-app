@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "typecheck:tools": "tsc -p tsconfig.tools.json --pretty false",
+    "icons:generate": "node scripts/generate_icons.mjs",
     "recipe:import": "tsx scripts/recipe-import/cli.ts",
     "preview": "vite preview"
   },

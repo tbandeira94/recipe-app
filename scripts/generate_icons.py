@@ -1,21 +1,49 @@
 from pathlib import Path
-from PIL import Image, ImageDraw
+from collections import deque
+
+from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[1] / "public" / "icons"
+SOURCE = ROOT / "recipe-app-icon.png"
+
+
+def remove_outer_white_background(image: Image.Image) -> Image.Image:
+    """Make only edge-connected near-white pixels transparent.
+
+    White details inside the illustration stay intact; the cream rounded border
+    is below the near-white threshold and remains opaque.
+    """
+    image = image.convert("RGBA")
+    pixels = image.load()
+    width, height = image.size
+    queued = deque()
+    visited = set()
+
+    def is_outer_white(x: int, y: int) -> bool:
+        red, green, blue, _ = pixels[x, y]
+        return red >= 250 and green >= 250 and blue >= 250
+
+    for x in range(width):
+        queued.extend(((x, 0), (x, height - 1)))
+    for y in range(height):
+        queued.extend(((0, y), (width - 1, y)))
+
+    while queued:
+        x, y = queued.popleft()
+        if (x, y) in visited or not is_outer_white(x, y):
+            continue
+        visited.add((x, y))
+        red, green, blue, _ = pixels[x, y]
+        pixels[x, y] = (red, green, blue, 0)
+        for nx, ny in ((x - 1, y), (x + 1, y), (x, y - 1), (x, y + 1)):
+            if 0 <= nx < width and 0 <= ny < height:
+                queued.append((nx, ny))
+    return image
 
 
 def make_icon(size: int, filename: str) -> None:
-    scale = size / 64
-    image = Image.new("RGB", (size, size), "#173f35")
-    draw = ImageDraw.Draw(image)
-    radius = round(15 * scale)
-    draw.rounded_rectangle((0, 0, size - 1, size - 1), radius=radius, fill="#173f35")
-    draw.rounded_rectangle((17 * scale, 13 * scale, 33 * scale, 51 * scale), radius=3 * scale, fill="#f8f4ec")
-    draw.rounded_rectangle((32 * scale, 13 * scale, 47 * scale, 51 * scale), radius=3 * scale, fill="#e35d3f")
-    draw.line((32 * scale, 13 * scale, 32 * scale, 51 * scale), fill="#173f35", width=max(1, round(2 * scale)))
-    for y in (23, 29):
-        draw.line((22 * scale, y * scale, 28 * scale, y * scale), fill="#173f35", width=max(1, round(2 * scale)))
-        draw.line((38 * scale, y * scale, 43 * scale, y * scale), fill="#173f35", width=max(1, round(2 * scale)))
+    image = remove_outer_white_background(Image.open(SOURCE))
+    image.thumbnail((size, size), Image.Resampling.LANCZOS)
     image.save(ROOT / filename, optimize=True)
 
 
