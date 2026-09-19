@@ -7,13 +7,17 @@ interface Props<T> {
   itemKey: (item: T) => string
   renderItem: (item: T) => ReactNode
   label: string
+  initialLimit?: number
+  onLimitChange?: (limit: number) => void
 }
 
-export function ProgressiveList<T>({ items, itemKey, renderItem, label }: Props<T>) {
-  const [limit, setLimit] = useState(BATCH_SIZE)
+export function ProgressiveList<T>({ items, itemKey, renderItem, label, initialLimit = BATCH_SIZE, onLimitChange }: Props<T>) {
+  const [limit, setLimit] = useState(() => Math.max(BATCH_SIZE, initialLimit))
   const sentinel = useRef<HTMLDivElement>(null)
   const hasObserver = typeof IntersectionObserver !== 'undefined'
   const hasMore = limit < items.length
+
+  useEffect(() => { onLimitChange?.(limit) }, [limit, onLimitChange])
 
   useEffect(() => {
     if (!hasObserver || !hasMore || !sentinel.current) return
