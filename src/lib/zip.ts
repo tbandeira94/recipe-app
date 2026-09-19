@@ -159,7 +159,7 @@ export async function readStoredZipDirectory(file: Blob): Promise<Map<string, Zi
   return entries
 }
 
-export async function readStoredZipEntry(file: Blob, entry: ZipDirectoryEntry, validateCrc = true): Promise<Blob> {
+export async function readStoredZipEntryBuffer(file: Blob, entry: ZipDirectoryEntry, validateCrc = true): Promise<ArrayBuffer> {
   assertBounds(entry.offset, 30, file.size)
   const header = new Uint8Array(await file.slice(entry.offset, entry.offset + 30).arrayBuffer())
   const view = new DataView(header.buffer, header.byteOffset, header.byteLength)
@@ -171,7 +171,15 @@ export async function readStoredZipEntry(file: Blob, entry: ZipDirectoryEntry, v
   if (localName !== entry.name) throw new Error(`The ZIP entry “${entry.name}” is invalid.`)
   const dataOffset = entry.offset + 30 + nameLength + extraLength
   assertBounds(dataOffset, entry.size, file.size)
-  const blob = file.slice(dataOffset, dataOffset + entry.size)
-  if (validateCrc && crc32(new Uint8Array(await blob.arrayBuffer())) !== entry.crc) throw new Error(`The ZIP entry “${entry.name}” is damaged.`)
-  return blob
+  // Materialize the entry once and return that exact buffer. In particular,
+  // avoid handing IndexedDB a Blob slice that remains backed by the large
+  // source File: WebKit has had reliability problems persisting file-backed
+  // Blobs, and reading a separate buffer for CRC used to double the work.
+  const buffer = await file.slice(dataOffset, dataOffset + entry.size).arrayBuffer()
+  if (validateCrc && crc32(new Uint8Array(buffer)) !== entry.crc) throw new Error(`The ZIP entry “${entry.name}” is damaged.`)
+  return buffer
+}
+
+export async function readStoredZipEntry(file: Blob, entry: ZipDirectoryEntry, validateCrc = true): Promise<Blob> {
+  return new Blob([await readStoredZipEntryBuffer(file, entry, validateCrc)])
 }

@@ -53,7 +53,8 @@ describe('staged backup restore', () => {
     const backup = await import('./backup')
     const database = await import('./database')
     const progress: string[] = []
-    const count = await backup.importBackup(await archiveFile(recipe('new', 'Imported', true), new Uint8Array([0xff, 0xd8, 0xff, 0x00])), ({ phase, completed, total }) => progress.push(`${phase}:${completed}/${total}`))
+    const diagnostics: string[] = []
+    const count = await backup.importBackup(await archiveFile(recipe('new', 'Imported', true), new Uint8Array([0xff, 0xd8, 0xff, 0x00])), ({ phase, completed, total }) => progress.push(`${phase}:${completed}/${total}`), (message) => diagnostics.push(message))
 
     expect(count).toBe(1)
     expect((await database.getRecipes()).map((item) => item.name)).toEqual(['Imported'])
@@ -62,6 +63,9 @@ describe('staged backup restore', () => {
     expect(progress).toContain('recipes:1/1')
     expect(progress).toContain('photos:1/1')
     expect(progress.at(-1)).toBe('activate:1/1')
+    expect(diagnostics.some((message) => message.includes('2 image records'))).toBe(true)
+    expect(diagnostics.some((message) => message.includes('Photo batch 1: 1-1/1'))).toBe(true)
+    expect(diagnostics.some((message) => message.includes('Restore activated'))).toBe(true)
   })
 
   it('keeps the active library when late photo validation fails', async () => {
@@ -73,7 +77,10 @@ describe('staged backup restore', () => {
     }, { kind: 'keep' })
 
     const invalid = await archiveFile(recipe('bad', 'Bad photo', true), new Uint8Array([0x00, 0x01, 0x02]))
-    await expect(backup.importBackup(invalid)).rejects.toThrow('not a JPEG')
+    const diagnostics: string[] = []
+    await expect(backup.importBackup(invalid, undefined, (message) => diagnostics.push(message))).rejects.toThrow('not a JPEG')
     expect((await database.getRecipes()).map((item) => item.name)).toEqual(['Keep me'])
+    expect(diagnostics.some((message) => message.includes('RESTORE FAILED: Error: The photo'))).toBe(true)
+    expect(diagnostics.some((message) => message.includes('active library was not changed'))).toBe(true)
   })
 })

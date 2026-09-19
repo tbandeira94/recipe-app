@@ -13,8 +13,8 @@ import {
   type StagingLibrary,
 } from './database'
 import { ARCHIVE_FORMAT, ARCHIVE_VERSION, parseArchiveManifest } from './backupFormat'
-import { assertStorageCapacity } from './storage'
-import { createStoredZip, readStoredZipDirectory, readStoredZipEntry, type ZipDirectoryEntry, type ZipSourceEntry } from './zip'
+import { assertStorageCapacity, getStorageStatus } from './storage'
+import { createStoredZip, readStoredZipDirectory, readStoredZipEntry, readStoredZipEntryBuffer, type ZipDirectoryEntry, type ZipSourceEntry } from './zip'
 
 export interface BackupProgress {
   phase: 'export' | 'inspect' | 'recipes' | 'photos' | 'activate'
@@ -28,6 +28,31 @@ export interface BackupInspection {
 }
 
 type ProgressHandler = (progress: BackupProgress) => void
+export type BackupDiagnosticHandler = (message: string) => void
+
+function clock(): number {
+  return typeof performance === 'undefined' ? Date.now() : performance.now()
+}
+
+function diagnosticError(error: unknown): string {
+  const messages: string[] = []
+  let current: unknown = error
+  for (let depth = 0; depth < 4 && current; depth += 1) {
+    if (current instanceof Error) {
+      messages.push(`${current.name}: ${current.message}`)
+      current = current.cause
+    } else {
+      messages.push(String(current))
+      break
+    }
+  }
+  return messages.join(' <- ')
+}
+
+function diagnosticBytes(bytes: number | undefined): string {
+  if (bytes === undefined) return 'unavailable'
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MiB`
+}
 
 async function readManifest(file: Blob, entries: Map<string, ZipDirectoryEntry>): Promise<RecipeArchiveManifest> {
   const entry = entries.get('manifest.json')
@@ -111,71 +136,114 @@ export async function deliverBackup(file: File): Promise<'shared' | 'downloaded'
   return 'downloaded'
 }
 
-export async function importBackup(file: File, onProgress?: ProgressHandler): Promise<number> {
-  await assertStorageCapacity(Math.ceil(file.size * 1.25))
-  onProgress?.({ phase: 'inspect', completed: 0, total: 1 })
-  const entries = await readStoredZipDirectory(file)
-  const manifest = await readManifest(file, entries)
-  validateDirectory(manifest, entries)
-  onProgress?.({ phase: 'inspect', completed: 1, total: 1 })
-
+export async function importBackup(file: File, onProgress?: ProgressHandler, onDiagnostic?: BackupDiagnosticHandler): Promise<number> {
+  const startedAt = clock()
+  const log = (message: string) => onDiagnostic?.(`[+${((clock() - startedAt) / 1000).toFixed(1)}s] ${message}`)
   let staging: StagingLibrary | undefined
   let activated = false
   try {
+    log(`Restore started; archive ${diagnosticBytes(file.size)} (${file.size} bytes).`)
+    await assertStorageCapacity(Math.ceil(file.size * 1.25))
+    const initialStorage = await getStorageStatus()
+    log(`Storage before restore: used ${diagnosticBytes(initialStorage.usage)}, quota ${diagnosticBytes(initialStorage.quota)}, persistent ${initialStorage.persistent ?? 'unavailable'}.`)
+    onProgress?.({ phase: 'inspect', completed: 0, total: 1 })
+    const entries = await readStoredZipDirectory(file)
+    const manifest = await readManifest(file, entries)
+    validateDirectory(manifest, entries)
+    log(`Archive checked: ${manifest.recipes.length} recipes, ${manifest.photos.length} logical photos, ${manifest.photos.length * 2} image records.`)
+    onProgress?.({ phase: 'inspect', completed: 1, total: 1 })
+
     staging = await createStagingLibrary()
+    log('Staging database opened.')
     for (let offset = 0; offset < manifest.recipes.length; offset += 100) {
       const batch = manifest.recipes.slice(offset, offset + 100)
       await stageRecipeBatch(staging, batch)
       onProgress?.({ phase: 'recipes', completed: offset + batch.length, total: manifest.recipes.length })
     }
+    log(`Recipe import committed: ${manifest.recipes.length}/${manifest.recipes.length}.`)
 
     const photoTotal = manifest.photos.length
     let photoCompleted = 0
     let batchBytes = 0
     let batchPhotos = 0
+    let batchReadMs = 0
+    let batchNumber = 0
     let batch: RecipePhotoRecord[] = []
     const flushPhotos = async () => {
       if (!batch.length || !staging) return
       const count = batchPhotos
+      const first = photoCompleted + 1
+      const checkpoint = staging.photoBatchesSinceCheckpoint === 4
+      const writeStartedAt = clock()
       await stagePhotoBatch(staging, batch)
+      const writeMs = clock() - writeStartedAt
       photoCompleted += count
+      batchNumber += 1
+      log(`Photo batch ${batchNumber}: ${first}-${photoCompleted}/${photoTotal}, ${batch.length} records, ${diagnosticBytes(batchBytes)}; read ${Math.round(batchReadMs)} ms, commit${checkpoint ? '+checkpoint' : ''} ${Math.round(writeMs)} ms.`)
       onProgress?.({ phase: 'photos', completed: photoCompleted, total: photoTotal })
+      if (checkpoint) {
+        const currentStorage = await getStorageStatus()
+        log(`Storage after checkpoint: used ${diagnosticBytes(currentStorage.usage)}, quota ${diagnosticBytes(currentStorage.quota)}.`)
+      }
       batch = []
       batchBytes = 0
       batchPhotos = 0
+      batchReadMs = 0
     }
 
     for (const photo of manifest.photos) {
-      const pair: RecipePhotoRecord[] = []
-      let pairBytes = 0
-      for (const variant of ['full', 'thumbnail'] as const) {
+      const variants = (['full', 'thumbnail'] as const).map((variant) => {
         const path = photo[variant]
         const entry = entries.get(path)
         if (!entry) throw new Error(`The backup is missing “${path}”.`)
         const sizeLimit = variant === 'full' ? 25 * 1024 * 1024 : 2 * 1024 * 1024
         if (entry.size < 3 || entry.size > sizeLimit) throw new Error(`The photo “${path}” has an invalid size.`)
-        const data = await readStoredZipEntry(file, entry)
-        const signature = new Uint8Array(await data.slice(0, 3).arrayBuffer())
-        if (signature[0] !== 0xff || signature[1] !== 0xd8 || signature[2] !== 0xff) throw new Error(`The photo “${path}” is not a JPEG.`)
-        pair.push({ recipeId: photo.recipeId, variant, blob: new Blob([data], { type: 'image/jpeg' }) })
-        pairBytes += data.size
-      }
+        return { variant, path, entry }
+      })
+      const pairBytes = variants.reduce((total, item) => total + item.entry.size, 0)
+      // Commit the existing batch before reading the next pair so the live
+      // photo buffers stay within the same limit as the transaction itself.
       if (batchPhotos && (batchPhotos >= 10 || batchBytes + pairBytes > 8 * 1024 * 1024)) await flushPhotos()
+
+      const pair: RecipePhotoRecord[] = []
+      for (const { variant, path, entry } of variants) {
+        const readStartedAt = clock()
+        const buffer = await readStoredZipEntryBuffer(file, entry)
+        batchReadMs += clock() - readStartedAt
+        const signature = new Uint8Array(buffer, 0, 3)
+        if (signature[0] !== 0xff || signature[1] !== 0xd8 || signature[2] !== 0xff) throw new Error(`The photo “${path}” is not a JPEG.`)
+        pair.push({ recipeId: photo.recipeId, variant, blob: new Blob([buffer], { type: 'image/jpeg' }) })
+      }
       batch.push(...pair)
       batchBytes += pairBytes
       batchPhotos += 1
     }
     await flushPhotos()
-    if (staging.photoBatchesSinceCheckpoint > 0) await checkpointStagingLibrary(staging)
+    if (staging.photoBatchesSinceCheckpoint > 0) {
+      const checkpointStartedAt = clock()
+      await checkpointStagingLibrary(staging)
+      log(`Final database checkpoint completed in ${Math.round(clock() - checkpointStartedAt)} ms.`)
+    }
 
     onProgress?.({ phase: 'activate', completed: 0, total: 1 })
+    log('Verifying staged recipe and image record counts.')
     await verifyStagingLibrary(staging, manifest.recipes.length, photoTotal * 2)
     await activateStagingLibrary(staging, manifest.recipes.length)
     activated = true
+    const finalStorage = await getStorageStatus()
+    log(`Restore activated. Storage now used ${diagnosticBytes(finalStorage.usage)} of ${diagnosticBytes(finalStorage.quota)}.`)
     onProgress?.({ phase: 'activate', completed: 1, total: 1 })
     return manifest.recipes.length
   } catch (error) {
-    if (staging && !activated) await discardStagingLibrary(staging)
+    log(`RESTORE FAILED: ${diagnosticError(error)}`)
+    if (staging && !activated) {
+      try {
+        await discardStagingLibrary(staging)
+        log('Staging database discarded; active library was not changed.')
+      } catch (cleanupError) {
+        log(`Staging cleanup failed: ${diagnosticError(cleanupError)}`)
+      }
+    }
     throw error
   }
 }

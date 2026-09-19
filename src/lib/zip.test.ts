@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { createStoredZip, crc32, readStoredZipDirectory, readStoredZipEntry } from './zip'
+import { createStoredZip, crc32, readStoredZipDirectory, readStoredZipEntry, readStoredZipEntryBuffer } from './zip'
 import { parseArchiveManifest } from './backupFormat'
 import type { Recipe, RecipeArchiveManifest } from '../types'
 
@@ -20,6 +20,7 @@ describe('store-only ZIP archives', () => {
     expect([...directory.keys()]).toEqual(['manifest.json', 'photos/000001-full.jpg'])
     const photo = await readStoredZipEntry(archive, directory.get('photos/000001-full.jpg')!)
     expect([...new Uint8Array(await photo.arrayBuffer())]).toEqual([1, 2, 3, 4])
+    expect([...new Uint8Array(await readStoredZipEntryBuffer(archive, directory.get('photos/000001-full.jpg')!))]).toEqual([1, 2, 3, 4])
     expect(crc32(new Uint8Array([1, 2, 3, 4]))).toBe(directory.get('photos/000001-full.jpg')!.crc)
   })
 
